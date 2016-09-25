@@ -1,0 +1,822 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    /*background-color: #000000;*/
+    background-image: url(../../img/moutain_sunrise.jpg);
+    background-size: cover;
+    margin: 0;
+    font-family: Helvetica, sans-serif;;
+    overflow: hidden;
+}
+canvas { width: 100%; height: 100%; z-index: -1; }
+
+a {
+    color: #ffffff;
+}
+
+.canvasVertical{
+    width: 115%;
+    height: 100%;
+    top: 3%;
+    left: 10%;
+    border: 0;
+
+}
+
+.primary-view {
+    width: 900px;
+    height: 900px;
+}
+
+#attachmentPoint {
+    position:absolute; right: 1%;
+    z-index: 1;
+}
+
+.better-view-message {
+    color:white;
+    position: absolute;
+    top: 2%;
+    left: 40%;
+}
+
+.page-title-name{
+    position:absolute;
+    top: 9%;
+    left: 25%;
+    font-size: .8em;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+}
+
+.hide-element{
+    visability: hidden;
+}
+
+/* template title  */
+.small-screen-template-title{
+    position: relative;
+    top: 20%;
+    left: 10%;
+}
+.template-title{
+    left: 40%;
+}
+
+/* ========== Page Content General and Specific element design details ========== */
+.iframeOverTop{
+   position: absolute;
+    width: 3500px;
+    height: 1700px;
+    background: white;
+    z-index: 2;
+}
+
+.dbViewCell{
+    width: 200px;
+}
+
+
+/* ========== Page Template Styles ========== */
+.page{
+    /*border: 2px solid rgba(0, 0, 0, 0.25);*/
+    cursor: default;
+    background: transparent;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/*  margin-right: 2%;
+.page-vertical {
+
+    margin-left: 2%;
+    width: 60%;
+    height: 70%;
+    overflow-y: visible;
+    overflow-x: hidden;
+}
+*/
+
+.page-vertical {
+
+    margin-left: 15%;
+    width: 60%;
+    height: 75%;
+    overflow-y: visible;
+    overflow-x: hidden;
+}
+
+.page-horizontal{
+    margin-right: 2%;
+    width: 800px;
+    height: 625px;
+}
+
+dt {
+    font-weight: bold;
+}
+
+
+
+
+/* ========== */
+.setupPageBase {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+   /* overflow: hidden; */
+    /* z-index: -1;*/
+}
+
+
+
+
+/* ========== Top level animation, elements, and remainder design details ========== */
+
+
+.element {
+    width: 200px;
+    height: 160px;
+    box-shadow: 0px 0px 12px rgba(167, 175, 178, 0.5);
+    border: 1px solid rgba(28, 46, 65, 0.25);
+    text-align: center;
+    cursor: default;
+}
+
+.element:hover {
+    box-shadow: 0px 0px 12px rgba(198, 208, 217, 0.75);
+    border: 1px solid rgba(179, 180, 204, 0.75);
+}
+
+
+.element .image {
+    position: absolute;
+   /* width: 50px;
+    height: 50px;*/
+    font-size: 5px;
+    top: 30%;
+    right: 40%;
+    color: rgba(169, 244, 255, 0.75);
+}
+
+.element .heading {
+    position: absolute;
+    top: 20px;
+    left: 0px;
+    right: 0px;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgba(255,255,255,1);
+    text-shadow: 0 0 10px rgba(166, 174, 177, 0.95);
+}
+
+.element .details {
+    position: absolute;
+    bottom: 12px;
+    left: 0px;
+    right: 0px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.90);
+    /*color: rgba(127,255,255,0.75);*/
+}
+
+
+.hide-element{
+    display: none;
+}
+
+
+/* ========== Material Design Light List ========== */
+
+.mdl-list {
+    display: block;
+    padding: 8px 0;
+    list-style: none; }
+
+.mdl-list__item {
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 90px;
+    letter-spacing: 0.15em;
+    line-height: 1;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    min-height: 48px;
+    box-sizing: border-box;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 16px;
+    cursor: default;
+    color: rgba(0,0,0, 0.87);
+    overflow: hidden; }
+
+.mdl-list__item .mdl-list__item-secondary-content .mdl-list__item-secondary-action label {
+    display: inline; }
+
+.mdl-list__item .mdl-list__item-secondary-content .mdl-list__item-secondary-info {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0;
+    color: rgba(0,0,0, 0.54); }
+.mdl-list__item .mdl-list__item-secondary-content .mdl-list__item-sub-header {
+    padding: 0 0 0 16px; }
+
+.mdl-list__item-icon,
+.mdl-list__item-icon.material-icons {
+    height: 24px;
+    width: 24px;
+    font-size: 24px;
+    box-sizing: border-box;
+    color: rgb(117,117,117); }
+
+.mdl-list__item-avatar,
+.mdl-list__item-avatar.material-icons {
+    height: 40px;
+    width: 40px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    background-color: rgb(117,117,117);
+    font-size: 40px;
+    color: white; }
+
+.mdl-list__item--three-line {
+    height: 100px; }
+
+.mdl-list__item--three-line .mdl-list__item-primary-content {
+    height: 95px;
+    line-height: 20px;
+    display: block; }
+
+.mdl-list__item--three-line .mdl-list__item-primary-content .mdl-list__item-avatar,
+.mdl-list__item--three-line .mdl-list__item-primary-content .mdl-list__item-icon {
+    float: left; }
+.mdl-list__item--three-line .mdl-list__item-secondary-content {
+    height: 52px; }
+.mdl-list__item--three-line .mdl-list__item-text-body {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: 0;
+    line-height: 18px;
+    height: 52px;
+    color: rgba(0,0,0, 0.54);
+    display: block;
+    padding: 0; }
+
+
+/* ========== Material Design Light Navigation Modified ========== */
+.mdl-navigation__link-mod {
+    color: rgb(66,66,66);
+    text-decoration: none;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0;
+    opacity: 0.87; }
+.mdl-navigation__link-mod .material-icons-mod {
+    vertical-align: middle; }
+
+/* ========== Material Design Light Layout Modified ========== */
+.mdl-layout-title-mod {
+    display: block;
+    position: relative;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    font-weight: 400;
+    box-sizing: border-box; }
+
+
+/* ========== NAV DRAWER ========== */
+
+.cd-layout__drawer {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: 100%;
+    max-height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    border-right: 1px solid rgb(224, 224, 224);
+    background: rgb(250, 250, 250);
+    transform: translateX(-250px);
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition-duration: 0.2s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-property: transform;
+    color: rgb(66, 66, 66);
+    overflow: visible;
+    overflow-y: auto;
+    z-index: 6;
+}
+
+.mdl-layout-icon-mod {
+    display: block;
+    position: absolute;
+    height: 48px;
+    width: 48px;
+    border: 0;
+    -webkit-flex-shrink: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    overflow: hidden;
+    text-align: center;
+    cursor: pointer;
+    font-size: 26px;
+    line-height: 56px;
+    font-family: Helvetica, Arial, sans-serif;
+    margin: 10px 12px;
+    top: 0;
+    left: 0;
+    color: rgb(255,255,255);
+    z-index:1;
+}
+
+.drawer-normal-width {
+    width: 20%;
+}
+
+.drawer-small-screen{
+    margin-right: 300px;
+    width: calc(100% - 300px);
+}
+
+.drawer-very-small-screen{
+    width: 50%
+}
+
+.cd-is-visible {
+    transform: translateX(0);
+}
+
+.cd-is-visible ~ .cd-layout__content.cd-layout__content {
+    overflow: hidden;
+}
+.cd-not-visible{
+    visibility: hidden;
+    overflow: hidden;
+}
+
+/* ========== Animation Options Drawer ========== */
+#menu {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.cd-layout__drawer-display {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    height: 20%;
+    max-height: 20%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    border: 1px solid rgb(224, 224, 224);
+    background: transparent;
+    transform: translateY(250px);
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition-duration: 0.2s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-property: transform;
+    color: rgb(66, 66, 66);
+    overflow: visible;
+    overflow-y: auto;
+    z-index: 6;
+}
+
+.drawer-small-screen-display{
+    margin-top: calc(100% - 370px);
+    height: 30%;
+}
+
+.mdl-navigation-display {
+    align-content: space-between; }
+
+.cd-is-visible {
+    transform: translateX(0);
+}
+
+.cd-is-visible .cd-layout__content {
+    overflow: hidden;
+}
+.cd-not-visible{
+    visibility: hidden;
+    overflow: hidden;
+}
+.hide-element{
+    display: none;
+}
+input.click-through{
+    display: none;
+}
+
+/* ========== Show Mobile Scroll Bar ========== */
+/* !important is needed sometimes */
+::-webkit-scrollbar {
+    width: 12px !important;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3) !important;
+    -webkit-border-radius: 10px !important;
+    border-radius: 10px !important;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px !important;
+    border-radius: 10px !important;
+    background: #41617D !important;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5) !important;
+
+}
+::-webkit-scrollbar-thumb:window-inactive {
+    background: #41617D !important;
+}
+
+
+
+
+/* ===============  Animation Option Drawer Buttons =====================*/
+button.display-change-btn {
+    color: white;
+    background: #2d4c67;
+    outline: 1px solid #bfa99c;
+    border: 0px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+button.display-change-btn:hover {
+    background-color: #38424e;
+}
+button.display-change-btn:active {
+    color: #000000;
+    background-color: rgb(16, 0, 230);
+}
+
+/* =============== MainPage Download and Print Icons =====================*/
+div#printButton {
+    display: block;
+    position: absolute;
+    top: 8px;
+    left: 107px;
+    width: 24px;
+    height: 24px;
+    color: white;
+    cursor: default;
+}
+
+div#printButton:focus{
+    outline: none;
+    border: 0;
+}
+
+a#downloadLink{
+    display: block;
+    position: absolute;
+    top: 8px;
+    left: 65px;
+    width: 24px;
+    height: 24px;
+    z-index: 0;
+    color: white;
+    cursor: default;
+}
+
+a#downloadLink:focus{
+    outline: none;
+    border: 0;
+}
+/* ========== Animating Display Option Drawer Icon with CSS ========== */
+
+
+
+.displayOptionIconLL{
+    transform: scale(.5,.5);
+    position: absolute;
+    top: 30px;
+    right: 31px;
+}
+
+.displayOptionIconRL{
+    transform: scale(.5,.5);
+    position: absolute;
+    top: 24px;
+    right: 22px;
+}
+
+.displayOptionIconLU{
+    transform: scale(.5,.5);
+    position: absolute;
+    top: 17px;
+    right: 31px;
+}
+
+.displayOptionIconRU{
+    transform: scale(.5,.5);
+    position: absolute;
+    top: 19px;
+    right: 22px
+}
+
+.displayOptionIcon{
+    transform: scale(.5,.5);
+    position: absolute;
+    top: -22px;
+    right: -16px;
+    height: 100px;
+    width: 100px;
+    border-color: transparent !important;
+}
+
+.displayOptionIcon:focus{
+    outline: none;
+    border: 0;
+}
+.display-Option-Icon-Animate-LL {
+    animation-name: IconAnimateLL;
+    animation-iteration-count: infinite;
+    animation-duration: .75s;
+}
+.display-Option-Icon-Animate-LU {
+    animation-name: IconAnimateLU;
+    animation-iteration-count: infinite;
+    animation-duration: .75s;
+}
+.display-Option-Icon-Animate-RL {
+    animation-name: IconAnimateRL;
+    animation-iteration-count: infinite;
+    animation-duration: .75s;
+}
+.display-Option-Icon-Animate-RU {
+    animation-name: IconAnimateRU;
+    animation-iteration-count: infinite;
+    animation-duration: .75s;
+}
+
+
+@keyframes IconAnimateLL {
+    from { transform: translateX(0px) }
+    to {
+        transform: rotateZ(180deg);
+        top: 12px;
+        right: 19px}
+}
+
+@keyframes IconAnimateLU {
+    from { transform: rotateZ(0deg) }
+    to {
+        transform: rotateZ(180deg);
+        top: 24px;
+        right: 19px;}
+}
+
+@keyframes IconAnimateRL {
+    from { transform: rotateZ(0deg) }
+    to {
+        transform: rotateZ(180deg);
+        top: 12px;
+        right: 35px; }
+}
+
+@keyframes IconAnimateRU {
+    from { transform: rotateZ(0deg) }
+    to {
+        transform: rotateZ(180deg);
+        top: 32px;
+        right: 35px; }
+}
+
+/* Animating Display Option Drawer Icon Circular Arrow */
+
+
+
+.displayOptionIconArrow{
+    animation-name: IconAnimate2;
+    animation-iteration-count: infinite;
+    animation-duration: .75s;
+}
+
+@keyframes IconAnimate2 {
+    from { transform: rotateZ(360deg) }
+    to {transform: rotateZ(0deg) }
+}
+
+/* =============== Tooltip from Material Design with Slight Modifications =============== */
+.mdl-tooltip {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    -webkit-transform-origin: top center;
+    transform-origin: top center;
+    z-index: 999;
+    background: rgba(97,97,97, 0.9);
+    border-radius: 2px;
+    color: rgb(255,255,255);
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 14px;
+    max-width: 170px;
+    position: fixed;
+    top: -500px;
+    left: -500px;
+    padding: 8px;
+    text-align: center; }
+
+.mdl-tooltip.is-active {
+    -webkit-animation: pulse 200ms cubic-bezier(0, 0, 0.2, 1) forwards;
+    animation: pulse 200ms cubic-bezier(0, 0, 0.2, 1) forwards; }
+
+.mdl-tooltip--large {
+    line-height: 14px;
+    font-size: 14px;
+    padding: 16px; }
+
+@-webkit-keyframes pulse {
+    0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+        opacity: 0; }
+    50% {
+        -webkit-transform: scale(0.99);
+        transform: scale(0.99); }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
+        visibility: visible; } }
+
+@keyframes pulse {
+    0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+        opacity: 0; }
+    50% {
+        -webkit-transform: scale(0.99);
+        transform: scale(0.99); }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
+        visibility: visible; } }
+
+
+
+
+/* ========== Modified Material Design Light Button CSS Styles ========== */
+
+.mdl-button-mod {
+    background: transparent;
+    border: none;
+    border-radius: 2px;
+    color: rgb(0,0,0);
+    position: relative;
+    height: 36px;
+    margin: 0;
+    min-width: 64px;
+    padding: 0 16px;
+    display: inline-block;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    line-height: 1;
+    letter-spacing: 0;
+    overflow: hidden;
+    will-change: box-shadow;
+    transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    line-height: 36px;
+    vertical-align: middle; }
+
+.mdl-button-mod::-moz-focus-inner {
+    border: 0; }
+.mdl-button-mod:hover {
+    background-color: rgba(158,158,158, 0.20); }
+.mdl-button-mod:focus:not(:active) {
+    background-color: rgba(0,0,0, 0.12); }
+.mdl-button-mod:active {
+    background-color: rgba(158,158,158, 0.40); }
+
+
+
+
+
+/*
+========== Template Return Button Added to Templates ==========
+Based on Modified Material Design Light Button CSS Styles
+*/
+
+
+.template-return-button :hover {
+    background-color: rgba(6, 43, 255, 0.6); }
+
+.template-return-button {
+    background: transparent;
+    border: none;
+    border-radius: 2px;
+    color: white;
+    border: 1px solid rgb(255, 255, 255);
+    position: absolute;
+    height: 36px;
+    margin: 0;
+    min-width: 64px;
+    padding: 0 16px;
+    display: inline-block;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-size: 14px;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1;
+    letter-spacing: 0;
+    overflow: hidden;
+    will-change: box-shadow;
+    transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    line-height: 36px;
+    vertical-align: middle; }
+
+.mdl-button-return ::-moz-focus-inner {
+    border: 0; }
+.mdl-button-return :hover {
+    background-color: rgba(6, 43, 255, 0.6); }
+.mdl-button-return :focus:not(:active) {
+    background-color: rgba(0,0,0, 0.12); }
+.mdl-button-return :active {
+    background-color: rgba(158,158,158, 0.40); }
+
+
+/* Preparation page other project pseudo thumbnails */
+.thumbnail iframe {
+    width: 1440px;
+    height: 900px;
+    opacity: 0;
+    transition: all 300ms ease-in-out;
+}
+
+.thumbnail {
+    position: relative;
+    -ms-zoom: 0.50;
+    -moz-transform: scale(0.50);
+    -moz-transform-origin: 0 0;
+    -o-transform: scale(0.50);
+    -o-transform-origin: 0 0;
+    -webkit-transform: scale(0.50);
+    -webkit-transform-origin: 0 0;
+}
+
+
+.thumbnail:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+
+.thumbnail-container {
+    width: calc(1440px * 0.50);
+    height: calc(900px * 0.50);
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    pointer-events: none;
+    background-image: url(../../img/project1_Placeholder.png);
+    /*background: #f9f9f9;*/
+}

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<!DOCTYPE html>
+<title>WebdriverIO - API Docs</title>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="A nodejs bindings implementation for selenium 2.0/webdriver." />
+
+
+<meta property="og:image" content="http://http://webdriver.io/images/webdriver-robot-with-dots.png" />
+<meta property="og:title" content="WebdriverIO - Selenium 2.0 bindings for NodeJS" />
+<meta property="og:url" content="http://http://webdriver.io" />
+<meta property="og:description" content="A nodejs bindings implementation for selenium 2.0/webdriver." />
+<meta property="og:type" content="website" />
+
+<link rel="stylesheet" href="http://webdriver.io/css/screen.css">
+
+
+<nav class="mainnav">
+    <ul>
+        <li><a href="/"><h1 class="logo">I/O</h1></a> </li>
+        <li><a href="/">Home</a> </li>
+        <li><a href="/guide.html">Developer Guide</a> </li>
+        <li><a href="http://webdriver.io/api.html">API</a> </li>
+        <li><a href="/contribute.html">Contribute</a> </li>
+        <li style="float: right; padding-top: 6px;">
+            <a href="https://github.com/webdriverio/webdriverio/" target="_blank">
+                <img src="/images/github-logo.png" alt="Link to GitHub">
+            </a> 
+        </li>
+        <li style="float:right;">
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button">
+                    API Version
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="/v3.4/api.html">v3.4</a> </li><li><a href="/v4.0/api.html">v4.0</a> </li><li><a href="/v4.1/api.html">v4.1</a> </li>
+                    <li><a href="http://webdriver.io/api.html">Latest</a> </li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</nav>
+
+
+
+<section class="content">
+    <div class="container">
+
+
+        <section class="inner searchbar">
+            <input type="text" name="search" placeholder="Search...">
+            <a href="#" class="icon icon-remove">clear</a> 
+        </section>
+
+        <section class="inner api">
+            <button class="navbar-toggle">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <nav class="apinav">
+
+                <h3><a href="#" class="icon-folder-close-alt" data-open="action">action</a> </h3>
+                <div class="commands action active">
+                    <a href="http://webdriver.io/api/action/addValue.html">addValue</a> <a href="http://webdriver.io/api/action/clearElement.html">clearElement</a> <a href="http://webdriver.io/api/action/click.html">click</a> <a href="http://webdriver.io/api/action/doubleClick.html">doubleClick</a> <a href="http://webdriver.io/api/action/dragAndDrop.html">dragAndDrop</a> <a href="http://webdriver.io/api/action/leftClick.html">leftClick</a> <a href="http://webdriver.io/api/action/middleClick.html">middleClick</a> <a href="http://webdriver.io/api/action/moveToObject.html">moveToObject</a> <a href="http://webdriver.io/api/action/rightClick.html">rightClick</a> <a href="http://webdriver.io/api/action/selectByAttribute.html">selectByAttribute</a> <a href="http://webdriver.io/api/action/selectByIndex.html">selectByIndex</a> <a href="http://webdriver.io/api/action/selectByValue.html">selectByValue</a> <a href="http://webdriver.io/api/action/selectByVisibleText.html">selectByVisibleText</a> <a href="http://webdriver.io/api/action/selectorExecute.html">selectorExecute</a> <a href="http://webdriver.io/api/action/selectorExecuteAsync.html">selectorExecuteAsync</a> <a href="http://webdriver.io/api/action/setValue.html">setValue</a> <a href="http://webdriver.io/api/action/submitForm.html">submitForm</a> 
+                </div>
+
+                <h3><a href="#" class="icon-folder-close-alt" data-open="cookie">cookie</a> </h3>
+                <div class="commands cookie active">
+                    <a href="http://webdriver.io/api/cookie/deleteCookie.html">deleteCookie</a> <a href="http://webdriver.io/api/cookie/getCookie.html">getCookie</a> <a href="http://webdriver.io/api/cookie/setCookie.html">setCookie</a> 
+                </div>
+
+
+                <h3><a href="#" class="icon-folder-close-alt" data-open="property">property</a> </h3>
+                <div class="commands property active">
+                    <a href="http://webdriver.io/api/property/getAttribute.html">getAttribute</a> <a href="http://webdriver.io/api/property/getCssProperty.html">getCssProperty</a> <a href="http://webdriver.io/api/property/getElementSize.html">getElementSize</a> <a href="http://webdriver.io/api/property/getHTML.html">getHTML</a> <a href="http://webdriver.io/api/property/getLocation.html">getLocation</a> <a href="http://webdriver.io/api/property/getLocationInView.html">getLocationInView</a> <a href="http://webdriver.io/api/property/getSource.html">getSource</a> <a href="http://webdriver.io/api/property/getTagName.html">getTagName</a> <a href="http://webdriver.io/api/property/getText.html">getText</a> <a href="http://webdriver.io/api/property/getTitle.html">getTitle</a> <a href="http://webdriver.io/api/property/getUrl.html">getUrl</a> <a href="http://webdriver.io/api/property/getValue.html">getValue</a> 
+                </div>
+
+                <h3><a href="#" class="icon-folder-close-alt" data-open="state">state</a> </h3>
+                <div class="commands state active">
+                    <a href="http://webdriver.io/api/state/hasFocus.html">hasFocus</a> <a href="http://webdriver.io/api/state/isEnabled.html">isEnabled</a> <a href="http://webdriver.io/api/state/isExisting.html">isExisting</a> <a href="http://webdriver.io/api/state/isSelected.html">isSelected</a> <a href="http://webdriver.io/api/state/isVisible.html">isVisible</a> <a href="http://webdriver.io/api/state/isVisibleWithinViewport.html">isVisibleWithinViewport</a> 
+                </div>
+
+                <h3><a href="#" class="icon-folder-close-alt" data-open="utility">utility</a> </h3>
+                <div class="commands utility active">
+                    <a href="http://webdriver.io/api/utility/addCommand.html">addCommand</a> <a href="http://webdriver.io/api/utility/call.html">call</a> <a href="http://webdriver.io/api/utility/chooseFile.html">chooseFile</a> <a href="http://webdriver.io/api/utility/debug.html">debug</a> <a href="http://webdriver.io/api/utility/end.html">end</a> <a href="http://webdriver.io/api/utility/endAll.html">endAll</a> <a href="http://webdriver.io/api/utility/getCommandHistory.html">getCommandHistory</a> <a href="http://webdriver.io/api/utility/pause.html">pause</a> <a href="http://webdriver.io/api/utility/reload.html">reload</a> <a href="http://webdriver.io/api/utility/saveScreenshot.html">saveScreenshot</a> <a href="http://webdriver.io/api/utility/scroll.html">scroll</a> <a href="http://webdriver.io/api/utility/uploadFile.html">uploadFile</a> <a href="http://webdriver.io/api/utility/waitForEnabled.html">waitForEnabled</a> <a href="http://webdriver.io/api/utility/waitForExist.html">waitForExist</a> <a href="http://webdriver.io/api/utility/waitForSelected.html">waitForSelected</a> <a href="http://webdriver.io/api/utility/waitForText.html">waitForText</a> <a href="http://webdriver.io/api/utility/waitForValue.html">waitForValue</a> <a href="http://webdriver.io/api/utility/waitForVisible.html">waitForVisible</a> <a href="http://webdriver.io/api/utility/waitUntil.html">waitUntil</a> 
+                </div>
+
+                <h3><a href="#" class="icon-folder-close-alt" data-open="window">window</a> </h3>
+                <div class="commands window active">
+                    <a href="http://webdriver.io/api/window/close.html">close</a> <a href="http://webdriver.io/api/window/getCurrentTabId.html">getCurrentTabId</a> <a href="http://webdriver.io/api/window/getTabIds.html">getTabIds</a> <a href="http://webdriver.io/api/window/getViewportSize.html">getViewportSize</a> <a href="http://webdriver.io/api/window/newWindow.html">newWindow</a> <a href="http://webdriver.io/api/window/setViewportSize.html">setViewportSize</a> <a href="http://webdriver.io/api/window/switchTab.html">switchTab</a> 
+                </div>
+                <h3><a href="#" class="icon-folder-close-alt" data-open="protocol">protocol</a> </h3>
+                <div class="commands protocol active">
+                    <a href="http://webdriver.io/api/protocol/alertAccept.html">alertAccept</a> <a href="http://webdriver.io/api/protocol/alertDismiss.html">alertDismiss</a> <a href="http://webdriver.io/api/protocol/alertText.html">alertText</a> <a href="http://webdriver.io/api/protocol/applicationCacheStatus.html">applicationCacheStatus</a> <a href="http://webdriver.io/api/protocol/back.html">back</a> <a href="http://webdriver.io/api/protocol/buttonDown.html">buttonDown</a> <a href="http://webdriver.io/api/protocol/buttonPress.html">buttonPress</a> <a href="http://webdriver.io/api/protocol/buttonUp.html">buttonUp</a> <a href="http://webdriver.io/api/protocol/cookie.html">cookie</a> <a href="http://webdriver.io/api/protocol/doDoubleClick.html">doDoubleClick</a> <a href="http://webdriver.io/api/protocol/element.html">element</a> <a href="http://webdriver.io/api/protocol/elementActive.html">elementActive</a> <a href="http://webdriver.io/api/protocol/elementIdAttribute.html">elementIdAttribute</a> <a href="http://webdriver.io/api/protocol/elementIdClear.html">elementIdClear</a> <a href="http://webdriver.io/api/protocol/elementIdClick.html">elementIdClick</a> <a href="http://webdriver.io/api/protocol/elementIdCssProperty.html">elementIdCssProperty</a> <a href="http://webdriver.io/api/protocol/elementIdDisplayed.html">elementIdDisplayed</a> <a href="http://webdriver.io/api/protocol/elementIdElement.html">elementIdElement</a> <a href="http://webdriver.io/api/protocol/elementIdElements.html">elementIdElements</a> <a href="http://webdriver.io/api/protocol/elementIdEnabled.html">elementIdEnabled</a> <a href="http://webdriver.io/api/protocol/elementIdLocation.html">elementIdLocation</a> <a href="http://webdriver.io/api/protocol/elementIdLocationInView.html">elementIdLocationInView</a> <a href="http://webdriver.io/api/protocol/elementIdName.html">elementIdName</a> <a href="http://webdriver.io/api/protocol/elementIdRect.html">elementIdRect</a> <a href="http://webdriver.io/api/protocol/elementIdSelected.html">elementIdSelected</a> <a href="http://webdriver.io/api/protocol/elementIdSize.html">elementIdSize</a> <a href="http://webdriver.io/api/protocol/elementIdText.html">elementIdText</a> <a href="http://webdriver.io/api/protocol/elementIdValue.html">elementIdValue</a> <a href="http://webdriver.io/api/protocol/elements.html">elements</a> <a href="http://webdriver.io/api/protocol/execute.html">execute</a> <a href="http://webdriver.io/api/protocol/executeAsync.html">executeAsync</a> <a href="http://webdriver.io/api/protocol/file.html">file</a> <a href="http://webdriver.io/api/protocol/forward.html">forward</a> <a href="http://webdriver.io/api/protocol/frame.html">frame</a> <a href="http://webdriver.io/api/protocol/frameParent.html">frameParent</a> <a href="http://webdriver.io/api/protocol/imeActivate.html">imeActivate</a> <a href="http://webdriver.io/api/protocol/imeActivated.html">imeActivated</a> <a href="http://webdriver.io/api/protocol/imeActiveEngine.html">imeActiveEngine</a> <a href="http://webdriver.io/api/protocol/imeAvailableEngines.html">imeAvailableEngines</a> <a href="http://webdriver.io/api/protocol/imeDeactivated.html">imeDeactivated</a> <a href="http://webdriver.io/api/protocol/init.html">init</a> <a href="http://webdriver.io/api/protocol/keys.html">keys</a> <a href="http://webdriver.io/api/protocol/localStorage.html">localStorage</a> <a href="http://webdriver.io/api/protocol/localStorageSize.html">localStorageSize</a> <a href="http://webdriver.io/api/protocol/location.html">location</a> <a href="http://webdriver.io/api/protocol/log.html">log</a> <a href="http://webdriver.io/api/protocol/logTypes.html">logTypes</a> <a href="http://webdriver.io/api/protocol/moveTo.html">moveTo</a> <a href="http://webdriver.io/api/protocol/refresh.html">refresh</a> <a href="http://webdriver.io/api/protocol/screenshot.html">screenshot</a> <a href="http://webdriver.io/api/protocol/session.html">session</a> <a href="http://webdriver.io/api/protocol/sessionStorage.html">sessionStorage</a> <a href="http://webdriver.io/api/protocol/sessionStorageSize.html">sessionStorageSize</a> <a href="http://webdriver.io/api/protocol/sessions.html">sessions</a> <a href="http://webdriver.io/api/protocol/source.html">source</a> <a href="http://webdriver.io/api/protocol/status.html">status</a> <a href="http://webdriver.io/api/protocol/submit.html">submit</a> <a href="http://webdriver.io/api/protocol/timeouts.html">timeouts</a> <a href="http://webdriver.io/api/protocol/timeoutsAsyncScript.html">timeoutsAsyncScript</a> <a href="http://webdriver.io/api/protocol/timeoutsImplicitWait.html">timeoutsImplicitWait</a> <a href="http://webdriver.io/api/protocol/title.html">title</a> <a href="http://webdriver.io/api/protocol/touchClick.html">touchClick</a> <a href="http://webdriver.io/api/protocol/touchDown.html">touchDown</a> <a href="http://webdriver.io/api/protocol/touchFlick.html">touchFlick</a> <a href="http://webdriver.io/api/protocol/touchLongClick.html">touchLongClick</a> <a href="http://webdriver.io/api/protocol/touchMove.html">touchMove</a> <a href="http://webdriver.io/api/protocol/touchScroll.html">touchScroll</a> <a href="http://webdriver.io/api/protocol/touchUp.html">touchUp</a> <a href="http://webdriver.io/api/protocol/url.html">url</a> <a href="http://webdriver.io/api/protocol/window.html">window</a> <a href="http://webdriver.io/api/protocol/windowHandle.html">windowHandle</a> <a href="http://webdriver.io/api/protocol/windowHandleFullscreen.html">windowHandleFullscreen</a> <a href="http://webdriver.io/api/protocol/windowHandleMaximize.html">windowHandleMaximize</a> <a href="http://webdriver.io/api/protocol/windowHandlePosition.html">windowHandlePosition</a> <a href="http://webdriver.io/api/protocol/windowHandleSize.html">windowHandleSize</a> <a href="http://webdriver.io/api/protocol/windowHandles.html">windowHandles</a>
+                </div>
+            </nav>
+
+            <article class="doc">
+
+
+
+
+                <a href="https://github.com/webdriverio/webdriverio/edit/master/docs/api.md" target="_blank" class="btn icon-edit improve">Improve this doc</a> 
+
+                <h1 id="WebdriverIO-API-Docs"><a href="#WebdriverIO-API-Docs" class="headerlink" title="WebdriverIO API Docs"></a> WebdriverIO API Docs</h1><p>Welcome to the WebdriverIO docs page. These pages contain reference materials for all implemented selenium bindings and commands. WebdriverIO has all <a href="https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol" target="_blank" rel="external">JSONWire protocol</a>  commands implemented and also supports special bindings for <a href="http://appium.io" target="_blank" rel="external">Appium</a> .</p>
+                <p>Each command documentation usually comes with an example that demonstrates the usage of it using WebdriverIO asynchronously in standalone mode and synchronously using the wdio test runner. If an asynchronous or synchronous example is missing that <strong>doesn’t</strong> mean that this command can’t be used in one of both modes, it just doesn’t need an additional example to demonstrate it usage. All commands are usable synchronously with the wdio testrunner as well as asynchronously in standalone mode.</p>
+                <p>If you feel like you have a good example for a command, don’t hesitate to open a PR and submit it. Just click on the orange button on the top right with the label <em>“Improve this doc”</em>. Make sure you understand the way we write these docs by checking the <a href="/contribute.html">Contribute</a>  section.</p>
+
+            </article>
+
+        </section>
+
+    </div>
+</section>
+
+
+
+
+<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script src="/js/app.js"></script>
+
+
+
+</body>
+</html>

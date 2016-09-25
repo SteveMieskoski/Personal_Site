@@ -1,0 +1,43 @@
+# Notes
+/zdump/Test_Results/**
+/res
+/storage
+/test/Saved_Reports
+/test/WebDriverIO_created
+/test/file_testing_info
+/test/vendor/Mocha-Config-Template.html
+/test/vendor/sinon.js
+
+
+# Node Files #
+/node_modules
+/bower_components
+npm-debug.log
+
+
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+
+# Compiled binary addons (http://nodejs.org/api/addons.html)
+build/Release
+
+# Users Environment Variables
+.lock-wscript
+
+# OS generated files #
+.DS_Store
+ehthumbs.db
+Icon?
+Thumbs.db
+
+
+# IDE #
+.idea/
+*.swp

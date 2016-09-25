@@ -1,0 +1,175 @@
+
+
+    /*    h1.print-title{  position:absolute;  left:50%;  top:2%;  border: 1px solid rgb(0, 0, 0);  }
+
+        .print-main-section{  position:absolute;  left:10%;  top:10%;  width: 79%;  margin-left:15%;  flow: right;  border: 1px solid rgb(0, 0, 0);  }
+
+        .print-main-content{  position: relative;  border: 1px solid rgb(0, 0, 0);  } */
+
+h1.print-title {
+    position: relative;
+    left: 40%;
+    top: 1%;
+}
+
+.contactInfo {
+    position: relative;
+    line-height: .9em;
+    font-size: 1em;
+}
+
+.print-main-section {
+    position: relative;
+    left: 1%;
+    margin-left: 1%;
+    flow: right;
+}
+
+.print-main-content {
+    position: relative;
+}
+
+.print-left-column {
+    position: absolute;
+    left: 1%;
+    top: 10%;
+    line-height: 14px;
+}
+
+h2.programming {
+    font-style: oblique;
+    position: relative;
+    top: 5%;
+    font-size: 1.1em;
+    font-weight: 900;
+}
+
+h2.experience {
+    font-style: oblique;
+    position: relative;
+    top: 10%;
+    font-size: 1.1em;
+    font-weight: 900;
+}
+
+h2.education {
+    font-style: oblique;
+    position: relative;
+    top: 15%;
+    font-size: 1.1em;
+    font-weight: 900;
+}
+
+.programming {
+    position: relative;
+    font-size: .9em;
+    line-height: .9em;
+}
+
+.programming-sub {
+    position: relative;
+    font-size: .8em;
+}
+
+.programmingPython {
+    position: absolute;
+    left: 10%;
+    top: 15%
+}
+
+.Employer {
+    position: absolute;
+    line-height: .9em;
+    font-size: 1em;
+    font-weight: 500;
+
+}
+
+.Position {
+    position: absolute;
+    line-height: .9em;
+    font-size: 1em;
+    font-weight: 500;
+}
+
+.Dates {
+    position: absolute;
+    line-height: .9em;
+    font-size: .8em;
+    font-weight: 300;
+    font-family: 'Raleway', sans-serif;
+    /*right: 5%;*/
+}
+
+.Position-Details {
+    position: relative;
+    line-height: .9em;
+    font-size: .9em;
+    font-weight: 300;
+    font-family: 'Raleway', sans-serif;
+}
+
+.Position-Details-sub {
+    position: relative;
+    line-height: .9em;
+    font-size: .9em;
+    left: 2%;
+}
+
+.experience {
+    position: relative;
+    top: 10%;
+    height: 10%;
+@import 'https://fonts.googleapis.com/css?family=Lato|Raleway';
+    font-family: 'Lato', sans-serif;
+}
+
+.education {
+    position: relative;
+    top: 15%;
+    font-size: .9em;
+    font-weight: 500;
+@import 'https://fonts.googleapis.com/css?family=Lato|Raleway';
+    font-family: 'Lato', sans-serif;
+}
+
+.education-details {
+    position: relative;
+    line-height: .9em;
+    font-size: .9em;
+    font-weight: 500;
+}
+
+.education-details-sub {
+    position: relative;
+    line-height: .9em;
+    font-size: .9em;
+    left: 2%;
+}
+
+.print-details {
+    position: relative;
+    right: 0;
+    line-height: 1.2em;
+    font-weight: 500;
+    font-size: .9em;
+    border-bottom: 1px solid rgb(0, 0, 0);
+}
+
+.print-details-sub {
+    position: relative;
+    font-size: .9em;
+    line-height: 1.2em;
+    left: 2%;
+}
+
+.misc {
+    color: rgb(66, 66, 66);
+    text-decoration: none;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0;
+    opacity: 0.87;
+}

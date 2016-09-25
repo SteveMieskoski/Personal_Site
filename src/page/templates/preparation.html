@@ -1,0 +1,66 @@
+<!--<link rel="stylesheet" type="text/css" href="../../css/virtual_thumbnail.css" />-->
+<title>Steve Mieskoski: Preparation</title>
+
+<h2 id="preparationHeading"><i class="material-icons" id="i8" style="font-size: 40px;">build</i>PREPARATION</h2>
+
+<h3>Example Projects I've Built:</h3>
+<div id="demo-app-1" style="cursor: pointer;" ><u><b>Project Site 1</b> (Angular2)</u></div>
+<div class="mdl-tooltip mdl-tooltip--large" data-mdl-for="demo-app-2" style="position:absolute;">Opens site in dialog</div>
+<div class="thumbnail-container">
+    <div class="thumbnail">
+        <iframe src="https://steve-mieskoski.herokuapp.com" frameborder="0" onload="var that=this;setTimeout(function() { that.style.opacity = 1 }, 500)"></iframe>
+    </div>
+</div>
+
+
+<div id="demo-app-0" style="cursor: pointer;" ><u><b>Project Site 0</b> (Angular2)</u></div>
+<div class="mdl-tooltip mdl-tooltip--large" data-mdl-for="demo-app-0" >Links to the App Project</div>
+<div class="thumbnail-container">
+    <div class="thumbnail">
+        <iframe src="https://steve-mieskoski-demo-app-2.herokuapp.com/publicHomepage" frameborder="0" onload="var that=this;setTimeout(function() { that.style.opacity = 1 }, 500)"></iframe>
+    </div>
+</div>
+
+
+<!--
+<h3>Example Projects I've Built:</h3>
+<div id="demo-app-2" style="cursor: pointer;" ><u><b>Project Site 1</b> (Angular2)</u></div>
+<div class="mdl-tooltip mdl-tooltip--large" data-mdl-for="demo-app-2" style="position:absolute;">Opens site in dialog</div>
+<div style="width: calc(1440px * 0.25);  height: calc(900px * 0.25);  display: inline-block;  overflow: hidden;  position: relative;  background: #f9f9f9;">
+    <div style="-ms-zoom: 0.25;  -moz-transform: scale(0.25);  -moz-transform-origin: 0 0;  -o-transform: scale(0.25);  -o-transform-origin: 0 0;  -webkit-transform: scale(0.25);  -webkit-transform-origin: 0 0; opacity: 0;  transition: all 300ms ease-in-out;">
+        <iframe src="https://steve-mieskoski-demo-app-2.herokuapp.com/publicHomepage" frameborder="0" onload="var that=this;setTimeout(function() { that.style.opacity = 1 }, 500)"></iframe>
+    </div>
+</div>
+
+
+<div id="demo-app-0" style="cursor: pointer;" ><u><b>Project Site 0</b> (Angular2)</u></div>
+<div class="mdl-tooltip mdl-tooltip--large" data-mdl-for="demo-app-0" >Links to the App Project</div>
+<div style="width: calc(1440px * 0.25);  height: calc(900px * 0.25);  display: inline-block;  overflow: hidden;  position: relative;  background: #f9f9f9;">
+    <div style="-ms-zoom: 0.25;  -moz-transform: scale(0.25);  -moz-transform-origin: 0 0;  -o-transform: scale(0.25);  -o-transform-origin: 0 0;  -webkit-transform: scale(0.25);  -webkit-transform-origin: 0 0; opacity: 0;  transition: all 300ms ease-in-out;">
+        <iframe src="https://steve-mieskoski.herokuapp.com" frameborder="0" onload="var that=this;setTimeout(function() { that.style.opacity = 1 }, 500)"></iframe>
+    </div>
+</div>
+-->
+
+<div class="button-attach"></div>
+
+<script>
+    if(window.innerWidth < 550){
+       var prepTitle = document.getElementById('preparationHeading');
+        prepTitle.style.className = 'small-screen-template-title';
+    } else {
+        var prepTitle = document.getElementById('preparationHeading');
+        prepTitle.style.className = 'template-title';
+    }
+    var project0 = document.getElementById('demo-app-0');
+    project0.addEventListener('clicked', function(){
+        var DemoApp2BtnClicked = new Event('DemoApp2Clicked');
+        document.dispatchEvent(DemoApp2BtnClicked);
+    });
+    var project1 = document.getElementById('demo-app-1');
+    project1.addEventListener('clicked', function(){
+        var DemoApp2BtnClicked = new Event('DemoApp2Clicked');
+        document.dispatchEvent(DemoApp2BtnClicked);
+    });
+
+</script>

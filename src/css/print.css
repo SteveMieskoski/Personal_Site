@@ -1,0 +1,28 @@
+
+
+@page {
+    size: letter;
+    margin: 10%;
+    border-width: 0;
+    @top-center { content: "Steve Mieskoski Resume" }
+    @top-right { content: "Right Cell (top-right)" }
+}
+
+
+@media print {
+
+    .noprint{
+        display: none !important;
+    }
+
+}
+
+
+/*
+    header h1:after {
+        content: url(https://chart.googleapis.com/chart?cht=qr&chs=150x150&chl=http://www.stevemieskoski.com&choe=UTF-8);
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+*/

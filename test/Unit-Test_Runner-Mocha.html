@@ -1,0 +1,54 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tests</title>
+
+    <!-- Test Environment -->
+    <link href="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.css" rel="stylesheet" />
+
+    <script src="../src/lib/three.js"></script>
+    <script src="../src/lib/TrackballControls.js"></script>
+    <script src="../src/lib/CSS3DRenderer.js"></script>
+
+
+    <script src="https://cdn.rawgit.com/Automattic/expect.js/0.3.1/index.js"></script>
+    <script src="vendor/mocha.js"></script>
+    <script src="https://cdn.rawgit.com/chaijs/chai/3.5.0/test/assert.js"></script>
+    <script src="vendor/chai.js"></script>
+    <script src="vendor/sinon-1.17.5.js"></script>
+    <script src="vendor/sinon-chai.js"></script>
+
+    <script>
+        window.expect = chai.expect;
+        mocha.setup('bdd');
+        mocha.checkLeaks();
+    </script>
+    <!-- End Test Environment -->
+
+    <!-- Require.js Configuration with test overrides! -->
+    <script src="../src/main.js"></script>
+    <script src="testConfig.js"></script>
+    <!-- End Require.js Configuration -->
+    <script src="../src/lib/require.js"></script>
+
+
+    <script>
+        require([
+            "unit/createNewPage.spec.js",
+            'unit/store.spec',
+            'unit/createPageObjects.spec',
+            'unit/createPanel.spec',
+            'unit/urlHandler.spec',
+            'unit/setupTop.spec',
+            'unit/createPageContent.spec'
+            ], function(){
+            mocha.run();
+        });
+    </script>
+</head>
+<body>
+<div id="mocha"></div>
+</body>
+</html>
