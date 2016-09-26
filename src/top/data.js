@@ -6,7 +6,7 @@ define([], function () {
             loc: 'background',
             icon: 'collections',
             id: 0,
-            caption: 'Suspendisse commodo sem eget fermentum interdum.',
+            caption: 'Me, Myself, and I.',
             template: './src/page/templates/background.html',
             col: 1,
             row: 1
@@ -16,7 +16,7 @@ define([], function () {
             loc: 'experience',
             icon: 'work',
             id: 1,
-            caption: 'Integer a ante et justo varius lacinia.',
+            caption: 'What I did prior to embracing programming.',
             template: './src/page/templates/experience.html',
             col: 2,
             row: 3
@@ -26,7 +26,7 @@ define([], function () {
             loc: 'aboutMe',
             icon: 'perm_identity',
             id: 2,
-            caption: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            caption: 'A little bit about me and my drives.',
             template: './src/page/templates/aboutMe.html',
             col: 3,
             row: 1
@@ -36,7 +36,7 @@ define([], function () {
             loc: 'programming',
             icon: 'code',
             id: 3,
-            caption: 'Duis commodo tortor et quam malesuada, non congue nibh consequat.',
+            caption: 'What I have built and know.',
             template: './src/page/templates/programming.html ',
             col: 1,
             row: 2
@@ -46,7 +46,7 @@ define([], function () {
             loc: 'introduction',
             icon: 'launch',
             id: 4,
-            caption: 'Vestibulum scelerisque sem sit amet enim aliquet, eu ullamcorper turpis porta.',
+            caption: 'Welcome to my home on the internet.',
             template: './src/page/templates/introduction.html',
             col: 2,
             row: 2
@@ -56,7 +56,7 @@ define([], function () {
             loc: 'education',
             icon: 'school',
             id: 5,
-            caption: 'Suspendisse commodo sem eget fermentum interdum.',
+            caption: 'My formal education.',
             template: './src/page/templates/education.html',
             col: 2,
             row: 1
@@ -66,7 +66,7 @@ define([], function () {
             loc: 'priorCareer',
             icon: 'reply',
             id: 6,
-            caption: 'Nulla cursus massa eu nisi aliquam finibus.',
+            caption: 'The legal world from which I came.',
             template: './src/page/templates/priorCareer.html',
             col: 3,
             row: 3
@@ -76,7 +76,7 @@ define([], function () {
             loc: 'whyProgramming',
             icon: 'help_outline',
             id: 7,
-            caption: 'Nulla cursus massa eu nisi aliquam finibus.',
+            caption: 'Content is Under Construction.',
             template: './src/page/templates/whyProgramming.html',
             col: 3,
             row: 2
@@ -86,7 +86,7 @@ define([], function () {
             loc: 'preparation',
             icon: 'build',
             id: 8,
-            caption: 'Nulla cursus massa eu nisi aliquam finibus.',
+            caption: 'A showcase of a sort.',
             template: './src/page/templates/preparation.html',
             col: 1,
             row: 3
