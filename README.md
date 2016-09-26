@@ -11,12 +11,12 @@ Here is a breakdown of my personal site. (This README is still a work in progres
 - [Testing](#testing)
 - [Structure](#structure)
 
-something change
 
 ## Highlighted Strategies or Patterns used
 
 
 # Packages and Libraries
+
 
 
 # Testing
