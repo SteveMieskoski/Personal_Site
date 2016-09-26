@@ -7,7 +7,7 @@ define([], function () {
             icon: 'collections',
             id: 0,
             caption: 'Suspendisse commodo sem eget fermentum interdum.',
-            template: './page/templates/background.html',
+            template: './src/page/templates/background.html',
             col: 1,
             row: 1
         },
@@ -17,7 +17,7 @@ define([], function () {
             icon: 'work',
             id: 1,
             caption: 'Integer a ante et justo varius lacinia.',
-            template: './page/templates/experience.html',
+            template: './src/page/templates/experience.html',
             col: 2,
             row: 3
         },
@@ -27,7 +27,7 @@ define([], function () {
             icon: 'perm_identity',
             id: 2,
             caption: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            template: './page/templates/aboutMe.html',
+            template: './src/page/templates/aboutMe.html',
             col: 3,
             row: 1
         },
@@ -37,7 +37,7 @@ define([], function () {
             icon: 'code',
             id: 3,
             caption: 'Duis commodo tortor et quam malesuada, non congue nibh consequat.',
-            template: './page/templates/programming.html ',
+            template: './src/page/templates/programming.html ',
             col: 1,
             row: 2
         },
@@ -47,7 +47,7 @@ define([], function () {
             icon: 'launch',
             id: 4,
             caption: 'Vestibulum scelerisque sem sit amet enim aliquet, eu ullamcorper turpis porta.',
-            template: './page/templates/introduction.html',
+            template: './src/page/templates/introduction.html',
             col: 2,
             row: 2
         },
@@ -57,7 +57,7 @@ define([], function () {
             icon: 'school',
             id: 5,
             caption: 'Suspendisse commodo sem eget fermentum interdum.',
-            template: './page/templates/education.html',
+            template: './src/page/templates/education.html',
             col: 2,
             row: 1
         },
@@ -67,7 +67,7 @@ define([], function () {
             icon: 'reply',
             id: 6,
             caption: 'Nulla cursus massa eu nisi aliquam finibus.',
-            template: './page/templates/priorCareer.html',
+            template: './src/page/templates/priorCareer.html',
             col: 3,
             row: 3
         },
@@ -77,7 +77,7 @@ define([], function () {
             icon: 'help_outline',
             id: 7,
             caption: 'Nulla cursus massa eu nisi aliquam finibus.',
-            template: './page/templates/whyProgramming.html',
+            template: './src/page/templates/whyProgramming.html',
             col: 3,
             row: 2
         },
@@ -87,7 +87,7 @@ define([], function () {
             icon: 'build',
             id: 8,
             caption: 'Nulla cursus massa eu nisi aliquam finibus.',
-            template: './page/templates/preparation.html',
+            template: './src/page/templates/preparation.html',
             col: 1,
             row: 3
         }

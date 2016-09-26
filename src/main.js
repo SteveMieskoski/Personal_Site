@@ -6,7 +6,7 @@ define([], function() {
     // This is your main function. After configuration in config.js, it is called.
     Main.main = function() {
         require([
-            'app/setup'
+            'src/app/setup'
         ], function(setup) {
             console.log('setup loaded/ing');
         });

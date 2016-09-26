@@ -5,11 +5,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 
-    <link rel="stylesheet" media="all" href="css/print.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" media="all" href="src/css/print.css">
+    <link rel="stylesheet" href="src/css/main.css">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <script defer src="./lib/material.min.js"></script> <!-- todo review for remove or use -->
+    <script defer src="./src/lib/material.min.js"></script> <!-- todo review for remove or use -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 
 
@@ -19,16 +19,16 @@
 <body>
 
 <!-- ThreeJS libraries -->
-<script src="lib/three.js"></script>
-<script src="lib/TrackballControls.js"></script>
-<script src="lib/CSS3DRenderer.js"></script>
+<script src="src/lib/three.js"></script>
+<script src="src/lib/TrackballControls.js"></script>
+<script src="src/lib/CSS3DRenderer.js"></script>
 <!-- ThreeJS libraries end-->
 
 <!--<script src="lib/Tween.js"></script>-->
 
 <!-- Require.js Configuration-->
-<script src="lib/require.js"></script>
-<script src="config.js"></script>
+<script src="src/lib/require.js"></script>
+<script src="src/config.js"></script>
 <!-- End Require.js Configuration -->
 
 
@@ -37,12 +37,12 @@
 <div id="attachmentPoint" >
     <!-- crude way to do this (tweening would be cleaner, but works and I wanted to implement purely using css-->
     <div class="groupAnimate">
-        <img class=" displayOptionIconLL" src='../img/white_left_lower.png' alt="Breaking Borders Logo" >
-        <img class=" displayOptionIconLU" src='../img/white_left_upper.png' alt="Breaking Borders Logo" >
-        <img class=" displayOptionIconRL" src='../img/right_lower.png' alt="Breaking Borders Logo" >
-        <img class=" displayOptionIconRU" src='../img/white_right_upper.png' alt="Breaking Borders Logo" >
+        <img class=" displayOptionIconLL" src='./img/white_left_lower.png' alt="Breaking Borders Logo" >
+        <img class=" displayOptionIconLU" src='./img/white_left_upper.png' alt="Breaking Borders Logo" >
+        <img class=" displayOptionIconRL" src='./img/right_lower.png' alt="Breaking Borders Logo" >
+        <img class=" displayOptionIconRU" src='./img/white_right_upper.png' alt="Breaking Borders Logo" >
     </div>
-    <img class=" displayOptionIcon" id="Main-Display-Animations" src='../img/ic_cached_white_48px.svg' alt="Breaking Borders Logo" >
+    <img class=" displayOptionIcon" id="Main-Display-Animations" src='./img/ic_cached_white_48px.svg' alt="Breaking Borders Logo" >
     <div class="mdl-tooltip" data-mdl-for="Main-Display-Animations" >
         Show Animation and Display Options
     </div>
@@ -88,7 +88,7 @@
 <div id="printButton"><i class="material-icons" >print</i></div>
 <div class="mdl-tooltip" data-mdl-for="printButton" style="top:10px;">Print Resume</div>
 
-<a id="downloadLink" href="page/templates/main.pdf" download="'SteveMieskoskiResume.pdf"><i class="material-icons">file_download</i></a>
+<a id="downloadLink" href="src/page/templates/main.pdf" download="'SteveMieskoskiResume.pdf"><i class="material-icons">file_download</i></a>
 <div class="mdl-tooltip" data-mdl-for="downloadLink">Download Resume</div>
 
 </body>
