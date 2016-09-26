@@ -8,12 +8,25 @@ define([], function () {
         constructor: TweenObjects,
         targets: {table: [], sphere: [], helix: [], grid: [], column: []},
 
-        tableDesign: function (data) {
+       /*  //Original
+       tableDesign: function (data) {
             var i, object;
 
             for (i = 0; i < data.length; i++) {
                 object = new THREE.Object3D();
                 object.position.x = (data[i].col * 220) - 440;
+                object.position.y = -(data[i].row * 176) + 360;
+                this.targets.table.push(object);
+            }
+            return this.targets.table;
+        }, */
+
+        tableDesign: function (data) {
+            var i, object;
+
+            for (i = 0; i < data.length; i++) {
+                object = new THREE.Object3D();
+                object.position.x = (data[i].col * 220) - 380;
                 object.position.y = -(data[i].row * 176) + 360;
                 this.targets.table.push(object);
             }

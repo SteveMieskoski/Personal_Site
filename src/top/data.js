@@ -2,90 +2,60 @@ define([], function () {
 
     var dataArray = [
         {
-            title: "Background",
-            loc: 'background',
-            icon: 'collections',
-            id: 0,
-            caption: 'Me, Myself, and I.',
-            template: './src/page/templates/background.html',
-            col: 1,
-            row: 1
-        },
-        {
-            title: "Experience",
-            loc: 'experience',
-            icon: 'work',
-            id: 1,
-            caption: 'What I did prior to embracing programming.',
-            template: './src/page/templates/experience.html',
-            col: 2,
-            row: 3
-        },
-        {
             title: "About Me",
             loc: 'aboutMe',
             icon: 'perm_identity',
-            id: 2,
+            id: 0,
             caption: 'A little bit about me and my drives.',
             template: './src/page/templates/aboutMe.html',
-            col: 3,
+            col: 2,
             row: 1
         },
         {
-            title: "Programming",
+            title: "Programming Experience",
             loc: 'programming',
             icon: 'code',
-            id: 3,
+            id: 1,
             caption: 'What I have built and know.',
             template: './src/page/templates/programming.html ',
             col: 1,
             row: 2
         },
         {
-            title: "Introduction",
-            loc: 'introduction',
-            icon: 'launch',
-            id: 4,
-            caption: 'Welcome to my home on the internet.',
-            template: './src/page/templates/introduction.html',
-            col: 2,
-            row: 2
-        },
-        {
             title: "Education",
             loc: 'education',
             icon: 'school',
-            id: 5,
+            id: 2,
             caption: 'My formal education.',
             template: './src/page/templates/education.html',
-            col: 2,
+            col: 1,
             row: 1
         },
         {
-            title: "Prior Career",
-            loc: 'priorCareer',
+            title: "Past Career",
+            loc: 'pastCareer',
             icon: 'reply',
-            id: 6,
+            id: 3,
             caption: 'The legal world from which I came.',
             template: './src/page/templates/priorCareer.html',
-            col: 3,
+            col: 2,
             row: 3
         },
         {
-            title: "Why Programming",
-            loc: 'whyProgramming',
+            title: "Languages",
+            loc: 'languages',
             icon: 'help_outline',
-            id: 7,
+            id: 4,
             caption: 'Content is Under Construction.',
-            template: './src/page/templates/whyProgramming.html',
-            col: 3,
+            template: './src/page/templates/languages.html',
+            col: 2,
             row: 2
         },
         {
             title: "Preparation",
             loc: 'preparation',
             icon: 'build',
-            id: 8,
+            id: 5,
             caption: 'A showcase of a sort.',
             template: './src/page/templates/preparation.html',
             col: 1,
@@ -95,15 +65,12 @@ define([], function () {
 
     var reverseId = {
         MainPage: 9999,
-        background: 0,
-        experience: 1,
-        aboutMe: 2,
-        programming: 3,
-        introduction: 4,
-        education: 5,
-        priorCareer: 6,
-        whyProgramming: 7,
-        preparation: 8
+        aboutMe: 0,
+        programming: 1,
+        education: 2,
+        pastCareer: 3,
+        languages: 4,
+        preparation: 5
     };
 
     function createDataObject(arrayData) {
