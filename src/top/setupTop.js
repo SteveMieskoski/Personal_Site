@@ -52,12 +52,17 @@ define(function (require) {
         },
 
         createTopControls: function (scene, camera, renderer) {
-            var controls = new THREE.TrackballControls(camera, renderer.domElement);
-            controls.noRotate = true;
-            controls.noPan = true;
-            controls.noZoom = true;
-            controls.minDistance = 500;
-            controls.maxDistance = 6000;
+            //var controls = new THREE.TrackballControls(camera, renderer.domElement);
+            var controls = new THREE.OrbitControls( camera, renderer.domElement );
+            controls.target = new THREE.Vector3();
+            //controls.noRotate = true;
+            controls.minDistance = 1000;
+            controls.maxDistance = 3000;
+            controls.minPolarAngle = 0; // radians
+            controls.maxPolarAngle = Math.PI/2; // radians
+            controls.minAzimuthAngle =  - Math.PI; // radians
+            controls.maxAzimuthAngle =  Math.PI; // radians
+            controls.enablePan = false;
             controls.addEventListener('change', function () {
                 renderer.render(scene, camera);
             });
@@ -77,7 +82,10 @@ define(function (require) {
                 function animate() {
                     requestAnimationFrame(animate);
                     TWEEN.update();
-                    //controls.update();
+                    if(controls != -1){
+                        controls.update();
+                    }
+
                 }
 
                 tweenAnimate.Run(objects, target, scene, camera, renderer, 2000, [16, 16]);

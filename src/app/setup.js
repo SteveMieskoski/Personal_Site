@@ -31,7 +31,19 @@ requirejs([
             objects = setupTop.createTopElements(data.dataArray, scene, createPanel),
             targets = setupTop.topDesign(data.dataArray, tweenObjects),
             renderer = renderers.CSS(document.getElementById('container')),
-            controls = ''; //setupTop.createTopControls(scene, camera, renderer);
+            controls = -1,
+            camToSave = {};
+        if(window.location.search.substring(1) === 'do3D'){
+            var ExperNotice = document.createElement('h2');
+            ExperNotice.textContent = 'This is Experimental! To Reset Views (Mostly) Use Reset Button in Animate Display Menu! ';
+            var attachNotice = document.querySelector('#printButton');
+            attachNotice.appendChild(ExperNotice);
+            controls = setupTop.createTopControls(scene, camera, renderer);
+            camToSave.position = camera.position.clone();
+            camToSave.rotation = camera.rotation.clone();
+            camToSave.controlCenter = controls.center.clone();
+        }
+
         setupTop.startTopAnimation(objects, targets, scene, camera, renderer, controls, tweenAnimate, windowResize);
         storeObjects = {
             camera: camera,
@@ -39,7 +51,8 @@ requirejs([
             objects: objects,
             targets: targets,
             renderer: renderer,
-            controls: controls
+            controls: controls,
+            reset: camToSave
         };
         storeCallback(storeObjects);
     }
@@ -54,6 +67,9 @@ requirejs([
             lightH = lights.HemisphereLight(),
             lightD = lights.DirectionalLight(),
             rendererP = renderers.WebGl();
+        if(window.location.search.substring(1) === 'do3D'){
+            pagePlane = createPageObjects.createBackgroundSphere();
+        }
         console.log('CONTENT PAGES SETUP'); // todo remove debug item
         sceneP.add(lightH);
         sceneP.add(lightD);
@@ -67,6 +83,8 @@ requirejs([
         storeCallback(storeObjects);
     }
 
+    // Begin Setup
+    console.log(window.location.search.substring(1));
     store({data: data.dataObject});
     if (window.innerHeight > window.innerWidth) {
         portrait = true;
@@ -102,6 +120,7 @@ requirejs([
     }, function () {
         runCreateOrDestroy.removePageRebuildMain();
     });
+
 
 
 });

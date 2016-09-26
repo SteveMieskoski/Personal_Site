@@ -39,21 +39,20 @@ define(['jquery', 'scripts/runCreateOrDestroy', 'scripts/buttonControl', 'store'
             download();
         });
 
+        function restoreCamera(position, rotation, controlCenter){
+            store().camera.position.set(position.x, position.y, position.z);
+            store().camera.rotation.set(rotation.x, rotation.y, rotation.z);
 
+            store().controls.center.set(controlCenter.x, controlCenter.y, controlCenter.z);
+            store().controls.update();
+
+            store().renderer.render();
+        }
         /**
          *  get action or response behavior with manual trigger [ignore JSlint/hint for this item]
          */
         $('button.testActionBtn').click(function () {
-            var panelPositionList = {x: -1000, y: 0, z: -3000};
-            var Titems = [];
-            for (var j = 0; j < 4; j++) {
-                var objectThing = new THREE.Object3D();
-                objectThing.position.x = panelPositionList.x;
-                objectThing.position.y = panelPositionList.y;
-                objectThing.position.z = panelPositionList.z;
-                Titems.push(objectThing)
-            }
-            tweenAnimate.Run3d(store().sceneP.children, Titems, store().sceneP, store().camera, store().rendererP, 1000, [6, 6], 0, false);
+            restoreCamera(store().reset.position, store().reset.rotation, store().reset.controlCenter)
 
         });
 

@@ -1,4 +1,4 @@
-**Note: I registered the key I use previously on another github account prior to creating this account, and have not yet spent the time to correct, but I am behind both accounts**
+**Note: The commits from 'ThatN3wGuy' are due to the prior registration of an ssh key I used.  I control both accounts. **
 
 # Introduction
 Here is a breakdown of my personal site. (This README is still a work in progress, so pardon the scattered presentation at the moment)

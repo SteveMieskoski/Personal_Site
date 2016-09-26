@@ -80,7 +80,17 @@ define(['require', 'jquery'], function (require, $) {
             }
 
             callBack(templatePath, classes, store().scene, store().camera, store().renderer, store().portrait);
-        }
+        },
+
+        resetCamera: function (position, rotation, controlCenter){
+        store().camera.position.set(position.x, position.y, position.z);
+        store().camera.rotation.set(rotation.x, rotation.y, rotation.z);
+
+        store().controls.center.set(controlCenter.x, controlCenter.y, controlCenter.z);
+        store().controls.update();
+
+        store().renderer.render();
+    }
 
     };
 
