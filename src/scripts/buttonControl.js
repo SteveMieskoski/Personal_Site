@@ -108,6 +108,12 @@ define(['require', 'jquery', 'scripts/runCreateOrDestroy', 'scripts/createPageCo
                     });
                 }
             }
+        },
+
+        contactButton: function(){
+            $('button#contactButton').click(function () {
+                displayFrame('./src/page/templates/contactForm.html');
+            });
         }
 
 

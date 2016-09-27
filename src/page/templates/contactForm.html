@@ -1,0 +1,53 @@
+<div mdl class="ui-grid ui-grid-responsive ui-fluid ui-grid-pad" > <!--*ngIf="contact" -->
+    <div class="ui-grid-row">
+        <div class="mdl-tooltip" for="firstname">    Enter First Name  </div>
+        <div class="ui-grid-col-5"><label for="firstname">Firstname</label></div>
+        <div class="ui-grid-col-8"><input  id="firstname" /></div>
+    </div>
+    <div class="ui-grid-row">
+        <div class="mdl-tooltip" for="surname">    Enter Last Name/Surname  </div>
+        <div class="ui-grid-col-5"><label for="surname">Lastname</label></div>
+        <div class="ui-grid-col-8"><input  id="surname" /></div>
+    </div>
+    <div class="ui-grid-row">
+        <div class="mdl-tooltip" for="email">    Enter Email  </div>
+        <div class="ui-grid-col-5"><label for="email">Email</label></div>
+        <div class="ui-grid-col-8"><input id="email" required/></div>
+    </div>
+    <div class="ui-grid-row">
+        <div class="mdl-tooltip" for="role">    Enter Position/Job Role  </div>
+        <div class="ui-grid-col-5"><label for="role">Role</label></div>
+        <div class="ui-grid-col-8"><input  id="role" /></div>
+    </div>
+    <div class="ui-grid-row">
+        <div class="mdl-tooltip" for="title">    Enter Title  </div>
+        <div class="ui-grid-col-5"><label for="title">Title</label></div>
+        <div class="ui-grid-col-8"><input  id="title" /></div>
+    </div>
+    <div class="ui-grid-row">
+        <div class="ui-grid-col-5"><label for="subject">Subject</label></div><!-- this should be added automatically not by user-->
+        <div class="ui-grid-col-8"><input  id="subject" /></div>
+    </div>
+    <div class="ui-grid-row">
+        <div class="mdl-tooltip" for="organization">    Enter Associated <br/> Organization/Employer  </div>
+        <div class="ui-grid-col-5"><label for="organization">Organization</label></div>
+        <div class="ui-grid-col-8"><input  id="organization"  /></div>
+    </div>
+    <div class="ui-grid-row">
+        <div class="mdl-tooltip" for="purpose">    Enter purpose or intent <br/> of contacting myself. <br/> (e.g. potential position/project, <br/> general interest, etc.)  </div>
+        <div class="ui-grid-col-5"><label for="purpose">Intent</label></div>
+        <div class="ui-grid-col-8"><input  id="purpose" /></div>
+    </div>
+    <div class="ui-grid-row">
+        <div class="mdl-tooltip" for="message">    Enter the message you wish to <br/> deliver. A copy will be sent to the <br/> email you provided for your reference.  </div>
+        <div class="ui-grid-col-5"><label for="message">Message</label></div>
+        <div class="ui-grid-col-8"><textarea autoResize="autoResize" id="message" ></textarea></div>
+    </div>
+</div>
+
+<footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+       <!-- <button type="button"  icon="fa-close" (click)="closeDialog()"></button>
+        <button type="button"  icon="fa-check" (click)="sendContact()"></button> -->
+    </div>
+</footer>

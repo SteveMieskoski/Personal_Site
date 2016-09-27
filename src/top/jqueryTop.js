@@ -42,12 +42,11 @@ define(['jquery', 'scripts/runCreateOrDestroy', 'scripts/buttonControl', 'store'
         function restoreCamera(position, rotation, controlCenter){
             store().camera.position.set(position.x, position.y, position.z);
             store().camera.rotation.set(rotation.x, rotation.y, rotation.z);
-
             store().controls.center.set(controlCenter.x, controlCenter.y, controlCenter.z);
             store().controls.update();
-
             store().renderer.render();
         }
+
         /**
          *  get action or response behavior with manual trigger [ignore JSlint/hint for this item]
          */
