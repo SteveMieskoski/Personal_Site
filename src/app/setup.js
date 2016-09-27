@@ -84,7 +84,7 @@ requirejs([
     }
 
     // Begin Setup
-    document.addEventListener('ContactButton', buttonControl.contactButton(), true);
+    document.addEventListener('ContactButton', buttonControl.contactButton, true);
     console.log(window.location.search.substring(1));
     store({data: data.dataObject});
     if (window.innerHeight > window.innerWidth) {
