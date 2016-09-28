@@ -1,6 +1,18 @@
+<head>
+    <script type="text/javascript">
+        var onloadCallback = function() {
+            grecaptcha.render('html_element', {
+                'sitekey' : '6LcJ1gcUAAAAAPqAwn1QsIvf0t1ib-XJjvYw-KDf'
+            });
+        };
+    </script>
+</head>
+
+
 <button id="closeDialog" style="position:relative; left: 2%; top: 2%;">Close</button>
 <!--<form action="https://stark-tundra-18816.herokuapp.com/send" method="post">-->
 <form id="ContactForm" action="/" method="post">
+    <div id="html_element"></div>
     <h2>pardon the dust. The contact form is undergoing a rebuild</h2>
     <p>
         <label for="firstname">Firstname</label>
@@ -49,9 +61,11 @@
 
 
     <input  type="submit" value="FormData" />
-    <div class="g-recaptcha" data-sitekey="6LcJ1gcUAAAAAPqAwn1QsIvf0t1ib-XJjvYw-KDf"></div>
+   <!-- <div class="g-recaptcha" data-sitekey="6LcJ1gcUAAAAAPqAwn1QsIvf0t1ib-XJjvYw-KDf"></div>-->
 </form>
-
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+        async defer>
+</script>
 
 <script>
     // NEED TO HAVE AT LEAST a SUCCESS REPLY OF SOME SORT TO THE USER
