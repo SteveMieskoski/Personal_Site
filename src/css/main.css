@@ -187,6 +187,14 @@ dt {
     display: none;
 }
 
+.contactElement {
+    width: 700px;
+    height: 600px;
+    box-shadow: 0px 0px 12px rgba(167, 175, 178, 0.5);
+    border: 1px solid rgba(28, 46, 65, 0.25);
+    text-align: center;
+    cursor: default;
+}
 
 /* ========== Material Design Light List ========== */
 

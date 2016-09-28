@@ -85,7 +85,6 @@ define(function (require) {
                     if(controls != -1){
                         controls.update();
                     }
-
                 }
 
                 tweenAnimate.Run(objects, target, scene, camera, renderer, 2000, [16, 16]);
@@ -93,7 +92,6 @@ define(function (require) {
                 renderer.render(scene, camera);
                 animate();
             }
-
             start(objects, targets, scene, camera, renderer, controls, tweenAnimate, windowResize);
         },
 
@@ -102,10 +100,7 @@ define(function (require) {
             varStore.renderer.render(varStore.scene, varStore.camera);
             return varStore;
         }
-
-
     };
-
 
     return new SetupTop();
 });

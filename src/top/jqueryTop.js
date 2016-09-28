@@ -44,6 +44,9 @@ define(['jquery', 'scripts/runCreateOrDestroy', 'scripts/buttonControl', 'store'
          */
         $('div#contactButton').click(function () {
             contact();
+          //  console.log($('#contactElement'));
+          //  $('#contactElement').fadeOut(4).fadeIn();
+            console.log('contact button clicked');
         });
 
 
@@ -59,8 +62,8 @@ define(['jquery', 'scripts/runCreateOrDestroy', 'scripts/buttonControl', 'store'
          *  get action or response behavior with manual trigger [ignore JSlint/hint for this item]
          */
         $('button.testActionBtn').click(function () {
-            restoreCamera(store().reset.position, store().reset.rotation, store().reset.controlCenter)
-
+           // restoreCamera(store().reset.position, store().reset.rotation, store().reset.controlCenter)
+            $('#contactElement').fadeToggle();
         });
 
         /**

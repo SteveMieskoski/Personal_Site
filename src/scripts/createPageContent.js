@@ -26,7 +26,6 @@ define(['jquery'], function ($) {
                     toggleButton.textContent = 'Return';
                     toggleButton.className = 'template-return-button mdl-button-return  mdl-js-button mdl-js-ripple-effect';
 
-
                     pageElement.querySelector('div.button-attach').appendChild(toggleButton);
                 }
 
@@ -39,7 +38,6 @@ define(['jquery'], function ($) {
                     scene.add(object);
                     renderer.render(scene, camera);
                 };
-
             };
 
             xmlRequest.open('GET', filename, true);
@@ -60,7 +58,6 @@ define(['jquery'], function ($) {
                 var pageCreatedEvent = new Event('ContentPageCreated');
                 document.dispatchEvent(pageCreatedEvent);
             }
-
         }
 
 

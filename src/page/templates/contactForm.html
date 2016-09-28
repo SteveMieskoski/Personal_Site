@@ -1,113 +1,93 @@
-<head>
-    <script type="text/javascript">
-        var onloadCallback = function() {
-            grecaptcha.render('html_element', {
-                'sitekey' : '6LcJ1gcUAAAAAPqAwn1QsIvf0t1ib-XJjvYw-KDf'
-            });
-        };
-    </script>
-</head>
+
+<div id="closeContact" style="position:absolute; left: 2%; top: 2%;"></div>
+<!-- todo correct the clickable area of the close button -->
+<div id="contactContainer" style="position:absolute; left: 2%; top: 5%;">
+    <form id="ContactForm" action="/" method="post">
+        <h2>pardon the dust. The contact form is undergoing a rebuild</h2>
+        <br/>
+
+            <label for="firstname">Firstname</label>
+            <input  id="firstname" name="firstname" />
+        <br/>
+
+            <label for="surname">Lastname</label>
+            <input  id="surname" name="surname"/>
+        <br/>
+
+            <label for="email">Your Email</label>
+            <input id="email" name="email" required/>
+        <br/>
+
+            <label for="role">Role</label>
+            <input  id="role" name="role"/>
+        <br/>
+
+            <label for="title">Title</label>
+            <input  id="title" name="title"/>
+        <br/>
+
+            <label for="subject">Subject</label>
+            <input  id="subject" name="subject"/>
+        <br/>
+
+            <label for="organization">Organization</label>
+            <input  id="organization"  name="organization"/>
+        <br/>
+
+            <label for="purpose">Intent</label>
+            <input  id="purpose" name="purpose" />
+        <br/>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message"></textarea>
+        <br/>
+
+        <div style="position:relative; left: 4%; top: 2%;" >
+            <input  type="submit" value="Submit" class="template-return-button mdl-button-return  mdl-js-button mdl-js-ripple-effect"/>
+        </div>
+    </form>
+</div>
 
 
-<button id="closeDialog" style="position:relative; left: 2%; top: 2%;">Close</button>
-<!--<form action="https://stark-tundra-18816.herokuapp.com/send" method="post">-->
-<form id="ContactForm" action="/" method="post">
-    <div id="html_element"></div>
-    <h2>pardon the dust. The contact form is undergoing a rebuild</h2>
-    <p>
-        <label for="firstname">Firstname</label>
-        <input  id="firstname" />
-    </p>
-
-    <p>
-        <label for="surname">Lastname</label>
-        <input  id="surname" name="surname"/>
-    </p>
-
-    <p>
-        <label for="email">Email</label>
-        <input id="email" name="email" required/>
-    </p>
-
-    <p>
-        <label for="role">Role</label>
-        <input  id="role" name="role"/>
-    </p>
-
-    <p>
-        <label for="title">Title</label>
-        <input  id="title" name="title"/>
-    </p>
-
-    <p>
-        <label for="subject">Subject</label>
-        <input  id="subject" name="subject"/>
-    </p>
-
-    <p>
-        <label for="organization">Organization</label>
-        <input  id="organization"  name="organization"/>
-    </p>
-
-    <p>
-        <label for="purpose">Intent</label>
-        <input  id="purpose" name="purpose" />
-    </p>
-
-    <p>
-        <label for="message">Message</label>
-        <textarea id="message" name="message"></textarea>
-    </p>
-
-
-    <input  type="submit" value="FormData" />
-   <!-- <div class="g-recaptcha" data-sitekey="6LcJ1gcUAAAAAPqAwn1QsIvf0t1ib-XJjvYw-KDf"></div>-->
-</form>
-<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
-        async defer>
-</script>
 
 <script>
-    // NEED TO HAVE AT LEAST a SUCCESS REPLY OF SOME SORT TO THE USER
     $( "#ContactForm" ).submit(function( event ) {
         event.preventDefault();
-        //var data = {};
-        //data.title = "title";
-        //data.message = "message";
-        var formData = {
-            "surname" : $('input[name=surname]').val(),
-            "email" : $('input[name=email]').val(),
-            "role" : $('input[name=role]').val(),
-            "title" : $('input[name=title]').val(),
-            "subject" : $('input[name=subject]').val(),
-            "purpose" : $('input[name=purpose]').val(),
-            "message" : $('input[name=pmessage]').val()
-        };
+
+        var formData, message, posting;
+
+        formData = [
+            "firstname:" + $('input[name=firstname]').val() + '\n',
+            "surname:" + $('input[name=surname]').val() + '\n',
+            "email:" + $('input[name=email]').val() + '\n',
+            "role:" + $('input[name=role]').val() + '\n',
+            "title:" + $('input[name=title]').val() + '\n',
+            "subject:" + $('input[name=subject]').val() + '\n',
+            "purpose:" + $('input[name=purpose]').val() + '\n',
+            "Contact Message:" + $('textarea[name=message]').val() + '\n'
+        ];
+
+        message = {message: formData};
         console.log(formData);
-        var posting = $.ajax({
+        posting = $.ajax({
             type: 'POST',
-            data: JSON.stringify(formData),
+            data: JSON.stringify(message),
             contentType: 'application/json',
-            url: "http://localhost:3000/test/test",
+            url: "http://localhost:3000/email/send",
+            //"https://stark-tundra-18816.herokuapp.com/send"
             success: function(data) {
+                $('#ContactForm').remove();
+                var successMessage = document.createElement('h2');
+                successMessage.textContent = 'I thank you for your contact.';
+                $('#contactContainer').append(successMessage);
                 console.log('success');
                 console.log(JSON.stringify(data));
             }});
 
-
-           // console.log( $( "#ContactForm" ).serialize());
-
-            // "http://localhost:3000/test/test", body= {data: 'somedata', moredata: 'somemoredata'} );
-           /* var posting = $.ajax({
-                type: "POST",
-                url: "http://localhost:3000/test/test",
-                data: formData,
-                encode: true
-            }); */
              posting.done(function( data ) {console.log(data)})
              });
 
-
+    /*
     var closeDialog = document.getElementById("closeDialog");
     var infoPrintDialog = document.getElementById("ContactDialog");
             closeDialog.addEventListener("click", function() {
@@ -115,59 +95,6 @@
             var DialogElement = document.getElementById("ContactDialog");
             DialogElement.remove();
              });
+             */
 </script>
 
-  <!--
-  <div mdl class="ui-grid ui-grid-responsive ui-fluid ui-grid-pad" >
-      <div class="ui-grid-row">
-          <div class="mdl-tooltip" for="firstname">    Enter First Name  </div>
-          <div class="ui-grid-col-5"><label for="firstname">Firstname</label></div>
-          <div class="ui-grid-col-8"><input  id="firstname" /></div>
-      </div>
-      <div class="ui-grid-row">
-          <div class="mdl-tooltip" for="surname">    Enter Last Name/Surname  </div>
-          <div class="ui-grid-col-5"><label for="surname">Lastname</label></div>
-          <div class="ui-grid-col-8"><input  id="surname" /></div>
-      </div>
-      <div class="ui-grid-row">
-          <div class="mdl-tooltip" for="email">    Enter Email  </div>
-          <div class="ui-grid-col-5"><label for="email">Email</label></div>
-          <div class="ui-grid-col-8"><input id="email" required/></div>
-      </div>
-      <div class="ui-grid-row">
-          <div class="mdl-tooltip" for="role">    Enter Position/Job Role  </div>
-          <div class="ui-grid-col-5"><label for="role">Role</label></div>
-          <div class="ui-grid-col-8"><input  id="role" /></div>
-      </div>
-      <div class="ui-grid-row">
-          <div class="mdl-tooltip" for="title">    Enter Title  </div>
-          <div class="ui-grid-col-5"><label for="title">Title</label></div>
-          <div class="ui-grid-col-8"><input  id="title" /></div>
-      </div>
-      <div class="ui-grid-row">
-          <div class="ui-grid-col-5"><label for="subject">Subject</label></div><!-- this should be added automatically not by user-->
-      <!--  <div class="ui-grid-col-8"><input  id="subject" /></div>
-    </div>
-    <div class="ui-grid-row">
-        <div class="mdl-tooltip" for="organization">    Enter Associated <br/> Organization/Employer  </div>
-        <div class="ui-grid-col-5"><label for="organization">Organization</label></div>
-        <div class="ui-grid-col-8"><input  id="organization"  /></div>
-    </div>
-    <div class="ui-grid-row">
-        <div class="mdl-tooltip" for="purpose">    Enter purpose or intent <br/> of contacting myself. <br/> (e.g. potential position/project, <br/> general interest, etc.)  </div>
-        <div class="ui-grid-col-5"><label for="purpose">Intent</label></div>
-        <div class="ui-grid-col-8"><input  id="purpose" /></div>
-    </div>
-    <div class="ui-grid-row">
-        <div class="mdl-tooltip" for="message">    Enter the message you wish to <br/> deliver. A copy will be sent to the <br/> email you provided for your reference.  </div>
-        <div class="ui-grid-col-5"><label for="message">Message</label></div>
-        <div class="ui-grid-col-8"><textarea autoResize="autoResize" id="message" ></textarea></div>
-    </div>
-</div>
-
-<footer>
-    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix"> -->
-       <!-- <button type="button"  icon="fa-close" (click)="closeDialog()"></button>
-        <button type="button"  icon="fa-check" (click)="sendContact()"></button> -->
-   <!-- </div>
-</footer> -->
