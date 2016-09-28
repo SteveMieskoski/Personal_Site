@@ -73,7 +73,8 @@
             type: 'POST',
             data: JSON.stringify(message),
             contentType: 'application/json',
-            url: "http://localhost:3000/email/send",
+            url: "https://stark-tundra-18816.herokuapp.com/email/send",
+            //"http://localhost:3000/email/send",
             //"https://stark-tundra-18816.herokuapp.com/send"
             success: function(data) {
                 $('#ContactForm').remove();
