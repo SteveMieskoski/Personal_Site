@@ -1,5 +1,5 @@
 //'use strict';
-define(['jquery', 'scripts/runCreateOrDestroy', 'scripts/buttonControl', 'store', 'scripts/print', 'scripts/download', 'scripts/tweenAnimate'], function ($, runCreateOrDestroy, buttonControl, store, print, download, tweenAnimate) {
+define(['jquery', 'scripts/runCreateOrDestroy', 'scripts/buttonControl', 'store', 'scripts/print', 'scripts/download', 'scripts/tweenAnimate', 'scripts/contact'], function ($, runCreateOrDestroy, buttonControl, store, print, download, tweenAnimate, contact) {
 
 
     return function (event) {
@@ -38,6 +38,14 @@ define(['jquery', 'scripts/runCreateOrDestroy', 'scripts/buttonControl', 'store'
         $('button#downloadButton').click(function () {
             download();
         });
+
+        /**
+         * Handle contact button
+         */
+        $('div#contactButton').click(function () {
+            contact();
+        });
+
 
         function restoreCamera(position, rotation, controlCenter){
             store().camera.position.set(position.x, position.y, position.z);

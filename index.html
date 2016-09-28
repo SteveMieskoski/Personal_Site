@@ -12,7 +12,7 @@
     <script defer src="./src/lib/material.min.js"></script> <!-- todo review for remove or use -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 
-
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 
 
 </head>
@@ -87,14 +87,15 @@
 
 </div>
 
-<div id="contactButton"><i class="material-icons" >print</i></div>
-<div class="mdl-tooltip" data-mdl-for="printButton" style="top:10px;">Contact</div>
-
 <div id="printButton"><i class="material-icons" >print</i></div>
 <div class="mdl-tooltip" data-mdl-for="printButton" style="top:10px;">Print Resume</div>
 
 <a id="downloadLink" href="src/page/templates/main.pdf" download="'SteveMieskoskiResume.pdf"><i class="material-icons">file_download</i></a>
 <div class="mdl-tooltip" data-mdl-for="downloadLink">Download Resume</div>
+
+<!-- would be best to implement contact within an element looking like a normal page item-->
+<div id="contactButton"><i class="material-icons">mail</i></div>
+<div class="mdl-tooltip" data-mdl-for="contactButton" style="top:10px; left: 100px">Contact</div>
 
 </body>
 </html>

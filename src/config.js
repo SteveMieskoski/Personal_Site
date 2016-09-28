@@ -39,6 +39,7 @@
             'scripts/lights': 'src/scripts/lights',
             'scripts/createPagePortrait': 'src/scripts/createPagePortrait',
             'scripts/background_placer': 'src/scripts/background_placer',
+            'scripts/contact': 'src/scripts/contact',
 
             // page directory (handles setup and tear down of content pages)
             "page/createPageObjects": "src/page/createPageObjects",

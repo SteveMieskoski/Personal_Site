@@ -1,32 +1,138 @@
-<div mdl class="ui-grid ui-grid-responsive ui-fluid ui-grid-pad" > <!--*ngIf="contact" -->
-    <div class="ui-grid-row">
-        <div class="mdl-tooltip" for="firstname">    Enter First Name  </div>
-        <div class="ui-grid-col-5"><label for="firstname">Firstname</label></div>
-        <div class="ui-grid-col-8"><input  id="firstname" /></div>
-    </div>
-    <div class="ui-grid-row">
-        <div class="mdl-tooltip" for="surname">    Enter Last Name/Surname  </div>
-        <div class="ui-grid-col-5"><label for="surname">Lastname</label></div>
-        <div class="ui-grid-col-8"><input  id="surname" /></div>
-    </div>
-    <div class="ui-grid-row">
-        <div class="mdl-tooltip" for="email">    Enter Email  </div>
-        <div class="ui-grid-col-5"><label for="email">Email</label></div>
-        <div class="ui-grid-col-8"><input id="email" required/></div>
-    </div>
-    <div class="ui-grid-row">
-        <div class="mdl-tooltip" for="role">    Enter Position/Job Role  </div>
-        <div class="ui-grid-col-5"><label for="role">Role</label></div>
-        <div class="ui-grid-col-8"><input  id="role" /></div>
-    </div>
-    <div class="ui-grid-row">
-        <div class="mdl-tooltip" for="title">    Enter Title  </div>
-        <div class="ui-grid-col-5"><label for="title">Title</label></div>
-        <div class="ui-grid-col-8"><input  id="title" /></div>
-    </div>
-    <div class="ui-grid-row">
-        <div class="ui-grid-col-5"><label for="subject">Subject</label></div><!-- this should be added automatically not by user-->
-        <div class="ui-grid-col-8"><input  id="subject" /></div>
+<button id="closeDialog" style="position:relative; left: 2%; top: 2%;">Close</button>
+<!--<form action="https://stark-tundra-18816.herokuapp.com/send" method="post">-->
+<form id="ContactForm" action="/" method="post">
+    <h2>pardon the dust. The contact form is undergoing a rebuild</h2>
+    <p>
+        <label for="firstname">Firstname</label>
+        <input  id="firstname" />
+    </p>
+
+    <p>
+        <label for="surname">Lastname</label>
+        <input  id="surname" name="surname"/>
+    </p>
+
+    <p>
+        <label for="email">Email</label>
+        <input id="email" name="email" required/>
+    </p>
+
+    <p>
+        <label for="role">Role</label>
+        <input  id="role" name="role"/>
+    </p>
+
+    <p>
+        <label for="title">Title</label>
+        <input  id="title" name="title"/>
+    </p>
+
+    <p>
+        <label for="subject">Subject</label>
+        <input  id="subject" name="subject"/>
+    </p>
+
+    <p>
+        <label for="organization">Organization</label>
+        <input  id="organization"  name="organization"/>
+    </p>
+
+    <p>
+        <label for="purpose">Intent</label>
+        <input  id="purpose" name="purpose" />
+    </p>
+
+    <p>
+        <label for="message">Message</label>
+        <textarea id="message" name="message"></textarea>
+    </p>
+
+
+    <input  type="submit" value="FormData" />
+    <div class="g-recaptcha" data-sitekey="6LcJ1gcUAAAAAPqAwn1QsIvf0t1ib-XJjvYw-KDf"></div>
+</form>
+
+
+<script>
+    // NEED TO HAVE AT LEAST a SUCCESS REPLY OF SOME SORT TO THE USER
+    $( "#ContactForm" ).submit(function( event ) {
+        event.preventDefault();
+        //var data = {};
+        //data.title = "title";
+        //data.message = "message";
+        var formData = {
+            "surname" : $('input[name=surname]').val(),
+            "email" : $('input[name=email]').val(),
+            "role" : $('input[name=role]').val(),
+            "title" : $('input[name=title]').val(),
+            "subject" : $('input[name=subject]').val(),
+            "purpose" : $('input[name=purpose]').val(),
+            "message" : $('input[name=pmessage]').val()
+        };
+        console.log(formData);
+        var posting = $.ajax({
+            type: 'POST',
+            data: JSON.stringify(formData),
+            contentType: 'application/json',
+            url: "http://localhost:3000/test/test",
+            success: function(data) {
+                console.log('success');
+                console.log(JSON.stringify(data));
+            }});
+
+
+           // console.log( $( "#ContactForm" ).serialize());
+
+            // "http://localhost:3000/test/test", body= {data: 'somedata', moredata: 'somemoredata'} );
+           /* var posting = $.ajax({
+                type: "POST",
+                url: "http://localhost:3000/test/test",
+                data: formData,
+                encode: true
+            }); */
+             posting.done(function( data ) {console.log(data)})
+             });
+
+
+    var closeDialog = document.getElementById("closeDialog");
+    var infoPrintDialog = document.getElementById("ContactDialog");
+            closeDialog.addEventListener("click", function() {
+            infoPrintDialog.close();
+            var DialogElement = document.getElementById("ContactDialog");
+            DialogElement.remove();
+             });
+</script>
+
+  <!--
+  <div mdl class="ui-grid ui-grid-responsive ui-fluid ui-grid-pad" >
+      <div class="ui-grid-row">
+          <div class="mdl-tooltip" for="firstname">    Enter First Name  </div>
+          <div class="ui-grid-col-5"><label for="firstname">Firstname</label></div>
+          <div class="ui-grid-col-8"><input  id="firstname" /></div>
+      </div>
+      <div class="ui-grid-row">
+          <div class="mdl-tooltip" for="surname">    Enter Last Name/Surname  </div>
+          <div class="ui-grid-col-5"><label for="surname">Lastname</label></div>
+          <div class="ui-grid-col-8"><input  id="surname" /></div>
+      </div>
+      <div class="ui-grid-row">
+          <div class="mdl-tooltip" for="email">    Enter Email  </div>
+          <div class="ui-grid-col-5"><label for="email">Email</label></div>
+          <div class="ui-grid-col-8"><input id="email" required/></div>
+      </div>
+      <div class="ui-grid-row">
+          <div class="mdl-tooltip" for="role">    Enter Position/Job Role  </div>
+          <div class="ui-grid-col-5"><label for="role">Role</label></div>
+          <div class="ui-grid-col-8"><input  id="role" /></div>
+      </div>
+      <div class="ui-grid-row">
+          <div class="mdl-tooltip" for="title">    Enter Title  </div>
+          <div class="ui-grid-col-5"><label for="title">Title</label></div>
+          <div class="ui-grid-col-8"><input  id="title" /></div>
+      </div>
+      <div class="ui-grid-row">
+          <div class="ui-grid-col-5"><label for="subject">Subject</label></div><!-- this should be added automatically not by user-->
+      <!--  <div class="ui-grid-col-8"><input  id="subject" /></div>
     </div>
     <div class="ui-grid-row">
         <div class="mdl-tooltip" for="organization">    Enter Associated <br/> Organization/Employer  </div>
@@ -46,8 +152,8 @@
 </div>
 
 <footer>
-    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix"> -->
        <!-- <button type="button"  icon="fa-close" (click)="closeDialog()"></button>
         <button type="button"  icon="fa-check" (click)="sendContact()"></button> -->
-    </div>
-</footer>
+   <!-- </div>
+</footer> -->

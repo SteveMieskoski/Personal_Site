@@ -110,11 +110,18 @@ define(['require', 'jquery', 'scripts/runCreateOrDestroy', 'scripts/createPageCo
             }
         },
 
-        contactButton: function(){
-            $('button#contactButton').click(function () {
-                displayFrame('./src/page/templates/contactForm.html');
-            });
+        contactForm: function(){
+
+            document.addEventListener('ContactFormActive', ContactFormSubmitListen, true); // attach click listener to Return Button
+
+            function ContactFormSubmitListen(){
+                $('button.template-return-button').click(function () {
+                    runCreateOrDestroy.removePageRebuildMain();
+                });
+            }
         }
+
+
 
 
     };
