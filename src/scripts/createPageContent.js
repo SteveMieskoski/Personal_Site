@@ -34,6 +34,7 @@ define(['jquery'], function ($) {
                     object.position.x = 0;
                     object.position.y = 0;
                     object.position.z = 10;
+                    object.rotation.y = -0.2;
                     object.name = 'html';
                     scene.add(object);
                     renderer.render(scene, camera);
