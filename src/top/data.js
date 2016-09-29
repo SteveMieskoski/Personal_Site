@@ -4,6 +4,7 @@ define([], function () {
         {
             title: "About Me",
             loc: 'aboutMe',
+            name: 'aboutMe',
             icon: 'perm_identity',
             id: 0,
             color: 0x6497FF,
@@ -15,9 +16,10 @@ define([], function () {
         {
             title: "Programming Experience",
             loc: 'programming',
+            name: 'programming',
             icon: 'code',
             id: 1,
-            color: 0x2f576d,
+            color: 0x7EA9FF,
             caption: 'What I have built and know.',
             template: './src/page/templates/programming.html ',
             col: 1,
@@ -26,6 +28,7 @@ define([], function () {
         {
             title: "Education",
             loc: 'education',
+            name: 'education',
             icon: 'school',
             id: 2,
             color: 0x8A8077,
@@ -37,6 +40,7 @@ define([], function () {
         {
             title: "Past Career",
             loc: 'pastCareer',
+            name: 'priorCareer',
             icon: 'reply',
             id: 3,
             color: 0x7EB2C0,
@@ -48,9 +52,10 @@ define([], function () {
         {
             title: "Languages",
             loc: 'languages',
+            name: 'languages',
             icon: 'help_outline',
             id: 4,
-            color: 0x1b728a,
+            color: 0x55D1FF,
             caption: 'Content is Under Construction.',
             template: './src/page/templates/languages.html',
             col: 2,
@@ -59,6 +64,7 @@ define([], function () {
         {
             title: "Preparation",
             loc: 'preparation',
+            name: 'preparation',
             icon: 'build',
             id: 5,
             color: 0x34c497,

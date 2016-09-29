@@ -86,6 +86,7 @@ a {
     background: transparent;
     overflow-y: auto;
     overflow-x: hidden;
+    font-weight: 400;
    /* color: white;
     text-shadow: 0 0 5px rgba(166, 174, 177, 0.95);*/
 }

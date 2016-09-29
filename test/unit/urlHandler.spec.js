@@ -84,7 +84,7 @@ define(function (require) {
                 });
             });
 
-            describe.skip('the sessionStorage', function () {  // will need to implement promises throughout this spec file to ensure these will be passable
+            describe.skip('the sessionStorage, todo', function () {  // think using promises throughout this spec file to ensure these will be passable
 
                 it('should have record of prior pages  (prior tests here) in sessionStorage', function () {
                     injector

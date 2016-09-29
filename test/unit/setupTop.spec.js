@@ -170,7 +170,7 @@ define(function (require) {
         });
 
 
-        describe('createTopControls:', function () {
+        describe.skip('createTopControls:', function () {
 
             // explicitly set variables to undefined to preempt any leakage from previous tests.
             before(function () {
