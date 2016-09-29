@@ -43,12 +43,20 @@ define(['jquery', 'scripts/runCreateOrDestroy', 'scripts/buttonControl', 'store'
          * Handle contact button
          */
         $('div#contactButton').click(function () {
+            runCreateOrDestroy.removePageRebuildMain();
             contact();
-          //  console.log($('#contactElement'));
-          //  $('#contactElement').fadeOut(4).fadeIn();
-            console.log('contact button clicked');
         });
 
+        /**
+         * Handle skill chart
+         */
+        var i, jsLevel = 4;
+        if($('div#circleJavascript')){
+            console.log('circle javascript');
+            for(i=0; i < jsLevel; i++){
+                $('div#circleJavascript').append('<div class="circular"></div>')
+            }
+        }
 
         function restoreCamera(position, rotation, controlCenter){
             store().camera.position.set(position.x, position.y, position.z);

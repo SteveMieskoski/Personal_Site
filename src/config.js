@@ -50,9 +50,6 @@
             // libraries
             "jquery": "src/lib/jquery.min",
             "TWEEN": "src/lib/Tween",
-            "TweenJS": "src/lib/TweenJS",
-
-            // "sinon" : "test/vendor/sinon-1.17.5"
 
             // testing libraries
             "Squire": "src/test/vendor/Squire",

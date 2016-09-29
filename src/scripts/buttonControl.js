@@ -91,6 +91,7 @@ define(['require', 'jquery', 'scripts/runCreateOrDestroy', 'scripts/createPageCo
 
             function TemplateButtonListeners() {
                 var regex = new RegExp('preparation');
+                var programmingRegex = new RegExp('languages');
 
                 $('button.template-return-button').click(function () {
                     runCreateOrDestroy.removePageRebuildMain();
@@ -106,6 +107,14 @@ define(['require', 'jquery', 'scripts/runCreateOrDestroy', 'scripts/createPageCo
                     $('div#demo-app-1').click(function () {
                         displayFrame('http://steve-mieskoski.herokuapp.com/home');
                     });
+
+                if (programmingRegex.test(window.location.search.substring(1))) {
+                    console.log('JSLEVEL', JSLevel); // todo remove debug item
+                    $('div#circleJavascript').append('<div class="circular"></div>');
+                    var JSLevel = document.querySelector('#circleJavascript');
+
+                    JSLevel.appendChild('<div class="circular"></div>')
+                    }
                 }
             }
         },
