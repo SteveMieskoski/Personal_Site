@@ -2,12 +2,12 @@ define([], function () {
 
     var dataArray = [
         {
-            title: "About Me",
+            title: "About Me", // keep color
             loc: 'aboutMe',
             name: 'aboutMe',
             icon: 'perm_identity',
             id: 0,
-            color: 0x6497FF,
+            color: 0xfffa8a,
             caption: 'A little bit about me and my drives.',
             template: './src/page/templates/aboutMe.html',
             col: 2,
@@ -19,43 +19,43 @@ define([], function () {
             name: 'programming',
             icon: 'code',
             id: 1,
-            color: 0x7EA9FF,
+            color: 0xb1ffde,
             caption: 'What I have built and know.',
             template: './src/page/templates/programming.html ',
             col: 1,
             row: 2
         },
         {
-            title: "Education",
+            title: "Education", // keep color
             loc: 'education',
             name: 'education',
             icon: 'school',
             id: 2,
-            color: 0x8A8077,
+            color: 0xd6c6b9,
             caption: 'My formal education.',
             template: './src/page/templates/education.html',
             col: 1,
             row: 1
         },
         {
-            title: "Past Career",
+            title: "Past Career", // keep color
             loc: 'pastCareer',
             name: 'priorCareer',
             icon: 'reply',
             id: 3,
-            color: 0x7EB2C0,
+            color: 0xC5CCD8,
             caption: 'The legal world from which I came.',
             template: './src/page/templates/priorCareer.html',
             col: 2,
             row: 3
         },
         {
-            title: "Languages",
+            title: "Languages", // keep color
             loc: 'languages',
             name: 'languages',
             icon: 'help_outline',
             id: 4,
-            color: 0x55D1FF,
+            color: 0xb2e1ff,
             caption: 'Content is Under Construction.',
             template: './src/page/templates/languages.html',
             col: 2,
