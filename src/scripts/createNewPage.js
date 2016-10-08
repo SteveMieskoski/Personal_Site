@@ -53,6 +53,9 @@ define(['require', 'jquery'], function (require, $) {
             for (i = 0; i < store().pagePlane[keepId].children.length; i++) {
                 store().sceneP.add(store().pagePlane[keepId].children[i].clone(true));
             }
+            //store().sceneP.add(store().lightH.clone(true));
+            store().sceneP.add(store().lightD.clone(true));
+            //store().sceneP.add(new THREE.DirectionalLightHelper(store().lightD.clone(true), 1000));
 
             store().rendererP.render(store().sceneP, store().camera);
             store().rendererP.domElement.className = 'currentPageDisplay';

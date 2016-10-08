@@ -27,14 +27,16 @@ define(['require','top/data'], function (require, data) {
                 this.mesh2 = new THREE.Object3D();
                 for (var i = 0; i < 2; i++) {
                     var geom = new THREE.PlaneGeometry(820, 650, 1, 1);
-                    var material = new THREE.MeshBasicMaterial({  //using phong material worked only for first selection.  some setting either was duplicated (i.e. 2 instances of webgl) or another setting changed and darkened the plane.
+                    var material = new THREE.MeshPhongMaterial({  //using phong material worked only for first selection.  some setting either was duplicated (i.e. 2 instances of webgl) or another setting changed and darkened the plane.
                         color: pageDesign[j].color,
-                        reflectivity: 0.1,
+                        specular: pageDesign[j].color,
+                        reflectivity: 30,
                         transparent: true,
-                        opacity: 0.2
+                        opacity: 0.3
                     });
                     var bkgndItem = new THREE.Mesh(geom, material);
                     bkgndItem.position.set(0, 0, 0);
+                    bkgndItem.rotation.set(0, -0.2, 0);
                     bkgndItem.name = pageDesign[j].name;
                     this.mesh2.name = pageDesign[j].name;
                     this.mesh2.add(bkgndItem);

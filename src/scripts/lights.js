@@ -15,12 +15,12 @@ define([], function () {
             hemisphereLight: {
                 skyColor: 0xffffff,
                 groundColor: 0xffffff,
-                intensity: 0.9
+                intensity: 0.5
             },
             directionalLight: {
                 color: 0xffffff,
-                intensity: 0.9,
-                position: {x: 150, y: 350, z: 3000},
+                intensity: 0.5,
+                position: {x: -4050, y: 2000, z: 3000},
                 shadow: {
                     castShadow: true,
                     left: -400,

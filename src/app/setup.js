@@ -71,12 +71,14 @@ requirejs([
             pagePlane = createPageObjects.createBackgroundSphere();
         }
         console.log('CONTENT PAGES SETUP'); // todo remove debug item
-        sceneP.add(lightH);
-        sceneP.add(lightD);
+       // sceneP.add(lightH);
+        //sceneP.add(lightD);
         window.addEventListener('resize', windowResize, false);
         storeObjects = {
             pagePlane: pagePlane,
             cameraP: cameraP,
+            lightH: lightH,
+            lightD: lightD,
             sceneP: sceneP,
             rendererP: rendererP
         };
