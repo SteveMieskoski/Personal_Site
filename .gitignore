@@ -8,6 +8,8 @@
 /test/vendor/Mocha-Config-Template.html
 /test/vendor/sinon.js
 
+/src/app/all.js
+Scratch.js
 
 # Node Files #
 /node_modules
