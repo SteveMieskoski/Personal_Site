@@ -1,9 +1,9 @@
 
 <div id="closeContact" style="position:absolute; left: 2%; top: 2%;"></div>
 <!-- todo correct the clickable area of the close button -->
-<div id="contactContainer" style="position:absolute; left: 2%; top: 5%;">
+<div id="contactContainer" style="position:absolute; left: 30%; top: 5%;">
     <form id="ContactForm" action="/" method="post">
-        <h4>pardon the dust. The contact form is undergoing a rebuild</h4>
+        <!--<h4>pardon the dust. The contact form is undergoing a rebuild</h4>-->
         <div style="position:absolute; right: 12%; bottom: 2%;" >
             <input  type="submit" value="Submit" class="template-return-button mdl-button-return  mdl-js-button mdl-js-ripple-effect"/>
         </div>
@@ -12,46 +12,46 @@
             <input class="mdl-textfield__input" type="text" id="firstname" name="firstname" required>
             <label style="color: #73fef6;" for="firstname">Firstname</label>
         </div>
-
+        <br/>
 
         <div class="mdl-textfield mdl-js-textfield">
             <input class="mdl-textfield__input" type="text" id="surname" name="surname" required>
             <label style="color: #73fef6;" for="surname">Lastname</label>
         </div>
-
+        <br/>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <input class="mdl-textfield__input" type="email" id="email" name="email" required>
             <label style="color: #73fef6;" for="email">Email</label>
         </div>
-
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="role" name="role">
+        <br/>
+        <!--<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="hidden" id="role" name="role">
             <label style="color: #73fef6;" for="role">Role</label>
-        </div>
+        </div>-->
 
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="title" name="title">
+        <!--<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="hidden" id="title" name="title">
             <label style="color: #73fef6;" for="title">Title</label>
-        </div>
+        </div>-->
 
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <input class="mdl-textfield__input" type="text" id="subject" name="subject">
             <label style="color: #73fef6;" for="subject">Subject</label>
         </div>
-
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <br/>
+        <!--<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <input class="mdl-textfield__input" type="text" id="organization"  name="organization">
             <label style="color: #73fef6;" for="organization">Organization</label>
-        </div>
+        </div>-->
 
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+       <!-- <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <input class="mdl-textfield__input" type="text" id="purpose" name="purpose">
             <label style="color: #73fef6;" for="purpose">Intent</label>
-        </div>
+        </div>-->
 
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <textarea class="mdl-textfield__input" type="text" id="message" name="message"></textarea>
-                <label style="color: #73fef6;" for="purpose">Message</label>
+                <label style="color: #73fef6;" for="message">Message</label>
         </div>
 
 
@@ -69,10 +69,7 @@
             "firstname:" + $('input[name=firstname]').val() + '\n',
             "surname:" + $('input[name=surname]').val() + '\n',
             "email:" + $('input[name=email]').val() + '\n',
-            "role:" + $('input[name=role]').val() + '\n',
-            "title:" + $('input[name=title]').val() + '\n',
             "subject:" + $('input[name=subject]').val() + '\n',
-            "purpose:" + $('input[name=purpose]').val() + '\n',
             "Contact Message:" + $('textarea[name=message]').val() + '\n'
         ];
 

@@ -61,11 +61,12 @@ define(['require', 'top/data', 'scripts/createPageContent', 'urlHandler', 'store
             var i, j, objectfly, picked,
                 selectFly = [],
                 panelPositions = [],
-                panelPositionList = [{x: -1000, y: -400}, {x: -1000, y: -200}, {x: -1000, y: 0}, {x: -1000, y: 200}, {x: -1000, y: -600}, {x: 1000, y: -600}, {x: 1000, y: -400}, {x: 1000, y: -200}, {x: 1000, y: 0}];
+                panelPositionList = [{x: 1000, y: 0}, {x: 1000, y: -200},  {x: -1000, y: -600}, {x: -1000, y: -200}, {x: -1000, y: 200}, {x: -1000, y: 0}, {x: -1000, y: 400}, {x: -1000, y: -400}];
 
             for (j = panelPositionList.length - 1; j >= 0; j--) {
-                picked = Math.floor(Math.random() * panelPositionList.length);
-                panelPositions.push(panelPositionList.splice(picked, 1)[0]);
+                panelPositions.push(panelPositionList.splice(j, 1)[0]);
+                /*picked = Math.floor(Math.random() * panelPositionList.length);   // vary panel locations with each selection
+                 panelPositions.push(panelPositionList.splice(picked, 1)[0]); */
             }
 
             for (i = 0; i < store().objects.length; i++) {
