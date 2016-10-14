@@ -32,7 +32,7 @@ define([], function () {
             icon: 'school',
             id: 2,
             color: 0xd6c6b9,
-            caption: 'My formal education.',
+            caption: 'My Education.',
             template: './src/page/templates/education.html',
             col: 1,
             row: 1

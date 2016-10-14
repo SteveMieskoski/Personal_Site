@@ -15,7 +15,7 @@ Scratch.js
 /node_modules
 /bower_components
 npm-debug.log
-
+/src/css/scraps.css
 
 # Logs
 logs
