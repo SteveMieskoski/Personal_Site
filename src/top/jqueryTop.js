@@ -11,21 +11,18 @@ var store = require('../store');
 var tweenAnimate = require('../scripts/tweenAnimate');
 
 module.exports = function () {
-//    return function (event) {
 
         /**
          * Handle click on Main Menu panel item
          */
         $('div.element').click(function () {
-            console.log('main item clicked: store value = ', store());
             if ($("div.cd-layout__drawer").hasClass("cd-not-visible")) {
                 var selectedId = "div#" + $(this).attr('id');
 
                 $('div.element').not(selectedId).detach();
                 store({beginningLocation: false});
+
                 if (window.innerWidth > window.innerHeight) {
-                    console.log(store().selectedList.length); // todo remove debug item
-                    console.log('store.objects', store().objects[store().selectedList[store().selectedList.length - 1]])
                     store().scene.add(store().objects[store().selectedList[store().selectedList.length - 1]]);
                     runCreateOrDestroy.AnimateAddPageObjects(store, $(this).attr('id'));
                 } else {
@@ -35,11 +32,6 @@ module.exports = function () {
             }
         });
 
-        /*
-         store().objects[
-         store().selectedList[
-         store().selectedList.length - 1]]
-         */
         /**
          * Handle print button
          */
@@ -67,7 +59,6 @@ module.exports = function () {
          */
         var i, jsLevel = 4;
         if ($('div#circleJavascript')) {
-            console.log('circle javascript');
             for (i = 0; i < jsLevel; i++) {
                 $('div#circleJavascript').append('<div class="circular"></div>')
             }
@@ -85,20 +76,17 @@ module.exports = function () {
          *  get action or response behavior with manual trigger [ignore JSlint/hint for this item]
          */
         $('button.testActionBtn').click(function () {
-            // restoreCamera(store().reset.position, store().reset.rotation, store().reset.controlCenter)
             $('#contactElement').fadeToggle();
         });
 
         /**
-         * Display the store object's contents [ignore JSlint/hint for this item]
+         * (Dev Only) Display the store object's contents
          */
-        // todo figure out a good method to get events from elements when created, but are not yet created.
-        $('button.StoreView').click(function () {
+     /*   $('button.StoreView').click(function () {
             var store = require('store');
-            console.log(store());
             var allbuttons = document.getElementsByClassName('template-return-button');
             console.log('all buttons', allbuttons); // todo remove debug item
-        });
+        }); */
 
         /**
          * Handle opening the menu drawer

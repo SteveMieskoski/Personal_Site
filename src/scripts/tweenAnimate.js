@@ -1,12 +1,8 @@
 'use strict';
 
-var $ = require("../lib/jquery.min.js");
+//var $ = require("../lib/jquery.min.js");
 
-var store = require("../store");
-//var TWEEN = require("../lib/Tween");
-
-
-
+//var store = require("../store");
 
 function tweenAnimate() {
 }
@@ -16,12 +12,11 @@ tweenAnimate.prototype = {
 
     Run: function (objects, targets, scene, camera, renderer, duration, tweenRate, keepId, incrementStop, cb) {
         var i, counter, tweening, Render, object, target;
-        var runCreateOrDestroy = require("./runCreateOrDestroy");  // remove if bug is no longer present
+        var runCreateOrDestroy = require("./runCreateOrDestroy");
 
         counter = 0;
         TWEEN.removeAll();
         if (incrementStop) {
-            //console.log(runCreateOrDestroy.RemoveBackground);
             runCreateOrDestroy.RemoveBackground();
         }
         for (i = 0; i < objects.length; i++) {
@@ -49,10 +44,6 @@ tweenAnimate.prototype = {
 
         }
 
-        // impelment method to remove page only.
-
-        // 500 ms ~ 59 renders
-        // 2000 ms ~ 235 renders
         Render = function () {
             counter++;
             if (counter > 90 && incrementStop) {

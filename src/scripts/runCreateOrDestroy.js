@@ -42,9 +42,6 @@ PageCreateAndDestroy.prototype = {
      * */
     AddPageObjects: function (keepId) {
 
-        //var urlHandler = require('../urlHandler');
-        //var store = require('../store');
-
         urlHandler.checkNavState(data.dataObject, keepId);
 
         var rendererAttach = document.getElementById('container');
@@ -62,16 +59,13 @@ PageCreateAndDestroy.prototype = {
         store().renderer.render(store().scene, store().camera); // to c&p
 
         background_placer();
-        // todo solve underlying issue related to view/ camera rendering with close z position. Causing the page to appear zoomed in following menu link from one page to another
-
-
     },
 
     AnimateAddPageObjects: function (store, keepId, fromResize) {
 
         createNewPage.ClearScene(store, keepId);
 
-        var i, j, objectfly, picked,
+        var i, j, objectfly,
             selectFly = [],
             panelPositions = [],
             panelPositionList = [{x: 1000, y: 0}, {x: 1000, y: -200}, {x: -1000, y: -600}, {
@@ -81,8 +75,6 @@ PageCreateAndDestroy.prototype = {
 
         for (j = panelPositionList.length - 1; j >= 0; j--) {
             panelPositions.push(panelPositionList.splice(j, 1)[0]);
-            /*picked = Math.floor(Math.random() * panelPositionList.length);   // vary panel locations with each selection
-             panelPositions.push(panelPositionList.splice(picked, 1)[0]); */
         }
 
         for (i = 0; i < store().objects.length; i++) {
@@ -137,7 +129,6 @@ PageCreateAndDestroy.prototype = {
                 if (Math.abs(xFly) === 0) {
                     xFly = -1;
                 }
-                // todo Had a little hickup with panels remaining in front and not being removed, but no errors were thrown.
                 objectfly.position.x = -290;
                 objectfly.position.y = -i * 180 + 500;
                 objectfly.position.z = Math.random() - 1000;
@@ -161,7 +152,6 @@ PageCreateAndDestroy.prototype = {
      * return (add back) the objects that made up the top level animations and navigation. (i.e. Remove Page with Content)
      * */
     removePageRebuildMain: function () {
-        //var urlHandler = require('urlHandler'),
         var varyTransitions = [store().targets.table, store().targets.sphere, store().targets.helix, store().targets.grid],
             transition = varyTransitions[Math.floor(Math.random()) + Math.floor(Math.random()) + Math.floor(Math.random())];
 
@@ -172,9 +162,7 @@ PageCreateAndDestroy.prototype = {
 
         removePage.RebuildMainPage(store);
 
-        // todo find a better way to get the rand num
-
-        tweenAnimate.Run(store().objects, transition, store().scene, store().camera, store().renderer, 500, [6, 6]);  //original ease values [22,21]
+        tweenAnimate.Run(store().objects, transition, store().scene, store().camera, store().renderer, 500, [6, 6]);
     }
 };
 

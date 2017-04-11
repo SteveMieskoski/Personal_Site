@@ -7,7 +7,6 @@ var $ = require("../lib/jquery.min.js");
 function CreateNewPage() {
 }
 
-// todo change from using data as an input variable to just using the filePath.
 CreateNewPage.prototype = {
     constructor: CreateNewPage,
 
@@ -16,8 +15,6 @@ CreateNewPage.prototype = {
             if (store().selectedList.length > 0) {
                 if (store().selectedList[store().selectedList.length - 1] !== keepId) {
                     this.ClearableElementsPresent(store, keepId);
-                } else {
-                    console.log('same keepid in clearScene selectedList', store().selectedList); // todo remove debug item
                 }
             } else {
                 store({selectedList: keepId});
@@ -56,10 +53,8 @@ CreateNewPage.prototype = {
         for (i = 0; i < store().pagePlane[keepId].children.length; i++) {
             store().sceneP.add(store().pagePlane[keepId].children[i].clone(true));
         }
-        //store().sceneP.add(store().lightH.clone(true));
-        store().sceneP.add(store().lightD.clone(true));
-        //store().sceneP.add(new THREE.DirectionalLightHelper(store().lightD.clone(true), 1000));
 
+        store().sceneP.add(store().lightD.clone(true));
         store().rendererP.render(store().sceneP, store().camera);
         store().rendererP.domElement.className = 'currentPageDisplay';
         Attach.appendChild(store().rendererP.domElement);

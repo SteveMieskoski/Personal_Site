@@ -62,7 +62,7 @@ TweenObjects.prototype = {
     },
 
     gridDesign: function (data) {
-        var i, modNum, object;
+        var i, object;
 
         for (i = 0; i < data.length; i++) {
             object = new THREE.Object3D();
@@ -75,7 +75,7 @@ TweenObjects.prototype = {
     },
 
     columnDesign: function (data) {
-        var i, modNum, object;
+        var i, object;
 
         for (i = 0; i < data.length; i++) {
             object = new THREE.Object3D();

@@ -35,10 +35,8 @@ removePage.prototype = {
         }
 
         for (i = 0; i < store().objects.length; i++) {
-            // replaceObject[i].position.x = Math.random() * 4000 - 2000;
             replaceObject[i].position.x = -1800;
             replaceObject[i].position.y = Math.random() * 50 - 425;
-            // replaceObject[i].position.z = Math.random() * -4000 - 3000;
             replaceObject[i].position.z = -3300;
 
             store().scene.add(replaceObject[i]);

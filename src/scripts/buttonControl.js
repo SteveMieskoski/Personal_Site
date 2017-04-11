@@ -55,26 +55,17 @@ ButtonControl.prototype = {
 
 
     bindMenuButtons: function () {
-        // var topFunctions = require('./runCreateOrDestroy'),
-        //    data = require('../top/data');
 
         $('button.mdl-button-mod').click(function () {
             if ($(this).attr('id').match(/\d+/)[0] < 9) {
                 $("div.cd-layout__drawer").toggleClass("cd-not-visible").toggleClass("cd-is-visible");
-                //$("div.cd-layout__drawer").toggleClass("cd-is-visible");
-
-                /*     if (store().sceneP.length > 0) {
-                 removePage.Objects();
-                 }*/
                 runCreateOrDestroy.AnimateAddPageObjects(store, $(this).attr('id').match(/\d+/)[0]);
-                // todo fix view/ camera zoomed in issue following menu link from one page to another.
             }
         });
 
         document.getElementById('nav9')
             .addEventListener('click', function () {
                 $("div.cd-layout__drawer").toggleClass("cd-not-visible").toggleClass("cd-is-visible");
-                //$("div.cd-layout__drawer").toggleClass("cd-is-visible");
             });
 
 
@@ -86,7 +77,6 @@ ButtonControl.prototype = {
                     runCreateOrDestroy.removePageRebuildMain();
                     $('#nav9').addClass('hide-element');
                     $("div.cd-layout__drawer").toggleClass("cd-not-visible").toggleClass("cd-is-visible");
-                    //$("div.cd-layout__drawer").toggleClass("cd-is-visible");
                 });
         }
 
@@ -120,7 +110,6 @@ ButtonControl.prototype = {
                 });
 
                 if (programmingRegex.test(window.location.search.substring(1))) {
-                    console.log('JSLEVEL', JSLevel); // todo remove debug item
                     $('div#circleJavascript').append('<div class="circular"></div>');
                     var JSLevel = document.querySelector('#circleJavascript');
 

@@ -37,7 +37,6 @@ module.exports = function () {
             toggleButton = document.createElement('button');
             toggleButton.textContent = 'Close';
             toggleButton.className = 'template-return-button mdl-button-return  mdl-js-button mdl-js-ripple-effect';
-            // todo revise the close button to only remove the contactForm page from the screen
             element.querySelector('div#closeContact').appendChild(toggleButton);
         }
     };
@@ -77,7 +76,6 @@ module.exports = function () {
     targets.push(target);
 
     tweenAnimate.Run(objects, targets, store().scene, store().camera, store().renderer, 1000, [6, 6], 9999, false);
-    console.log('contect tween done');
 
 };
 

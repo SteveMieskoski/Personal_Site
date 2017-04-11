@@ -1,6 +1,3 @@
-// todo NOTE: only teh camera from setupTop is active throughout the site.
-
-
 
 function Camera() {
 }

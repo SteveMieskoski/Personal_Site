@@ -26,7 +26,6 @@ var portrait;
 //todo consolidate data items that are not strictly internal into a config object
 
 function MainPageSetup(data, storeCallback) {
-    console.log('begin setuptop init'); // todo remove debug item
     var storeObjects,
         camera = Cameras.CSS(),
         scene = new THREE.Scene(),
@@ -72,9 +71,7 @@ function ContentPagesSetup(storeCallback) {
     if (window.location.search.substring(1) === 'do3D') {
         pagePlane = createPageObjects.createBackgroundSphere();
     }
-    console.log('CONTENT PAGES SETUP'); // todo remove debug item
-    // sceneP.add(lightH);
-    //sceneP.add(lightD);
+
     window.addEventListener('resize', windowResize, false);
     storeObjects = {
         pagePlane: pagePlane,
@@ -88,8 +85,6 @@ function ContentPagesSetup(storeCallback) {
 }
 
 // Begin Setup
-//document.addEventListener('ContactButton', buttonControl.contactButton, true);  //todo remove debug item
-console.log(window.location.search.substring(1));
 store({data: data.dataObject});
 if (window.innerHeight > window.innerWidth) {
     portrait = true;
@@ -103,8 +98,6 @@ $('div#container').addClass('setupPageBase');
 new MainPageSetup(data, store);
 new ContentPagesSetup(store);
 
-
-console.log('store check 1 in setup', store());  // todo remove debug item
 buttonControl.init(store());
 jqueryTop();
 
@@ -127,4 +120,3 @@ urlHandler.handleBackForward(function (varsPage, beginningLocation) {
 });
 
 
-/** requirejs closing for setup.js */

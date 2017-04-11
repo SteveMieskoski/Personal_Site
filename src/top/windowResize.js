@@ -23,14 +23,12 @@ var onWindowResize = function () {
 
             $('div.page').addClass('page-vertical').removeClass('page-horizontal');
             $('canvas').addClass('canvasVertical');
-            //  $('div.page').removeClass('page-horizontal');
             store().camera.aspect = window.innerHeight / window.innerWidth;
             store().renderer.setSize(window.innerHeight, window.innerWidth, true);
         } else {
 
             $('div.page').removeClass('page-vertical').addClass('page-horizontal');
             $('canvas').removeClass('canvasVertical');
-            //   $('div.page').addClass('page-horizontal');
             store().camera.aspect = window.innerWidth / window.innerHeight;
             store().renderer.setSize(window.innerWidth, window.innerHeight, true);
         }
@@ -51,7 +49,6 @@ var onWindowResize = function () {
     store().camera.updateProjectionMatrix();
     store().renderer.setSize(window.innerWidth, window.innerHeight, true);
     store().renderer.render(store().scene, store().camera);
-    // tweenAnimate.Run(objects, targets, scene, camera, renderer, duration, tweenRate, keepId, incrementStop, cb)
     if (window.innerHeight > window.innerWidth) {
         runCreateOrDestroy.AnimateAddPageObjectsVertical(store, store().selectedList, true);
     } else {

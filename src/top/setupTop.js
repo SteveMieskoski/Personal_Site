@@ -49,10 +49,8 @@ SetupTop.prototype = {
     },
 
     createTopControls: function (scene, camera, renderer) {
-        //var controls = new THREE.TrackballControls(camera, renderer.domElement);
         var controls = new THREE.OrbitControls(camera, renderer.domElement);
         controls.target = new THREE.Vector3();
-        //controls.noRotate = true;
         controls.minDistance = 1000;
         controls.maxDistance = 3000;
         controls.minPolarAngle = 0; // radians

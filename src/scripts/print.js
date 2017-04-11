@@ -2,7 +2,7 @@ var $ = require("../lib/jquery.min.js");
 
 module.exports = function () {
     "use strict";
-    console.log('print button clicked'); // todo remove debug item
+
     var dialog = document.createElement('dialog');
     dialog.style.cssText = 'width: 95%; height: 95%; z-index: 1; overflow: visible;  overflow-y: scroll; ';
     dialog.id = 'infoPrintDialog';

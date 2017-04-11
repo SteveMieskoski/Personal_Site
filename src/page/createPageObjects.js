@@ -26,7 +26,7 @@ module.exports = {
             this.mesh2 = new THREE.Object3D();
             for (var i = 0; i < 2; i++) {
                 var geom = new THREE.PlaneGeometry(820, 650, 1, 1);
-                var material = new THREE.MeshPhongMaterial({  //using phong material worked only for first selection.  some setting either was duplicated (i.e. 2 instances of webgl) or another setting changed and darkened the plane.
+                var material = new THREE.MeshPhongMaterial({  //using phong material broke for selections after first. changed to using this instead.
                     color: pageDesign[j].color,
                     specular: pageDesign[j].color,
                     reflectivity: 30,
@@ -56,7 +56,6 @@ module.exports = {
                 '7': {color: 0x95946F, name: 'whyProgramming', image: 'img/mountain_sunrise_two_color_purple.png'},
                 '8': {color: 0x5e699c, name: 'preparation', image: 'img/mountain_sinrise_blue-gray_scale.png'}
             },
-            names = ['mainPageBackground', 'mainPageBackground2'],
             PlaneObjects = [];
 
         for (var j = 0; j < 9; j++) {
@@ -64,7 +63,7 @@ module.exports = {
             for (var i = 0; i < 2; i++) {
                 //var geom = new THREE.SphereGeometry(410, 10, 10);
                 var geom = new THREE.TorusKnotGeometry(200, 70);
-                var material = new THREE.MeshBasicMaterial({  //using phong material worked only for first selection.  some setting either was duplicated (i.e. 2 instances of webgl) or another setting changed and darkened the plane.
+                var material = new THREE.MeshBasicMaterial({  //using phong material broke for selections after first. changed to using this instead.
                     color: pageDesign[j].color,
                     wireframe: true,
                     wireframeLinewidth: 2,
