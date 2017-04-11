@@ -1,7 +1,9 @@
-define([], function () {
+"use strict";
+
+module.exports = function () {
 
     return function (scene, camera, renderer) {
-        "use strict";
+
 
         var controls = new THREE.TrackballControls(camera, renderer.domElement);
 
@@ -16,4 +18,4 @@ define([], function () {
             renderer.render(scene, camera);
         });
     };
-});
+};

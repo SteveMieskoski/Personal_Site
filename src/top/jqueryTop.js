@@ -1,13 +1,23 @@
 //'use strict';
-define(['jquery', 'scripts/runCreateOrDestroy', 'scripts/buttonControl', 'store', 'scripts/print', 'scripts/download', 'scripts/tweenAnimate', 'scripts/contact'], function ($, runCreateOrDestroy, buttonControl, store, print, download, tweenAnimate, contact) {
 
+var $ = require("../lib/jquery.min.js");
 
-    return function (event) {
+var runCreateOrDestroy = require("../scripts/runCreateOrDestroy");
+var buttonControl = require("../scripts/buttonControl");
+var print = require("../scripts/print");
+var download = require("../scripts/download");
+var contact = require("../scripts/contact");
+var store = require('../store');
+var tweenAnimate = require('../scripts/tweenAnimate');
+
+module.exports = function () {
+//    return function (event) {
 
         /**
          * Handle click on Main Menu panel item
          */
         $('div.element').click(function () {
+            console.log('main item clicked: store value = ', store());
             if ($("div.cd-layout__drawer").hasClass("cd-not-visible")) {
                 var selectedId = "div#" + $(this).attr('id');
 
@@ -15,7 +25,7 @@ define(['jquery', 'scripts/runCreateOrDestroy', 'scripts/buttonControl', 'store'
                 store({beginningLocation: false});
                 if (window.innerWidth > window.innerHeight) {
                     console.log(store().selectedList.length); // todo remove debug item
-
+                    console.log('store.objects', store().objects[store().selectedList[store().selectedList.length - 1]])
                     store().scene.add(store().objects[store().selectedList[store().selectedList.length - 1]]);
                     runCreateOrDestroy.AnimateAddPageObjects(store, $(this).attr('id'));
                 } else {
@@ -25,6 +35,11 @@ define(['jquery', 'scripts/runCreateOrDestroy', 'scripts/buttonControl', 'store'
             }
         });
 
+        /*
+         store().objects[
+         store().selectedList[
+         store().selectedList.length - 1]]
+         */
         /**
          * Handle print button
          */
@@ -51,14 +66,14 @@ define(['jquery', 'scripts/runCreateOrDestroy', 'scripts/buttonControl', 'store'
          * Handle skill chart
          */
         var i, jsLevel = 4;
-        if($('div#circleJavascript')){
+        if ($('div#circleJavascript')) {
             console.log('circle javascript');
-            for(i=0; i < jsLevel; i++){
+            for (i = 0; i < jsLevel; i++) {
                 $('div#circleJavascript').append('<div class="circular"></div>')
             }
         }
 
-        function restoreCamera(position, rotation, controlCenter){
+        function restoreCamera(position, rotation, controlCenter) {
             store().camera.position.set(position.x, position.y, position.z);
             store().camera.rotation.set(rotation.x, rotation.y, rotation.z);
             store().controls.center.set(controlCenter.x, controlCenter.y, controlCenter.z);
@@ -70,7 +85,7 @@ define(['jquery', 'scripts/runCreateOrDestroy', 'scripts/buttonControl', 'store'
          *  get action or response behavior with manual trigger [ignore JSlint/hint for this item]
          */
         $('button.testActionBtn').click(function () {
-           // restoreCamera(store().reset.position, store().reset.rotation, store().reset.controlCenter)
+            // restoreCamera(store().reset.position, store().reset.rotation, store().reset.controlCenter)
             $('#contactElement').fadeToggle();
         });
 
@@ -158,6 +173,7 @@ define(['jquery', 'scripts/runCreateOrDestroy', 'scripts/buttonControl', 'store'
 
         });
 
-    };
+   // };
 
-});
+
+}

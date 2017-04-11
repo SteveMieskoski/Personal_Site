@@ -1,5 +1,12 @@
-define(['store', 'scripts/tweenAnimate'], function (store,tweenAnimate) {
+var $ = require("../lib/jquery.min.js");
+
+var store = require("../store");
+var tweenAnimate = require("../scripts/tweenAnimate");
+
+module.export = function () {
     'use strict';
+
+
     return function () {
         var element,
             object,
@@ -75,4 +82,4 @@ define(['store', 'scripts/tweenAnimate'], function (store,tweenAnimate) {
         console.log('contect tween done');
 
     }
-});
+};

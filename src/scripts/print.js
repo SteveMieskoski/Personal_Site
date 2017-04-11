@@ -1,4 +1,6 @@
-define(function () {
+var $ = require("../lib/jquery.min.js");
+
+module.exports = function () {
 
     return function () {
         "use strict";
@@ -43,4 +45,4 @@ define(function () {
         dialog.showModal();
 
     };
-});
+};

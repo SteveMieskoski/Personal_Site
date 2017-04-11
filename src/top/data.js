@@ -1,4 +1,4 @@
-define([], function () {
+
 
     var dataArray = [
         {
@@ -97,9 +97,8 @@ define([], function () {
 
     var dataObject = createDataObject(dataArray);
 
-    var data = {dataArray: dataArray, dataObject: dataObject, reverseId: reverseId};
-    return data;
-})
+    module.exports = {dataArray: dataArray, dataObject: dataObject, reverseId: reverseId};
+
 
 /*
  NEAT QUOTE:

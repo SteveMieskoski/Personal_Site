@@ -1,39 +1,37 @@
-define(['jquery'], function ($) {
+
+var $ = require("../lib/jquery.min.js");
+
+module.exports = function exampleButtonClicked(url) {
+    console.log('print button clicked'); // todo remove debug item
+    var dialog = document.createElement('dialog');
+    dialog.style.cssText = 'width: 95%; height: 95%; z-index: 1; overflow: visible;  overflow-y: scroll; ';
+    dialog.id = 'exampleDialog';
 
 
-    function exampleButtonClicked(url) {
-        console.log('print button clicked'); // todo remove debug item
-        var dialog = document.createElement('dialog');
-        dialog.style.cssText = 'width: 95%; height: 95%; z-index: 1; overflow: visible;  overflow-y: scroll; ';
-        dialog.id = 'exampleDialog';
+    var dialogIframe = document.createElement('iframe');
+    dialogIframe.src = url;
+    dialogIframe.style.cssText = 'width: 95%; height: 95%; z-index: 1; overflow: visible;  overflow-y: scroll; ';
+    dialogIframe.id = 'exampleIframe';
+
+    var closeButton = document.createElement('button');
 
 
-        var dialogIframe = document.createElement('iframe');
-        dialogIframe.src = url;
-        dialogIframe.style.cssText = 'width: 95%; height: 95%; z-index: 1; overflow: visible;  overflow-y: scroll; ';
-        dialogIframe.id = 'exampleIframe';
+    document.getElementById('attachOutputs').appendChild(dialog);
+    document.getElementById('exampleDialog').appendChild(dialogIframe);
 
-        var closeButton = document.createElement('button');
+    var closeButtonScript = [
+        '<button id="closeDialog"  style="position:absolute; right: 2%; top: 2%;">Close</button>',
+        '<script>',
+        'var closeDialog = document.getElementById("closeDialog");',
+        'closeDialog.addEventListener("click", function() {',
+        'exampleDialog.close();',
+        ' });',
+        '</script>'
+    ].join('\n');
 
+    $(dialog).append(closeButtonScript);
 
-        document.getElementById('attachOutputs').appendChild(dialog);
-        document.getElementById('exampleDialog').appendChild(dialogIframe);
+    dialog.showModal();
 
-        var closeButtonScript = [
-            '<button id="closeDialog"  style="position:absolute; right: 2%; top: 2%;">Close</button>',
-            '<script>',
-            'var closeDialog = document.getElementById("closeDialog");',
-            'closeDialog.addEventListener("click", function() {',
-            'exampleDialog.close();',
-            ' });',
-            '</script>'
-        ].join('\n');
+};
 
-        $(dialog).append(closeButtonScript);
-
-        dialog.showModal();
-
-    };
-
-    return exampleButtonClicked;
-});
