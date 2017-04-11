@@ -19,7 +19,7 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, './dist'),
-        publicPath: '',
+        publicPath: './dist',
         filename: '[name]-[chunkhash].min.js'
     },
     devtool: 'source-map',
@@ -28,7 +28,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, './index.ejs'),
             //filename: path.resolve(__dirname, './dist', 'index.html'),
-            filename: path.resolve(__dirname, './dist', 'index.html'),
+            filename: path.resolve(__dirname, 'index.html'),
             inject: true,
             // inject: false,
         }),

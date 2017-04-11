@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 
 
-    <link rel="stylesheet" media="all" href="../src/css/print.css">
-     <link rel="stylesheet" href="../src/css/main.css">
-     <link rel="stylesheet" href="../src/css/material.css">
+    <link rel="stylesheet" media="all" href="./src/css/print.css">
+     <link rel="stylesheet" href="./src/css/main.css">
+     <link rel="stylesheet" href="./src/css/material.css">
     <!-- -->
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
-    <script defer src="../src/lib/material.min.js"></script>
+    <script defer src="./src/lib/material.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
     <!--<script src='https://www.google.com/recaptcha/api.js'></script>-->
 
@@ -21,10 +21,10 @@
 <body>
 
 <!-- ThreeJS libraries -->
-<script src="./three.js"></script>
-<script src="./OrbitControls.js"></script>
-<script src="./CSS3DRenderer.js"></script>
-<script src="./Tween.js"></script>
+<script src="./dist/three.js"></script>
+<script src="./dist/OrbitControls.js"></script>
+<script src="./dist/CSS3DRenderer.js"></script>
+<script src="./dist/Tween.js"></script>
 <!-- ThreeJS libraries end-->
 <!--<script src="lib/Tween.js"></script>-->
 
@@ -45,12 +45,12 @@
 <div id="attachmentPoint" >
     <!-- crude way to do this (tweening would be cleaner, but works and I wanted to implement purely using css-->
     <div class="groupAnimate">
-        <img class=" displayOptionIconLL" src='../img/white_left_lower.png' alt="Breaking Borders Logo" >
-        <img class=" displayOptionIconLU" src='../img/white_left_upper.png' alt="Breaking Borders Logo" >
-        <img class=" displayOptionIconRL" src='../img/right_lower.png' alt="Breaking Borders Logo" >
-        <img class=" displayOptionIconRU" src='../img/white_right_upper.png' alt="Breaking Borders Logo" >
+        <img class=" displayOptionIconLL" src='./img/white_left_lower.png' alt="Breaking Borders Logo" >
+        <img class=" displayOptionIconLU" src='./img/white_left_upper.png' alt="Breaking Borders Logo" >
+        <img class=" displayOptionIconRL" src='./img/right_lower.png' alt="Breaking Borders Logo" >
+        <img class=" displayOptionIconRU" src='./img/white_right_upper.png' alt="Breaking Borders Logo" >
     </div>
-    <img class=" displayOptionIcon" id="Main-Display-Animations" src='../img/ic_cached_white_48px.svg' alt="Breaking Borders Logo" >
+    <img class=" displayOptionIcon" id="Main-Display-Animations" src='./img/ic_cached_white_48px.svg' alt="Breaking Borders Logo" >
     <div class="mdl-tooltip" data-mdl-for="Main-Display-Animations" >
         Show Animation and Display Options
     </div>
@@ -98,7 +98,7 @@
 <div id="printButton"><i class="material-icons" >print</i></div>
 <div class="mdl-tooltip" data-mdl-for="printButton" style="top:10px;">Print Resume</div>
 
-<a id="downloadLink" href="src/page/templates/main.pdf" download="'SteveMieskoskiResume.pdf"><i class="material-icons">file_download</i></a>
+<a id="downloadLink" href="./src/page/templates/main.pdf" download="'SteveMieskoskiResume.pdf"><i class="material-icons">file_download</i></a>
 <div class="mdl-tooltip" data-mdl-for="downloadLink">Download Resume</div>
 
 <!-- would be best to implement contact within an element looking like a normal page item-->
