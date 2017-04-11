@@ -43,3 +43,7 @@ Thumbs.db
 # IDE #
 .idea/
 *.swp
+/bash_scripts/
+/paths
+/server.js
+/index-old.html

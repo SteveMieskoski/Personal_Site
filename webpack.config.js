@@ -27,6 +27,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, './index.ejs'),
+            //filename: path.resolve(__dirname, './dist', 'index.html'),
             filename: path.resolve(__dirname, './dist', 'index.html'),
             inject: true,
             // inject: false,

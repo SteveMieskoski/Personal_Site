@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="lib/jquery.min.js"></script>
+    <title>Title</title>
+    <!-- var data =  { _id: undefined, type: '', topic: '', content: '', keywords: []};
+var actionEl = document.createElement('form');
+
+var inputLabel = document.createElement('span');
+inputLabel.textContent = 'This is an input label';
+inputLabel.style.cssText = "color: white";
+actionEl.appendChild(inputLabel);
+
+var typeInput = document.createElement('input');
+typeInput.type = 'text';
+actionEl.appendChild(typeInput);
+
+$('div#attachmentPoint').append(actionEl); -->
+    <style>
+        .pageItems{
+            font-size: 60px;
+        }
+
+    </style>
+</head>
+<body>
+    <button id="checkDB" class="pageItems">View DB Entries</button>
+    <form>
+        <p><label for="title" class="pageItems">Title</label>
+        <Input type="text" id = "title" name = "title" class="pageItems"/></p>
+
+        <p><label for="id" class="pageItems">Id</label>
+        <Input type="text" id = "id" name = "id" class="pageItems"/></p>
+
+        <p><label for="caption" class="pageItems">Caption</label>
+        <Input type="text" id = "caption" name = "caption" class="pageItems"/></p>
+
+        <p><label for="template" class="pageItems">Template FilePath</label>
+        <Input type="text" id = "template" name = "template" class="pageItems"/></p>
+
+        <p><label for="col" class="pageItems">Column Number</label>
+        <Input type="text" id = "col"  name = "col" class="pageItems"/></p>
+
+        <p><label for="row" class="pageItems">Row Number</label>
+        <Input type="text" id = "row" name = "row"  class="pageItems"/></p>
+
+        <p><label for="content" class="pageItems">Content (items separated by commas)</label>
+        <Input type="text" id = "content" name = "content"  class="pageItems"/></p>
+
+        <p><button type="submit" id="submitForm"  class="pageItems"> Submit</button></p>
+    </form>
+<div id="dbData-attach-point"  class="pageItems"></div>
+<br/>
+<script>
+
+    $('button#checkDB').click(function(){
+        var xhttp;
+        xhttp = new XMLHttpRequest();
+
+
+        xhttp.onreadystatechange = function () {
+            if (xhttp.readyState == 4 && xhttp.status == 200) {
+                console.log('XMLHttpResponse:', xhttp); // todo remove debug item
+                console.log('xhttp response length', xhttp.response.length); // todo remove debug item
+                var arr = JSON.parse( xhttp.response.replace(/'/g, '"') );
+                console.log('arr:', arr); // todo remove debug item
+               var tableContainer = document.createElement('table');
+                var tableHeaderRowItem = document.createElement('tr');
+                var headerLables = ['title', 'id', 'caption', 'template', 'col', 'row', 'content'];
+                for (var i=0; i < headerLables.length; i++){
+                   var headeritem=  document.createElement('th');
+                       headeritem.textContent = headerLables[i];
+                    tableHeaderRowItem.appendChild(headeritem);
+                }
+                tableContainer.appendChild(tableHeaderRowItem);
+
+
+                for(var i=0; i < arr.length; i++){
+                    var rowItem = document.createElement('tr');
+                    var dataItem1 = document.createElement('td');
+                        dataItem1.textContent = arr[i].title;
+                        rowItem.appendChild(dataItem1);
+
+                    var dataItem2 = document.createElement('td');
+                    dataItem2.textContent = arr[i].id;
+                    dataItem2.style.cssText = "width: 200px; text-align: center;";
+                    rowItem.appendChild(dataItem2);
+
+                    var dataItem3 = document.createElement('td');
+                    dataItem3.textContent = arr[i].caption ;
+                    dataItem3.style.cssText = "width: 200px; text-align: center;";
+                    rowItem.appendChild(dataItem3);
+
+                    var dataItem4 = document.createElement('td');
+                    dataItem4.textContent = arr[i].template;
+                    dataItem4.style.cssText = "width: 200px; text-align: center;";
+                    rowItem.appendChild(dataItem4);
+
+                    var dataItem5 = document.createElement('td');
+                    dataItem5.textContent = arr[i].col;
+                    dataItem5.style.cssText = "width: 200px; text-align: center;";
+                    rowItem.appendChild(dataItem5);
+
+                    var dataItem6 = document.createElement('td');
+                    dataItem6.textContent = arr[i].row;
+                    dataItem6.style.cssText = "width: 200px; text-align: center;";
+                    rowItem.appendChild(dataItem6);
+
+                    var dataItem7 = document.createElement('td');
+                    dataItem7.textContent = arr[i].content;
+                    dataItem7.style.cssText = "width: 200px; text-align: center;";
+                    rowItem.appendChild(dataItem7);
+
+                    tableContainer.appendChild(rowItem);
+                }
+                $('div#dbData-attach-point').append(tableContainer);
+            }};
+        xhttp.open("GET", 'https://stark-tundra-18816.herokuapp.com/api/portfolio/data' , false);
+        xhttp.send();
+        });
+
+
+    $('button#submitForm').click(function(){
+        var xhttp;
+        xhttp = new XMLHttpRequest();
+        xhttp.open("GET", 'https://stark-tundra-18816.herokuapp.com/api/portfolio/data' , false);
+        xhttp.send();
+        console.log('XMLHttpResponse:', xhttp.responseText);
+    });
+</script>
+</body>
+</html>
