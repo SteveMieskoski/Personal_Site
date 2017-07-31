@@ -1,6 +1,7 @@
 "use strict";
 
-
+//var THREE = require('three');
+var TWEEN = require('@tweenjs/tween.js');
 
 function TweenObjects() {
 }

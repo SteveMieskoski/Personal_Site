@@ -10,7 +10,7 @@ var createNewPage = require('./createNewPage');
 var removePage = require('./removePage');
 var tweenAnimate = require('./tweenAnimate');
 var background_placer = require('./background_placer');
-
+//var THREE = require('three');
 
 
 function PageCreateAndDestroy() {

@@ -1,5 +1,7 @@
 "use strict";
 
+var THREE = require('three');
+
 module.exports = function () {
 
     return function (scene, camera, renderer) {

@@ -1,3 +1,4 @@
+//var THREE = require('three');
 
 function Camera() {
 }

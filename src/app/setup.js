@@ -20,6 +20,7 @@ var renderers = require("../scripts/renderers");
 var lights = require("../scripts/lights");
 var createNewPage = require("../scripts/createNewPage");
 var removePage = require("../scripts/removePage");
+//var THREE = require('three');
 
 var portrait;
 

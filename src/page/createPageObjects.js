@@ -1,6 +1,7 @@
 "use strict";
 
 var data = require('../top/data');
+//var THREE = require('three');
 
 module.exports = {
     defaultPageBackground: {

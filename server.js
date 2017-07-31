@@ -12,13 +12,14 @@ app.use(express.static(path.join(__dirname, "./node_modules")));
 app.use('/src', express.static(path.join(__dirname, "./src")));
 app.use('/src/css', express.static(path.join(__dirname, "./src/css")));
 app.use('/img', express.static(path.join(__dirname, "./img")));
+app.use('/dist', express.static(path.join(__dirname, "dist")));
 
 app.get('/index.html', function (req, res) {
     res.sendFile(path.join(__dirname, './index.html'));
 });
 
 app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname, './index.html'));
+    res.sendFile(path.join(__dirname, './dist/index.html'));
 });
 
 app.listen(9000);
