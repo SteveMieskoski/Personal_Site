@@ -5,14 +5,16 @@ const _ = require('lodash');
 const $ = require("../lib/jquery.min.js");
 
 export class PersonalSite {
-	constructor(THREE, TWEEN, cssContainerId, dataArray, dataObject, dataReverseIds) {
+	constructor(THREE, TWEEN, cssContainerId, dataArray) {
 		// Initial Setup 
 		this.Threejs = THREE; // capture Three.js as an internal object
 		this.Tweenjs = TWEEN; // capture Tween.js as an internal object
 		this.keepId = null;
 		this.dataArray = dataArray;
-		this.dataObject = dataObject;
-		this.dataReverseIds = dataReverseIds;
+		this.dataTemp = this.derivedDataItems(dataArray);
+
+		this.dataObject = this.dataTemp.dataObject;
+		this.dataReverseIds = this.dataTemp.dataReverseIds;
 		this.portrait = window.innerHeight > window.innerWidth;
 		this.cssContainerId = cssContainerId;
 		this.beginningLocation = "index";
@@ -39,15 +41,61 @@ export class PersonalSite {
 		//	this.mainMenuListener();
 
 
-		this.urlInit();
+		//
+		this.initBrowserNav();
+
 	}
 
 	// TODO FIGURE OUT WHY historyItem  IS SCREED UP WHEN NAVIGATING VIA BACK BUTTON TO HOME PAGE (& ALSO POSSIBLY WHERE MAIN PAGE IS LAST ITEM IN HISTORY) (i.e. when user started site navigation at he home page.
+	derivedDataItems(arrayData) {
+		let holdingVariable = {};
+		let reverseIds = {MainPage: 9999};
+		for (let i = 0; i < arrayData.length; i++) {
+			//var j = arrayData[i].id;
+			arrayData[i].id = i;
+			holdingVariable[i] = arrayData[i];
+			reverseIds[arrayData[i].loc] = i;
+		}
+		console.log('dataObject', holdingVariable, 'reverseIds', reverseIds);
+		return {dataObject: holdingVariable, dataReverseIds: reverseIds};
+
+	}
 
 	//setup Top
 	init() {
 
 		//function start() {
+
+
+		let windowResize = () =>{
+			this.perspectiveCorrect();
+		};
+		let innerTween = this.Tweenjs;
+
+		window.addEventListener('resize', windowResize, false);
+		this.renderer.render(this.scene, this.camera);
+		this.urlInit();
+		/*.then((result) => {
+			if (result === 'MainPage') {
+				this.tweenAnimate(target, 2000)
+					.then(() => {
+
+					});
+			} else {
+				this.initialPageAdd(result);
+			}
+			animate();
+
+			function animate() {
+				requestAnimationFrame(animate);
+				innerTween.update();
+			}
+		});*/
+		this.mainMenuListener();
+	}
+
+	urlInit() {
+		//return new Promise((resolve, reject) => {
 		let target;
 		if (window.innerWidth < window.innerHeight) {
 			target = this.targets.column;
@@ -55,47 +103,48 @@ export class PersonalSite {
 			target = this.targets.table;
 		}
 
+		this.urlHandler.checkInitUrl()
+			.then((vars) => {
+				console.log(vars);
+				let innerTween = this.Tweenjs;
+				this.selectedList = [vars];
+				if (vars === 'MainPage') {
+					this.tweenAnimate(target, 2000)
+						.then(() => {
 
-		let windowResize = this.perspectiveCorrect();
-		let innerTween = this.Tweenjs;
+						});
+				} else {
+					this.initialPageAdd(vars);
+				}
 
-		window.addEventListener('resize', windowResize, false);
-		this.renderer.render(this.scene, this.camera);
-		this.mainMenuListener();
-		this.tweenAnimate(target, 2000)
-			.then(() => {
+				animate();
 
+				function animate() {
+					requestAnimationFrame(animate);
+					innerTween.update();
+				}
 			});
-		animate();
-
-		function animate() {
-			requestAnimationFrame(animate);
-			innerTween.update();
-		}
-
 	}
 
-	urlInit() {
-		this.urlHandler.checkInitUrl(this.dataReverseIds, window.location.search.substring(1), (vars) => {
-			console.log(vars);
-			this.selectedList = [vars];
-			this.initialPageAdd(vars);
-		});
 
+	initBrowserNav() {
 		this.urlHandler.handleBackForward((varsPage, beginningLocation) => {
-			if (beginningLocation == true && this.beginningLocation == true) {
+			if (beginningLocation) {
+				console.log('init url in init browser nav');
+				this.urlHandler.checkInitUrl()
+					.then((result) =>{
+						this.selectedList = [result];
+						this.scene.add(this.objects[this.selectedList[this.selectedList.length - 1]]);
+						this.AnimateAddPage(String(result), false, false);
+					})
 			} else {
-				if (beginningLocation) {
-					this.beginningLocation = true;
-				}
 				this.scene.add(this.objects[this.selectedList[this.selectedList.length - 1]]);
 				this.AnimateAddPage(String(varsPage), false, false);
-				//this.AnimateAddPageObjects(String(varsPage));
 			}
 		}, () => {
+			console.log('rebuild main from urlHandler callback');
 			this.removePageRebuildMain();
 		});
-
 	}
 
 	animateForOrientation(keepId, resized) {
@@ -110,11 +159,9 @@ export class PersonalSite {
 	mainMenuListener() {
 		// listen for click event on a topic panel
 		$('div.element').click((evt) => {
-			console.log(evt);
 			let selectedId = "div#" + $(evt.currentTarget).attr('id');
 			$('div.element').not(selectedId).detach(); // keep the clicked topic panel and remove the rest
 			this.beginningLocation = false; // todo Figure out why this is here.  Believe it is to signify that further click are not from the main menu.
-			console.log(this.objects, this.objects[$(evt.currentTarget).attr('id')]);
 			this.scene.add(this.objects[$(evt.currentTarget).attr('id')]);
 			this.scene.add(this.objects[this.selectedList[this.selectedList.length - 1]]);
 			this.animateForOrientation($(evt.currentTarget).attr('id'), false)

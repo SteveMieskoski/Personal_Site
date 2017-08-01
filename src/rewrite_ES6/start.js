@@ -5,7 +5,8 @@ var data = require('../top/data');
 
 $(document).ready(function(){
 
-	let site = new PersonalSite(THREE, TWEEN, "container", data.dataArray, data.dataObject, data.reverseId);
+	let site = new PersonalSite(THREE, TWEEN, "container", data.dataArray);
 	site.init();
+	//site.urlInit();
 
 });

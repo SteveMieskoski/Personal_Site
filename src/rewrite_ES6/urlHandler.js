@@ -30,18 +30,23 @@ export default class UrlHandler{
 		}
 	}
 
-	checkInitUrl (locationSubstring, callBack) {
+	checkInitUrl (callBack) {
+		return new Promise((resolve, reject) =>{
+			let locationSubstring = window.location.search.substring(1);
+			console.log('checkInitUrl', locationSubstring);
 
-		let sessionStorageInit = JSON.stringify([locationSubstring]);
-		window.sessionStorage.setItem('locationList', sessionStorageInit);
+			let sessionStorageInit = JSON.stringify([locationSubstring]);
+			window.sessionStorage.setItem('locationList', sessionStorageInit);
 
-		if (locationSubstring in this.reverseIds) {
-			if (this.reverseIds[locationSubstring] < 100) {
-				callBack(this.reverseIds[locationSubstring]);
-			} else {
-				callBack('MainPage')
+			if (locationSubstring in this.reverseIds) {
+				if (this.reverseIds[locationSubstring] < 100) {
+					resolve(this.reverseIds[locationSubstring]);
+				} else {
+					resolve('MainPage')
+				}
 			}
-		}
+		})
+
 	}
 
 	handleBackForward (callBackPage, callBackMain) {
@@ -69,8 +74,8 @@ export default class UrlHandler{
 				beginningLocation = true;
 				window.sessionStorage.setItem('locationList', JSON.stringify(locationListArray));
 			}
-				console.log('history item', historyItem);
-			if (historyItem !== 'MainPage') {
+				console.log('history item', historyItem in this.reverseIds);
+			if (historyItem !== 'MainPage' && historyItem in this.reverseIds) {
 				callBackPage(this.reverseIds[historyItem], beginningLocation);
 			} else {
 				console.log('callback main');
