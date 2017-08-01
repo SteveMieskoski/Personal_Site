@@ -1,6 +1,6 @@
 
 
-export default class urlHandler{
+export default class UrlHandler{
 	constructor(dataObject, dataReverseIds){
 		this.reverseIds = dataReverseIds;
 		this.dataObject = dataObject;
@@ -11,14 +11,14 @@ export default class urlHandler{
 
 		sessionHistory = window.sessionStorage.getItem('locationList');
 		locationListArray = JSON.parse(sessionHistory);
-
+		console.log(this.dataObject);
 		if (keepId < 9000) {
-			let locaction = this.dataObject[this.reverseIds[Number(keepId)]].loc;
-			addNewItem = locationListArray.concat([locaction]);
+			let location = this.dataObject[Number(keepId)].loc;
+			addNewItem = locationListArray.concat([location]);
 			window.sessionStorage.setItem('locationList', JSON.stringify(addNewItem));
 
-			stateObj = {location: locaction};
-			history.pushState(stateObj, locaction, '?' + locaction);
+			stateObj = {location: location};
+			history.pushState(stateObj, location, '?' + location);
 
 		} else {
 
@@ -37,8 +37,9 @@ export default class urlHandler{
 
 		if (locationSubstring in this.reverseIds) {
 			if (this.reverseIds[locationSubstring] < 100) {
-
 				callBack(this.reverseIds[locationSubstring]);
+			} else {
+				callBack('MainPage')
 			}
 		}
 	}
@@ -46,9 +47,7 @@ export default class urlHandler{
 	handleBackForward (callBackPage, callBackMain) {
 		let beginningLocation;
 		
-		
-
-		window.addEventListener('popstate', function () {
+		let BackForwardListener = () => {
 			let sessionHistory, locationListArray, historyItem;
 			sessionHistory = window.sessionStorage.getItem('locationList');
 			locationListArray = JSON.parse(sessionHistory);
@@ -70,13 +69,16 @@ export default class urlHandler{
 				beginningLocation = true;
 				window.sessionStorage.setItem('locationList', JSON.stringify(locationListArray));
 			}
-
+				console.log('history item', historyItem);
 			if (historyItem !== 'MainPage') {
 				callBackPage(this.reverseIds[historyItem], beginningLocation);
 			} else {
+				console.log('callback main');
 				callBackMain();
 			}
 
-		});
+		};
+
+		window.addEventListener('popstate', BackForwardListener);
 	}
 };

@@ -23,6 +23,7 @@ module.exports = {
         filename: '[name]-[chunkhash].min.js'
     },
     devtool: 'source-map',
+    target: 'web',
     // profile: true,
     plugins: [
         new HtmlWebpackPlugin({

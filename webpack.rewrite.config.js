@@ -15,7 +15,7 @@ const extractCSS = new ExtractTextPlugin({filename: 'main.css'});
 
 module.exports = {
     entry: {
-        app: './src/app/setup.js'
+        app: './src/rewrite_ES6/start.js'
     },
     output: {
         path: path.resolve(__dirname, './dist'),
@@ -70,7 +70,7 @@ module.exports = {
     },
     module: {
         rules: [
-            {test: /src.*\.js$/, use: {loader: 'babel-loader', options: {presets: ["env"]}}},
+            {test: /src\/rewrite_ES6.*\.js$/, use: {loader: 'babel-loader', options: {presets: ["env"]}}},
             //{test: /src.*\.css$/, use: ['style-loader', 'css-loader']},
             {test: /src\/css.*\.css$/, use: extractCSS.extract({fallback: 'style-loader', use: ['css-loader']})},
             {test: /\.html$/, use: ['html-loader']},

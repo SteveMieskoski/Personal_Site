@@ -1,8 +1,8 @@
 import sceneSetup from "./sceneSetupClass.js";
 import UrlHandler from "./urlHandler.js";
 
-const _ = require('lodash');
-const $ = require("../lib/jquery.min.js");
+var _ = require('lodash');
+var $ = require("../lib/jquery.min.js");
 
 export class PersonalSite {
 	constructor(THREE, TWEEN, cssContainerId, dataArray, dataObject, dataReverseIds) {
@@ -36,19 +36,18 @@ export class PersonalSite {
 		this.pagePlane = this.display.pagePlane;
 
 		this.buttonListeners();
+		this.TemplateButtonListeners();
 		//	this.mainMenuListener();
 
 
 		this.urlInit();
 	}
 
-	// TODO FIGURE OUT WHY historyItem  IS SCREED UP WHEN NAVIGATING VIA BACK BUTTON TO HOME PAGE (& ALSO POSSIBLY WHERE MAIN PAGE IS LAST ITEM IN HISTORY) (i.e. when user started site navigation at he home page.
-
 	//setup Top
 	init() {
 
 		//function start() {
-		let target;
+		var target;
 		if (window.innerWidth < window.innerHeight) {
 			target = this.targets.column;
 		} else {
@@ -56,13 +55,13 @@ export class PersonalSite {
 		}
 
 
-		let windowResize = this.perspectiveCorrect();
+		let windowResize = this.onWindowResize();
 		let innerTween = this.Tweenjs;
 
 		window.addEventListener('resize', windowResize, false);
 		this.renderer.render(this.scene, this.camera);
 		this.mainMenuListener();
-		this.tweenAnimate(target, 2000)
+		this.tweenAnimate(target, 2000, [16, 16])
 			.then(() => {
 
 			});
@@ -76,34 +75,25 @@ export class PersonalSite {
 	}
 
 	urlInit() {
-		this.urlHandler.checkInitUrl(this.dataReverseIds, window.location.search.substring(1), (vars) => {
+		this.urlHandler.checkInitUrl(this.dataReverseIds, window.location.search.substring(1), function (vars) {
 			console.log(vars);
 			this.selectedList = [vars];
 			this.initialPageAdd(vars);
 		});
 
-		this.urlHandler.handleBackForward((varsPage, beginningLocation) => {
+		this.urlHandler.handleBackForward(function (varsPage, beginningLocation) {
 			if (beginningLocation == true && this.beginningLocation == true) {
 			} else {
 				if (beginningLocation) {
 					this.beginningLocation = true;
 				}
 				this.scene.add(this.objects[this.selectedList[this.selectedList.length - 1]]);
-				this.AnimateAddPage(String(varsPage), false, false);
-				//this.AnimateAddPageObjects(String(varsPage));
+				this.AnimateAddPageObjects(String(varsPage));
 			}
-		}, () => {
+		}, function () {
 			this.removePageRebuildMain();
 		});
 
-	}
-
-	animateForOrientation(keepId, resized) {
-		if (window.innerWidth > window.innerHeight) {
-			this.AnimateAddPage(keepId, resized, false);
-		} else {
-			this.AnimateAddPage(keepId, resized, true);
-		}
 	}
 
 	// Button Control
@@ -111,25 +101,31 @@ export class PersonalSite {
 		// listen for click event on a topic panel
 		$('div.element').click((evt) => {
 			console.log(evt);
-			let selectedId = "div#" + $(evt.currentTarget).attr('id');
+			//if ($("div.cd-layout__drawer").hasClass("cd-not-visible")) {
+			var selectedId = "div#" + $(evt.target).attr('id');
+
 			$('div.element').not(selectedId).detach(); // keep the clicked topic panel and remove the rest
 			this.beginningLocation = false; // todo Figure out why this is here.  Believe it is to signify that further click are not from the main menu.
-			console.log(this.objects, this.objects[$(evt.currentTarget).attr('id')]);
-			this.scene.add(this.objects[$(evt.currentTarget).attr('id')]);
-			this.scene.add(this.objects[this.selectedList[this.selectedList.length - 1]]);
-			this.animateForOrientation($(evt.currentTarget).attr('id'), false)
-			// if (window.innerWidth > window.innerHeight) {
-			// 	this.AnimateAddPage($(evt.currentTarget).attr('id'), false, false);
-			// } else {
-			// 	this.AnimateAddPage($(evt.currentTarget).attr('id'), false, true);
-			// }
+			console.log(this.objects, this.objects[$(evt.target).attr('id')]);
+			this.scene.add(this.objects[$(evt.target).attr('id')]);
+			if (window.innerWidth > window.innerHeight) {
+				/*if(_.size(this.selectedList) > 0){
+					this.scene.add(this.objects[this.selectedList[this.selectedList.length - 1]]);
+				} */
+
+				this.AnimateAddPageObjects($(evt.target).attr('id'));
+			} else {
+				//this.scene.add(this.objects[this.selectedList[this.selectedList.length - 1]]);
+				this.AnimateAddPageObjectsVertical($(evt.target).attr('id'));
+			}
+			//}
 		});
 
 		/**
-		 * Handle opening the display examples drawer with buttons to manipulate the orientation of panel elements
+		 * Handle opening the drawer with buttons to manipulate the presentation of the panel elements
 		 */
 		$("#Main-Display-Animations").click(() => {
-			let drawerElement = $("div.cd-layout__drawer-display");
+			var drawerElement = $("div.cd-layout__drawer-display");
 			drawerElement.toggleClass("cd-not-visible").toggleClass("cd-is-visible");
 			if (window.innerWidth < 1024) {
 				drawerElement.toggleClass("drawer-small-screen-display");
@@ -138,7 +134,7 @@ export class PersonalSite {
 		});
 
 		function closeMenuClickVert(event) {
-			let navHeight = Math.floor(window.innerHeight * 0.2),
+			var navHeight = Math.floor(window.innerHeight * 0.2),
 				yPosClick = window.innerHeight - event.clientY,
 				drawerElementVert = $("div.cd-layout__drawer-display");
 
@@ -167,48 +163,39 @@ export class PersonalSite {
 				$('img.displayOptionIcon').removeClass('displayOptionIconArrow');
 			}
 		);
-		// create anonymous closures to preserve 'this' context/value
-		let addPageContent = () => {
-			this.AddPageObjects(this.keepId)
-		};
-		let waitToAdd = () => {
-			setTimeout(addPageContent, 250);
-		};
-		document.addEventListener('AddPageObjects', waitToAdd);
-		// create anonymous closure to preserve 'this' context/value
-		let ContentPageCreated = () => {
-			this.TemplateButtonListeners();
-		};
-		document.addEventListener('ContentPageCreated', ContentPageCreated);
+
+		$('img.displayOptionIcon').on('click', () => {
+
+		});
 	}
 
 	buttonListeners() {
 		document.getElementById('table')
 			.addEventListener('click', (event) => {
-				this.tweenAnimate(this.targets.table, 2000);
+				this.tweenAnimate(this.targets, 2000, [16, 16]);
 			}, false);
 
 		document.getElementById('sphere')
 			.addEventListener('click', (event) => {
-				this.tweenAnimate(this.targets.sphere, 2000);
+				this.tweenAnimate(this.targets, 2000, [16, 16]);
 			}, false);
 
 		document.getElementById('helix')
 			.addEventListener('click', (event) => {
-				this.tweenAnimate(this.targets.helix, 2000);
+				this.tweenAnimate(this.targets, 2000, [16, 16]);
 			}, false);
 
 		document.getElementById('grid')
 			.addEventListener('click', (event) => {
-				this.tweenAnimate(this.targets.grid, 2000);
+				this.tweenAnimate(this.targets, 2000, [16, 16]);
 			}, false);
 	}
 
 	TemplateButtonListeners() {
-		let regex = new RegExp('preparation');
-		let programmingRegex = new RegExp('languages');
+		var regex = new RegExp('preparation');
+		var programmingRegex = new RegExp('languages');
 
-		$('button.template-return-button').click(() => {
+		$('button.template-return-button').click(function () {
 			this.removePageRebuildMain();
 		});
 
@@ -217,32 +204,39 @@ export class PersonalSite {
 			$('div#demo-app-0').click(() => {
 				this.exampleButtonClicked('http://steve-mieskoski-demo-app-2.herokuapp.com');
 			});
+		}
+		if (regex.test(window.location.search.substring(1))) {
 			$('div#demo-app-1').click(() => {
 				this.exampleButtonClicked('http://steve-mieskoski.herokuapp.com/home');
 			});
-		}
-		if (programmingRegex.test(window.location.search.substring(1))) {
-			$('div#circleJavascript').append('<div class="circular"></div>');
-			let JSLevel = document.querySelector('#circleJavascript');
 
-			JSLevel.appendChild('<div class="circular"></div>')
-		}
+			if (programmingRegex.test(window.location.search.substring(1))) {
+				$('div#circleJavascript').append('<div class="circular"></div>');
+				var JSLevel = document.querySelector('#circleJavascript');
 
+				JSLevel.appendChild('<div class="circular"></div>')
+			}
+		}
 	}
 
 	exampleButtonClicked(url) {
-		let dialog = document.createElement('dialog');
+		var dialog = document.createElement('dialog');
 		dialog.style.cssText = 'width: 95%; height: 95%; z-index: 1; overflow: visible;  overflow-y: scroll; ';
 		dialog.id = 'exampleDialog';
-		let dialogIframe = document.createElement('iframe');
+
+
+		var dialogIframe = document.createElement('iframe');
 		dialogIframe.src = url;
 		dialogIframe.style.cssText = 'width: 95%; height: 95%; z-index: 1; overflow: visible;  overflow-y: scroll; ';
 		dialogIframe.id = 'exampleIframe';
-		let closeButton = document.createElement('button');
+
+		var closeButton = document.createElement('button');
+
+
 		document.getElementById('attachOutputs').appendChild(dialog);
 		document.getElementById('exampleDialog').appendChild(dialogIframe);
 
-		let closeButtonScript = [
+		var closeButtonScript = [
 			'<button id="closeDialog"  style="position:absolute; right: 2%; top: 2%;">Close</button>',
 			'<script>',
 			'var closeDialog = document.getElementById("closeDialog");',
@@ -251,21 +245,22 @@ export class PersonalSite {
 			' });',
 			'</script>'
 		].join('\n');
+
 		$(dialog).append(closeButtonScript);
+
 		dialog.showModal();
 
 	}
 
 	// Tween Animate
-	tweenAnimate(targets, duration, keepId, incrementStop) {
+	tweenAnimate(targets, duration, tweenRate, keepId, incrementStop, cb) {
 		return new Promise((resolve, reject) => {
-			let pageAdded = false;
-			let i, counter, tweening, Render, object, target;
+			var i, counter, tweening, Render, object, target;
 			console.log('tween animate"');
 			counter = 0;
 			this.Tweenjs.removeAll();
 			if (incrementStop) {
-				this.rendererP.render(this.sceneP, this.camera);
+				this.RemoveBackground();
 			}
 			for (i = 0; i < this.objects.length; i++) {
 
@@ -289,16 +284,14 @@ export class PersonalSite {
 					}, duration)
 					.easing(this.Tweenjs.Easing.Quadratic.InOut)
 					.start();
+
 			}
 
 			Render = () => {
 				counter++;
-				if (counter > 90 && incrementStop && !pageAdded) {
-					//tweening.stop();
-					pageAdded = true;
-					this.keepId = keepId;
-					let pageCreatedEvent = new Event('AddPageObjects');
-					document.dispatchEvent(pageCreatedEvent);
+				if (counter > 90 && incrementStop) {
+					tweening.stop();
+					this.AddPageObjects(keepId);
 				}
 				this.renderer.render(this.scene, this.camera);
 			};
@@ -309,7 +302,11 @@ export class PersonalSite {
 				.onUpdate(Render)
 				.onComplete(() => {
 					console.log('Tween Complete');
-					resolve(keepId);
+					if (cb !== undefined) {
+						resolve(keepId);
+					} else {
+						resolve();
+					}
 				})
 				.start();
 		})
@@ -317,13 +314,19 @@ export class PersonalSite {
 
 	// runCreateOrDestroy
 	initialPageAdd(keepId) {
-		this.removeSelectedChild(Number(keepId));
-		this.animateForOrientation(keepId, false)
-		// if (window.innerWidth > window.innerHeight) {
-		// 	this.AnimateAddPage(keepId, false, false);
-		// } else {
-		// 	this.AnimateAddPage(keepId, false, true);
-		// }
+		var i;
+		for (i = 0; i < this.scene.children.length; i++) {
+			if (this.scene.children[i].name === Number(keepId)) {
+				this.scene.remove(this.scene.children[i]);
+			}
+		}
+		if (window.innerWidth > window.innerHeight) {
+			this.AnimateAddPageObjects(keepId);
+
+		} else {
+			this.AnimateAddPageObjectsVertical(keepId);
+
+		}
 	}
 
 	/**
@@ -331,13 +334,16 @@ export class PersonalSite {
 	 * and add the HTML and content to fill page background
 	 * */
 	AddPageObjects(keepId) {
+
 		this.urlHandler.checkNavState(keepId);
-		let rendererAttach = document.getElementById('container');
+
+		var rendererAttach = document.getElementById('container');
+
 		this.ClearScene(keepId)
 			.then(
 				this.addPageObjects(keepId, rendererAttach).then(() => {
-					let classes, templatePath;
-					templatePath = this.dataObject[keepId].template;
+					var classes, templatePath;
+					templatePath = this.data[keepId].template;
 					if (this.portrait) {
 						classes = 'page page-vertical';
 					} else {
@@ -346,37 +352,33 @@ export class PersonalSite {
 					this.loadHtmlFile(templatePath, classes);
 				})
 			);
+
 		this.camera.position.z = 1000;
+
 		this.renderer.setSize(window.innerWidth, window.innerHeight, true);
+
 		this.renderer.render(this.scene, this.camera); // to c&p
-		this.perspectiveCorrect(true);
+
+		this.backgroundPlacer();
 	}
 
-	AnimateAddPage(keepId, fromResize, vertical) {
-		let panelPositionList;
-		if (vertical) {
-			panelPositionList = [{x: 1000, y: 0}, {x: 1000, y: -200}, {x: -1000, y: -600}, {
-				x: -1000,
-				y: -200
-			}, {x: -1000, y: 200}, {x: -1000, y: 0}, {x: -1000, y: 400}, {x: -1000, y: -400}];
-		} else {
-			panelPositionList = [{x: 1000, y: 0}, {x: 1000, y: -200}, {x: -1000, y: -600}, {
-				x: -1000,
-				y: -200
-			}, {x: -1000, y: 200}, {x: -1000, y: 0}, {x: -1000, y: 400}, {x: -1000, y: -400}];
-		}
+	AnimateAddPageObjects(keepId, fromResize) {
 
 		this.ClearScene(keepId);
 
-		let objectfly,
+		var i, j, objectfly,
 			selectFly = [],
-			panelPositions = [];
+			panelPositions = [],
+			panelPositionList = [{x: 1000, y: 0}, {x: 1000, y: -200}, {x: -1000, y: -600}, {
+				x: -1000,
+				y: -200
+			}, {x: -1000, y: 200}, {x: -1000, y: 0}, {x: -1000, y: 400}, {x: -1000, y: -400}];
 
-		for (let j = panelPositionList.length - 1; j >= 0; j--) {
+		for (j = panelPositionList.length - 1; j >= 0; j--) {
 			panelPositions.push(panelPositionList.splice(j, 1)[0]);
 		}
 
-		for (let i = 0; i < this.objects.length; i++) {
+		for (i = 0; i < this.objects.length; i++) {
 			objectfly = new this.Threejs.Object3D();
 			if (i === Number(keepId)) {
 				objectfly.position.z = 750;
@@ -393,27 +395,89 @@ export class PersonalSite {
 
 
 		if (fromResize) {
-			this.tweenAnimate(selectFly, 2000, keepId, false);
+
+			this.tweenAnimate(selectFly, 2000, [6, 6], keepId, false);
 		} else {
-			this.tweenAnimate(selectFly, 2000, keepId, true);
+			this.tweenAnimate(selectFly, 2000, [6, 6], keepId, true);
 		}
 
 	}
 
 
+	AnimateAddPageObjectsVertical(keepId, fromResize) {
+		this.ClearScene(keepId);
+		var i, j, xFly, objectfly, picked,
+			selectFly = [],
+			panelPositions = [],
+			panelPositionList = [{x: -1000, y: -400}, {x: -1000, y: 0}, {x: -1000, y: 200}, {
+				x: -1000,
+				y: 400
+			}, {x: 1000, y: -400}, {x: 1000, y: 0}, {x: 1000, y: 200}, {x: 1000, y: 400}, {x: 1000, y: -600}];
+//
+		for (j = panelPositionList.length - 1; j >= 0; j--) {
+			picked = Math.floor(Math.random() * panelPositionList.length);
+			panelPositions.push(panelPositionList.splice(picked, 1)[0]);
+		}
+
+		for (i = 0; i < this.objects.length; i++) {
+			objectfly = new this.Threejs.Object3D();
+			if (i === Number(keepId)) {
+				objectfly.position.z = 750;
+				objectfly.rotation.y = Math.PI * 2;
+
+			} else {
+				xFly = Math.round(Math.random() * 2 - 1);
+				if (Math.abs(xFly) === 0) {
+					xFly = -1;
+				}
+				objectfly.position.x = -290;
+				objectfly.position.y = -i * 180 + 500;
+				objectfly.position.z = Math.random() - 1000;
+
+			}
+			selectFly.push(objectfly);
+		}
+
+		if (fromResize) {
+			this.tweenAnimate(selectFly, 2000, [6, 6], keepId, false);
+		} else {
+			this.tweenAnimate(selectFly, 2000, [6, 6], keepId, true);
+		}
+	}
+
+	RemoveBackground() {
+		this.rendererP.render(this.sceneP, this.camera);
+	}
+
+	/**
+	 * return (add back) the objects that made up the top level animations and navigation. (i.e. Remove Page with Content)
+	 * */
+	removePageRebuildMain() {
+		var varyTransitions = [this.targets.table, this.targets.sphere, this.targets.helix, this.targets.grid],
+			transition = varyTransitions[Math.floor(Math.random()) + Math.floor(Math.random()) + Math.floor(Math.random())];
+
+
+		this.RebuildObjects();
+
+		this.urlHandler.checkNavState();
+
+		this.RebuildMainPage();
+
+		this.tweenAnimate(transition, 500, [6, 6]);
+	}
+
 	// create new page
 	ClearScene(keepId, returnResult) {
 		return new Promise((resolve, reject) => {
-			if (_.size(this.selectedList) > 0) {
-				if (this.selectedList[this.selectedList.length - 1] !== keepId) {
-					this.removeSelectedChild('html');
-					this.removeSceneChildren(this.sceneP);
+			if (this.selectedList.hasOwnProperty('length')) {
+				if (this.selectedList.length > 0) {
+					if (this.selectedList[this.selectedList.length - 1] !== keepId) {
+						this.ClearableElementsPresent(keepId);
+					}
+				} else {
 					this.selectedList = [keepId];
 				}
-			} else {
-				this.selectedList = [keepId];
 			}
-
 			if (returnResult) {
 				resolve(keepId);
 			} else {
@@ -423,11 +487,32 @@ export class PersonalSite {
 
 	}
 
+	ClearableElementsPresent(keepId) {
+		var i;
+
+		for (i = 0; i < this.scene.children.length; i++) {
+			if (this.scene.children[i].name === 'html') {
+				this.scene.remove(this.scene.children[i]);
+			}
+		}
+		for (i = this.sceneP.children.length - 1; i >= 0; i--) {
+			this.sceneP.remove(this.sceneP.children[i]);
+		}
+		this.selectedList = [keepId];
+	}
+
 	addPageObjects(keepId, Attach) {
 		return new Promise((resolve, reject) => {
-			this.removeSelectedChild(Number(keepId));
+			var i;
+
+			for (i = 0; i < this.scene.children.length; i++) {
+				if (this.scene.children[i].name === Number(keepId)) {
+					this.scene.remove(this.scene.children[i]);
+				}
+			}
+
 			$('span.page-title-name').addClass('hide-element');
-			for (let i = 0; i < this.pagePlane[keepId].children.length; i++) {
+			for (i = 0; i < this.pagePlane[keepId].children.length; i++) {
 				this.sceneP.add(this.pagePlane[keepId].children[i].clone(true));
 			}
 
@@ -442,26 +527,89 @@ export class PersonalSite {
 
 	}
 
+	addHtmlContent(keepId, callBack) {
+		var classes, templatePath;
+		templatePath = this.data[keepId].template;
+		if (this.portrait) {
+			classes = 'page page-vertical';
+		} else {
+			classes = 'page page-horizontal';
+		}
+		callBack(templatePath, classes, this.scene, this.camera, this.renderer, this.portrait);
+	}
+
+	resetCamera(position, rotation, controlCenter) {
+		this.camera.position.set(position.x, position.y, position.z);
+		this.camera.rotation.set(rotation.x, rotation.y, rotation.z);
+		//this.controls.center.set(controlCenter.x, controlCenter.y, controlCenter.z);
+		//this.controls.update();
+		this.renderer.render();
+	}
+
+	// background placer
+	backgroundPlacer() {
+		this.portrait = window.innerHeight > window.innerWidth;
+		this.cameraP.aspect = window.innerWidth / window.innerHeight;
+		this.cameraP.updateProjectionMatrix();
+		this.rendererP.setSize(window.innerWidth, window.innerHeight);
+
+		if ($('canvas').hasClass('currentPageDisplay')) {
+			if (window.innerHeight > window.innerWidth) {
+				$('span.better-view-message').detach();
+
+				$('div.page').addClass('page-vertical').removeClass('page-horizontal');
+				$('canvas').addClass('canvasVertical');
+				this.camera.aspect = window.innerHeight / window.innerWidth;
+				this.renderer.setSize(window.innerHeight, window.innerWidth, true);
+			}
+			else {
+				$('div.page').removeClass('page-vertical').addClass('page-horizontal');
+				$('canvas').removeClass('canvasVertical');
+				this.camera.aspect = window.innerWidth / window.innerHeight;
+				this.renderer.setSize(window.innerWidth, window.innerHeight, true);
+			}
+			this.camera.position.z = 1000;
+			this.camera.updateProjectionMatrix();
+			this.rendererP.render(this.sceneP, this.camera);
+		} else {
+			this.camera.updateProjectionMatrix();
+			this.rendererP.render(this.sceneP, this.camera);
+		}
+		if ($('canvas').hasClass('currentPageDisplay')) {
+			this.camera.position.z = 1000;
+		}
+		this.camera.aspect = window.innerWidth / window.innerHeight;
+		this.camera.updateProjectionMatrix();
+		this.renderer.setSize(window.innerWidth, window.innerHeight, true);
+		this.renderer.render(this.scene, this.camera);
+	};
+
 	// create page content
-	loadHtmlFile(filename, classes) {
+	loadHtmlFile(filename) {
+		//, this.scene, this.camera, this.renderer, this.portrait
 		if (this.portrait === undefined) {
 			this.portrait = window.innerHeight > window.innerWidth;
 		}
-		let xmlRequest,
+		var xmlRequest,
 			pageElement = document.createElement('div');
 		pageElement.className = classes;
 		xmlRequest = new XMLHttpRequest();
-		xmlRequest.onreadystatechange = () => {
+
+		xmlRequest.onreadystatechange = function () {
+
 			if (xmlRequest.readyState === 4 && xmlRequest.status === 200) {
+
 				$(pageElement).html(xmlRequest.responseText);
-				let toggleButton = document.createElement('button');
+
+				var toggleButton = document.createElement('button');
 				toggleButton.textContent = 'Return';
 				toggleButton.className = 'template-return-button mdl-button-return  mdl-js-button mdl-js-ripple-effect';
+
 				pageElement.querySelector('div.button-attach').appendChild(toggleButton);
 			}
 
-			xmlRequest.onload = () => {
-				let object = new this.Threejs.CSS3DObject(pageElement);
+			xmlRequest.onload = function () {
+				var object = new this.Threejs.CSS3DObject(pageElement);
 				object.position.x = 0;
 				object.position.y = 0;
 				object.position.z = 10;
@@ -475,9 +623,11 @@ export class PersonalSite {
 		xmlRequest.open('GET', filename, true);
 		xmlRequest.send();
 
-		let afterLoadendSetups = () => {
+		xmlRequest.addEventListener('loadend', afterLoadendSetups, false);
+
+		function afterLoadendSetups() {
 			if (this.portrait) {
-				let landscapeMessage = document.createElement('span');
+				var landscapeMessage = document.createElement('span');
 				landscapeMessage.textContent = 'To better view site rotate to landscape ';
 				landscapeMessage.className = 'better-view-message';
 				if (pageElement.querySelector('div.messageAttach') !== null) {
@@ -485,54 +635,45 @@ export class PersonalSite {
 				}
 			}
 			// dispatch event to button control to attach listeners to template buttons
-			let pageCreatedEvent = new Event('ContentPageCreated');
+			var pageCreatedEvent = new Event('ContentPageCreated');
 			document.dispatchEvent(pageCreatedEvent);
-		};
-
-		xmlRequest.addEventListener('loadend', afterLoadendSetups, false);
+		}
 	}
 
-	/**
-	 * return (add back) the objects that made up the top level animations and navigation. (i.e. Remove Page with Content)
-	 * */
-	removePageRebuildMain() {
-		let varyTransitions = [this.targets.table, this.targets.sphere, this.targets.helix, this.targets.grid],
-			transition = varyTransitions[Math.floor(Math.random()) + Math.floor(Math.random()) + Math.floor(Math.random())];
-		this.removeSceneChildren(this.sceneP);
+	// remove page
+	RebuildObjects() {
+		var i;
+		for (i = this.sceneP.children.length - 1; i >= 0; i--) {
+			this.sceneP.remove(this.sceneP.children[i]);
+		}
+
 		$('span.page-title-name').removeClass('hide-element');
 		$("canvas").remove();
 		this.rendererP.render(this.sceneP, this.camera);
-		this.urlHandler.checkNavState();
-		let replaceObject = Object.assign({}, this.objects);
+	}
+
+	RebuildMainPage() {
+		var i,
+			replaceObject = Object.assign({}, this.objects);
+
 		$('div.primary-view').removeClass('primary-view');
 		$('div.navItems >  button.togglePage').remove();
-		this.removeSceneChildren(this.scene);
-		for (let i = 0; i < this.objects.length; i++) {
+		for (i = this.scene.children.length - 1; i >= 0; i--) {
+			this.scene.remove(this.scene.children[i]);
+		}
+
+		for (i = 0; i < this.objects.length; i++) {
 			replaceObject[i].position.x = -1800;
 			replaceObject[i].position.y = Math.random() * 50 - 425;
 			replaceObject[i].position.z = -3300;
+
 			this.scene.add(replaceObject[i]);
 		}
 		this.camera.position.z = 1000;
-		this.tweenAnimate(transition, 500, [6, 6]);
-	}
-
-	removeSelectedChild(match) {
-		for (let i = 0; i < this.scene.children.length; i++) {
-			if (this.scene.children[i].name === match) {
-				this.scene.remove(this.scene.children[i]);
-			}
-		}
-	}
-
-	removeSceneChildren(scene) {
-		for (let i = scene.children.length - 1; i >= 0; i--) {
-			scene.remove(scene.children[i]);
-		}
 	}
 
 
-	perspectiveCorrect(noAnimate) {
+	onWindowResize() {
 		console.log('window resize');
 		this.portrait = window.innerHeight > window.innerWidth;
 		this.cameraP.aspect = window.innerWidth / window.innerHeight;
@@ -562,6 +703,7 @@ export class PersonalSite {
 			this.rendererP.render(this.sceneP, this.camera);
 		}
 
+
 		if ($('canvas').hasClass('currentPageDisplay')) {
 			this.camera.position.z = 1000;
 		}
@@ -570,14 +712,12 @@ export class PersonalSite {
 		this.camera.updateProjectionMatrix();
 		this.renderer.setSize(window.innerWidth, window.innerHeight, true);
 		this.renderer.render(this.scene, this.camera);
-		if (!noAnimate || noAnimate === undefined) {
-			this.animateForOrientation(this.selectedList, true);
-			// if (window.innerHeight > window.innerWidth) {
-			// 	this.AnimateAddPage(this.selectedList, true, false);
-			// } else {
-			// 	this.AnimateAddPage(this.selectedList, true, true);
-			// }
+		if (window.innerHeight > window.innerWidth) {
+			this.AnimateAddPageObjectsVertical(this.selectedList, true);
+		} else {
+			this.AnimateAddPageObjects(this.selectedList, true);
 		}
+
 
 	};
 

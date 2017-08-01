@@ -2,6 +2,7 @@
 'use strict';
 
 var $ = require("../lib/jquery.min.js");
+var rsvp = require('rsvp');
 
 var data = require("../top/data");
 var setupTop = require("../top/setupTop");
@@ -35,16 +36,6 @@ function MainPageSetup(data, storeCallback) {
         renderer = renderers.CSS(document.getElementById('container')),
         controls = -1,
         camToSave = {};
-    if (window.location.search.substring(1) === 'do3D') {
-        var ExperNotice = document.createElement('h2');
-        ExperNotice.textContent = 'This is Experimental! To Reset Views (Mostly) Use Reset Button in Animate Display Menu! ';
-        var attachNotice = document.querySelector('#printButton');
-        attachNotice.appendChild(ExperNotice);
-        controls = setupTop.createTopControls(scene, camera, renderer);
-        camToSave.position = camera.position.clone();
-        camToSave.rotation = camera.rotation.clone();
-        camToSave.controlCenter = controls.center.clone();
-    }
 
     setupTop.startTopAnimation(objects, targets, scene, camera, renderer, controls, tweenAnimate, windowResize);
     storeObjects = {
@@ -69,9 +60,7 @@ function ContentPagesSetup(storeCallback) {
         lightH = lights.HemisphereLight(),
         lightD = lights.DirectionalLight(),
         rendererP = renderers.WebGl();
-    if (window.location.search.substring(1) === 'do3D') {
-        pagePlane = createPageObjects.createBackgroundSphere();
-    }
+
 
     window.addEventListener('resize', windowResize, false);
     storeObjects = {

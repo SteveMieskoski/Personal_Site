@@ -1,6 +1,8 @@
 export default class SceneSetupClass {
 	constructor(THREEJS, cssContainerId, dataArray, dataObject) {
 		this.Threejs = THREEJS;
+		this.dataArray = dataArray;
+		this.dataObject = dataObject;
 
 		this.scene = new this.Threejs.Scene();
 		this.sceneP = new this.Threejs.Scene();
@@ -10,9 +12,9 @@ export default class SceneSetupClass {
 		this.rendererP = this.WebglRenderer();
 		this.lightH = this.hemisphereLight();
 		this.lightD = this.directionalLight();
-		this.objects = this.createTopElements (dataArray, this.scene);
-		this.targets = this.topDesign(dataArray);
-		this.pagePlane = this.createBackgroundPlane(dataArray, dataObject);
+		this.objects = this.createTopElements (this.scene);
+		this.targets = this.topDesign();
+		this.pagePlane = this.createBackgroundPlane();
 
 		return this;
 	}
@@ -161,18 +163,18 @@ export default class SceneSetupClass {
 		return shadowLight;
 	}
 
-	createTopElements (dataArray, scene) {
+	createTopElements (scene) {
 		let i, element, object, objects = [];
 
-		for (i = 0; i < dataArray.length; i++) {
+		for (i = 0; i < this.dataArray.length; i++) {
 
-			element = this.createPanel(dataArray[i]);
+			element = this.createPanel(this.dataArray[i]);
 
 			object = new this.Threejs.CSS3DObject(element);
 			object.position.x = Math.random() * 4000 - 2000;
 			object.position.y = Math.random() * 4000 - 2000;
 			object.position.z = Math.random() * 1000 + 3000;
-			object.name = dataArray[i].id;
+			object.name = this.dataArray[i].id;
 			scene.add(object);
 
 			objects.push(object);
@@ -213,13 +215,13 @@ export default class SceneSetupClass {
 		return element;
 	}
 
-	topDesign (dataArray) {
+	topDesign () {
 		let targets = {};
-		targets.table = this.tableDesign(dataArray);
-		targets.helix = this.helixDesign(dataArray);
-		targets.grid = this.gridDesign(dataArray);
-		targets.sphere = this.sphereDesign(dataArray);
-		targets.column = this.columnDesign(dataArray);
+		targets.table = this.tableDesign(this.dataArray);
+		targets.helix = this.helixDesign(this.dataArray);
+		targets.grid = this.gridDesign(this.dataArray);
+		targets.sphere = this.sphereDesign(this.dataArray);
+		targets.column = this.columnDesign(this.dataArray);
 
 		return targets;
 	}
@@ -307,16 +309,16 @@ export default class SceneSetupClass {
 		return columnTarget;
 	}
 
-	createBackgroundPlane (dataArray, dataObject) {
+	createBackgroundPlane () {
 		let	PlaneObjects = [];
-
-		for (var j = 0; j < dataArray.length; j++) {
+		console.log(this.dataObject);
+		for (var j = 0; j < this.dataArray.length; j++) {
 			this.mesh2 = new this.Threejs.Object3D();
 			for (var i = 0; i < 2; i++) {
 				var geom = new this.Threejs.PlaneGeometry(820, 650, 1, 1);
 				var material = new this.Threejs.MeshPhongMaterial({  //using phong material broke for selections after first. changed to using this instead.
-					color: dataObject[j].color,
-					specular: dataObject[j].color,
+					color: this.dataObject[j].color,
+					specular: this.dataObject[j].color,
 					reflectivity: 30,
 					transparent: true,
 					opacity: 0.3
@@ -324,8 +326,8 @@ export default class SceneSetupClass {
 				var bkgndItem = new this.Threejs.Mesh(geom, material);
 				bkgndItem.position.set(0, 0, 0);
 				bkgndItem.rotation.set(0, -0.2, 0);
-				bkgndItem.name = dataObject[j].name;
-				this.mesh2.name = dataObject[j].name;
+				bkgndItem.name = this.dataObject[j].name;
+				this.mesh2.name = this.dataObject[j].name;
 				this.mesh2.add(bkgndItem);
 			}
 			PlaneObjects.push(this.mesh2);
