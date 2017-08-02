@@ -63,39 +63,16 @@ export class PersonalSite {
 
 	//setup Top
 	init() {
-
-		//function start() {
-
-
 		let windowResize = () =>{
 			this.perspectiveCorrect();
 		};
-		let innerTween = this.Tweenjs;
-
 		window.addEventListener('resize', windowResize, false);
 		this.renderer.render(this.scene, this.camera);
 		this.urlInit();
-		/*.then((result) => {
-			if (result === 'MainPage') {
-				this.tweenAnimate(target, 2000)
-					.then(() => {
-
-					});
-			} else {
-				this.initialPageAdd(result);
-			}
-			animate();
-
-			function animate() {
-				requestAnimationFrame(animate);
-				innerTween.update();
-			}
-		});*/
 		this.mainMenuListener();
 	}
 
 	urlInit() {
-		//return new Promise((resolve, reject) => {
 		let target;
 		if (window.innerWidth < window.innerHeight) {
 			target = this.targets.column;
@@ -165,11 +142,6 @@ export class PersonalSite {
 			this.scene.add(this.objects[$(evt.currentTarget).attr('id')]);
 			this.scene.add(this.objects[this.selectedList[this.selectedList.length - 1]]);
 			this.animateForOrientation($(evt.currentTarget).attr('id'), false)
-			// if (window.innerWidth > window.innerHeight) {
-			// 	this.AnimateAddPage($(evt.currentTarget).attr('id'), false, false);
-			// } else {
-			// 	this.AnimateAddPage($(evt.currentTarget).attr('id'), false, true);
-			// }
 		});
 
 		/**
@@ -303,17 +275,19 @@ export class PersonalSite {
 
 	}
 
-	// Tween Animate
+	// Animate the panels on the screen
 	tweenAnimate(targets, duration, keepId, incrementStop) {
 		return new Promise((resolve, reject) => {
 			let pageAdded = false;
 			let i, counter, tweening, Render, object, target;
 			console.log('tween animate"');
-			counter = 0;
+			counter = 0; // track iterations to begin loading content before tween completes
 			this.Tweenjs.removeAll();
 			if (incrementStop) {
 				this.rendererP.render(this.sceneP, this.camera);
 			}
+
+			// distribute and associate objects with particular end (target) location
 			for (i = 0; i < this.objects.length; i++) {
 
 				object = this.objects[i];
@@ -366,21 +340,16 @@ export class PersonalSite {
 	initialPageAdd(keepId) {
 		this.removeSelectedChild(Number(keepId));
 		this.animateForOrientation(keepId, false)
-		// if (window.innerWidth > window.innerHeight) {
-		// 	this.AnimateAddPage(keepId, false, false);
-		// } else {
-		// 	this.AnimateAddPage(keepId, false, true);
-		// }
 	}
 
 	/**
-	 * remove objects that make up the top level animations and navigation. (i.e. Add Page with Content)
+	 * remove objects that make up the form the previously selected panel. (i.e. Add Page with Content)
 	 * and add the HTML and content to fill page background
 	 * */
 	AddPageObjects(keepId) {
 		this.urlHandler.checkNavState(keepId);
 		let rendererAttach = document.getElementById('container');
-		this.ClearScene(keepId)
+		this.ClearScene(keepId) // remove scene items that make up the the displayed page
 			.then(
 				this.addPageObjects(keepId, rendererAttach).then(() => {
 					let classes, templatePath;
@@ -399,6 +368,49 @@ export class PersonalSite {
 		this.perspectiveCorrect(true);
 	}
 
+	// checks and manipulations to clean up the items currently making up the displayed page
+	ClearScene(keepId, returnResult) {
+		return new Promise((resolve, reject) => {
+			if (_.size(this.selectedList) > 0) { // check if selected list has content.
+				if (this.selectedList[this.selectedList.length - 1] !== keepId) { // if the selected page is the current page do nothing.
+					this.removeSelectedChild('html'); // run through css scene and remove all objects related to a displayed page
+					this.removeSceneChildren(this.sceneP); // run through the 3d scene and remove all objects that make up the displayed page background/frame
+					this.selectedList = [keepId];
+				}
+			} else { // if selected list does not have content add the id of the currently selected object
+				this.selectedList = [keepId];
+			}
+
+			if (returnResult) {
+				resolve(keepId);
+			} else {
+				resolve();
+			}
+		})
+
+	}
+
+	addPageObjects(keepId, Attach) {
+		return new Promise((resolve, reject) => {
+			this.removeSelectedChild(Number(keepId)); // run through the css scene and remove the panel related to the currently selected page
+			$('span.page-title-name').addClass('hide-element');
+			for (let i = 0; i < this.pagePlane[keepId].children.length; i++) {
+				this.sceneP.add(this.pagePlane[keepId].children[i].clone(true));// add the object that makes up the displayed page background/frame to the 3d scene
+			}
+
+			this.sceneP.add(this.lightD.clone(true));
+			this.rendererP.render(this.sceneP, this.camera); // render the 3d scene
+			this.rendererP.domElement.className = 'currentPageDisplay';
+			Attach.appendChild(this.rendererP.domElement); // attach the 3d scene to the overall page.
+			$("canvas").addClass('currentPageDisplay');  // todo investigate what this is doing/ why it is here?
+
+			resolve(keepId);
+		})
+
+	}
+
+
+
 	AnimateAddPage(keepId, fromResize, vertical) {
 		let panelPositionList;
 		if (vertical) {
@@ -413,8 +425,9 @@ export class PersonalSite {
 			}, {x: -1000, y: 200}, {x: -1000, y: 0}, {x: -1000, y: 400}, {x: -1000, y: -400}];
 		}
 
-		this.ClearScene(keepId);
+		this.ClearScene(keepId);// clean up the items currently making up the displayed page
 
+		// create the tween targets for the selected panel and the non-selected elements
 		let objectfly,
 			selectFly = [],
 			panelPositions = [];
@@ -438,58 +451,23 @@ export class PersonalSite {
 			selectFly.push(objectfly);
 		}
 
-
+		// run the tween for the panel elements from their current position to their final position
 		if (fromResize) {
+			// don't create/add a new page to display
 			this.tweenAnimate(selectFly, 2000, keepId, false);
 		} else {
+			// don't create/replace the page displayed
 			this.tweenAnimate(selectFly, 2000, keepId, true);
 		}
 
 	}
 
 
-	// create new page
-	ClearScene(keepId, returnResult) {
-		return new Promise((resolve, reject) => {
-			if (_.size(this.selectedList) > 0) {
-				if (this.selectedList[this.selectedList.length - 1] !== keepId) {
-					this.removeSelectedChild('html');
-					this.removeSceneChildren(this.sceneP);
-					this.selectedList = [keepId];
-				}
-			} else {
-				this.selectedList = [keepId];
-			}
 
-			if (returnResult) {
-				resolve(keepId);
-			} else {
-				resolve();
-			}
-		})
 
-	}
 
-	addPageObjects(keepId, Attach) {
-		return new Promise((resolve, reject) => {
-			this.removeSelectedChild(Number(keepId));
-			$('span.page-title-name').addClass('hide-element');
-			for (let i = 0; i < this.pagePlane[keepId].children.length; i++) {
-				this.sceneP.add(this.pagePlane[keepId].children[i].clone(true));
-			}
 
-			this.sceneP.add(this.lightD.clone(true));
-			this.rendererP.render(this.sceneP, this.camera);
-			this.rendererP.domElement.className = 'currentPageDisplay';
-			Attach.appendChild(this.rendererP.domElement);
-			$("canvas").addClass('currentPageDisplay');
-
-			resolve(keepId);
-		})
-
-	}
-
-	// create page content
+	// load the html file that makes up the page content of the selected page
 	loadHtmlFile(filename, classes) {
 		if (this.portrait === undefined) {
 			this.portrait = window.innerHeight > window.innerWidth;
@@ -508,6 +486,7 @@ export class PersonalSite {
 			}
 
 			xmlRequest.onload = () => {
+				// create a CSS3D object to embed the loaded page content
 				let object = new this.Threejs.CSS3DObject(pageElement);
 				object.position.x = 0;
 				object.position.y = 0;
@@ -619,11 +598,6 @@ export class PersonalSite {
 		this.renderer.render(this.scene, this.camera);
 		if (!noAnimate || noAnimate === undefined) {
 			this.animateForOrientation(this.selectedList, true);
-			// if (window.innerHeight > window.innerWidth) {
-			// 	this.AnimateAddPage(this.selectedList, true, false);
-			// } else {
-			// 	this.AnimateAddPage(this.selectedList, true, true);
-			// }
 		}
 
 	};
