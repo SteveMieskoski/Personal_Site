@@ -101,14 +101,23 @@ ButtonControl.prototype = {
             // If preparation page template add click listener for demo-app-0 dialog
             if (regex.test(window.location.search.substring(1))) {
                 $('div#demo-app-0').click(function () {
-                    displayFrame('http://steve-mieskoski-demo-app-2.herokuapp.com');
-                });
-            }
-            if (regex.test(window.location.search.substring(1))) {
-                $('div#demo-app-1').click(function () {
-                    displayFrame('http://steve-mieskoski.herokuapp.com/home');
+                    displayFrame('http://jhuntr.com');
                 });
 
+	            $('div#demo-app-1').click(function () {
+		            displayFrame('http://www.vrpassport.io');
+	            });
+
+	            $('div#demo-app-2').click(function () {
+		            displayFrame('https://stevemieskoski.github.io/TriviaGame/');
+	            });
+
+	            $('div#demo-app-2_1').click(function () {
+		            displayFrame('https://stevemieskoski.github.io/TriviaGame/');
+	            });
+
+            }
+            if (regex.test(window.location.search.substring(1))) {
                 if (programmingRegex.test(window.location.search.substring(1))) {
                     $('div#circleJavascript').append('<div class="circular"></div>');
                     var JSLevel = document.querySelector('#circleJavascript');

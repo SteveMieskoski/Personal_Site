@@ -543,6 +543,22 @@ div#contactButton:focus{
     outline: none;
     border: 0;
 }
+
+div#viewButton {
+    display: block;
+    position: absolute;
+    top: 8px;
+    left: 150px;
+    width: 24px;
+    height: 24px;
+    color: white;
+    cursor: default;
+}
+
+div#viewButton:focus{
+    outline: none;
+    border: 0;
+}
 /* ========== Animating Display Option Drawer Icon with CSS ========== */
 
 

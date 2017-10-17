@@ -14,7 +14,18 @@
             row: 1
         },
         {
-            title: "Programming Experience",
+	        title: "Projects",
+	        loc: 'programming',
+	        name: 'programming',
+	        icon: 'code',
+	        id: 1,
+	        color: 0x34c497,
+	        caption: 'A showcase of a sort.',
+	        template: './src/page/templates/preparation.html',
+	        col: 1,
+	        row: 2
+
+            /*title: "Programming Experience",
             loc: 'programming',
             name: 'programming',
             icon: 'code',
@@ -23,7 +34,7 @@
             caption: 'What I have built and know.',
             template: './src/page/templates/programming.html ',
             col: 1,
-            row: 2
+            row: 2*/
         },
         {
             title: "Education", // keep color
@@ -38,7 +49,17 @@
             row: 1
         },
         {
-            title: "Past Career", // keep color
+	        title: "Languages", // keep color
+	        loc: 'languages',
+	        name: 'languages',
+	        icon: 'reply',
+	        id: 3,
+	        color: 0xb2e1ff,
+	        caption: 'frameworks and the like.',
+	        template: './src/page/templates/languages.html',
+	        col: 2,
+	        row: 2
+            /*title: "Past Career", // keep color
             loc: 'pastCareer',
             name: 'priorCareer',
             icon: 'reply',
@@ -47,31 +68,42 @@
             caption: 'The legal world from which I came.',
             template: './src/page/templates/priorCareer.html',
             col: 2,
-            row: 3
+            row: 3*/
         },
         {
-            title: "Languages", // keep color
-            loc: 'languages',
-            name: 'languages',
-            icon: 'help_outline',
-            id: 4,
+            title: "Past Career", // keep color
+	        loc: 'priorCareer',
+	        name: 'priorCareer',
+	        icon: 'help_outline',
+	        id: 4,
             color: 0xb2e1ff,
-            caption: 'Content is Under Construction.',
-            template: './src/page/templates/languages.html',
-            col: 2,
-            row: 2
+	        caption: 'The legal world from which I came.',
+	        template: './src/page/templates/priorCareer.html',
+	        col: 2,
+	        row: 3
         },
         {
-            title: "Preparation",
+	        title: "Preparation",
+	        loc: 'preparation',
+	        name: 'preparation',
+	        icon: 'build',
+	        id: 5,
+	        color: 0xb1ffde,
+	        caption: 'What I have built and know.',
+	        template: './src/page/templates/programming.html ',
+	        col: 1,
+	        row: 3
+         /*   title: "Projects",
             loc: 'preparation',
             name: 'preparation',
             icon: 'build',
             id: 5,
             color: 0x34c497,
             caption: 'A showcase of a sort.',
-            template: './src/page/templates/preparation.html',
+           // template: './src/page/templates/preparation.html',
+	        template: './src/page/templates/programming.html ',
             col: 1,
-            row: 3
+            row: 3*/
         }
     ];
 
@@ -80,8 +112,8 @@
         aboutMe: 0,
         programming: 1,
         education: 2,
-        pastCareer: 3,
-        languages: 4,
+        pastCareer: 4,
+        languages: 3,
         preparation: 5
     };
 

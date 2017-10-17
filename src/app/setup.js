@@ -107,6 +107,7 @@ urlHandler.checkInitUrl(data.reverseId, window.location.search.substring(1), fun
 });
 
 urlHandler.handleBackForward(function (varsPage, beginningLocation) {
+
     if (beginningLocation == true && store().beginningLocation == true) {
     } else {
         if (beginningLocation) {

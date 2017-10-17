@@ -4,7 +4,7 @@ module.exports = function () {
     "use strict";
 
     var dialog = document.createElement('dialog');
-    dialog.style.cssText = 'width: 95%; height: 95%; z-index: 1; overflow: visible;  overflow-y: scroll; ';
+    dialog.style.cssText = 'width: 95%; height: 95%; padding-top: 25px; z-index: 1; overflow: visible;  overflow-y: scroll; ';
     dialog.id = 'infoPrintDialog';
 
     var closeButton = document.createElement('button'),
@@ -17,8 +17,8 @@ module.exports = function () {
 
             $(dialog).html(xmlRequest.responseText);
             var closeButtonScript = [
-                '<button id="closeDialog" class="noprint" style="position: absolute; left: 2%; top: 2%;">Close</button>',
-                '<button id="PrintDocument" class="noprint"  style="position: absolute; left: 8%; top: 2%;">Print Document</button>',
+                '<button id="closeDialog" class="noprint" style="position: absolute; left: 2%; top: 0.5%;">Close</button>',
+               /* '<button id="PrintDocument" class="noprint"  style="position: absolute; left: 8%; top: 2%;">Print Document</button>',*/
                 '<script>',
                 'var closeDialog = document.getElementById("closeDialog");',
                 'closeDialog.addEventListener("click", function() {',
@@ -26,10 +26,10 @@ module.exports = function () {
                 'infoPrintDialog.close();',
                 'DialogElement.remove();',
                 ' });',
-                'PrintDocument.addEventListener("click", function() {',
+               /* 'PrintDocument.addEventListener("click", function() {',
                 '$("button#CloseDialog").detach();',
                 'window.print();',
-                ' });',
+                ' });',*/
                 '</script>'
             ].join('\n');
 
@@ -37,7 +37,7 @@ module.exports = function () {
         }
     };
 
-    xmlRequest.open('GET', './src/page/templates/print.html', true);
+	xmlRequest.open('GET', './src/page/templates/print.html', true);
     xmlRequest.send();
 
     dialog.showModal();

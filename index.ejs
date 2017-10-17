@@ -19,32 +19,27 @@
 
 </head>
 <body>
+<script>
 
+	document.addEventListener("ContentPageCreated", function(){
+		console.log("ready");
+		var pageNavEvent = new Event("pageNav");
+		window.dispatchEvent(pageNavEvent);
+    })
+</script>
 <!-- ThreeJS libraries -->
 <script src="./dist/three.js"></script>
 <script src="./dist/OrbitControls.js"></script>
 <script src="./dist/CSS3DRenderer.js"></script>
 <script src="./dist/Tween.js"></script>
 <!-- ThreeJS libraries end-->
-<!--<script src="lib/Tween.js"></script>-->
 
-<!-- Require.js Configuration
-<script src="src/lib/require.js"></script>
-<script src="src/config.js"></script>
- End Require.js Configuration -->
-<!--
-/*
- NEAT QUOTE:
- "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
- "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."
- */
--->
 
 <span class="page-title-name" >Steve Mieskoski Portfolio</span>
 
-<div id="attachmentPoint" >
-    <!-- crude way to do this (tweening would be cleaner, but works and I wanted to implement purely using css-->
-    <div class="groupAnimate">
+<!--<div id="attachmentPoint" >
+    &lt;!&ndash; crude way to do this (tweening would be cleaner, but works and I wanted to implement purely using css&ndash;&gt;
+   &lt;!&ndash; <div class="groupAnimate">
         <img class=" displayOptionIconLL" src='./img/white_left_lower.png' alt="Breaking Borders Logo" >
         <img class=" displayOptionIconLU" src='./img/white_left_upper.png' alt="Breaking Borders Logo" >
         <img class=" displayOptionIconRL" src='./img/right_lower.png' alt="Breaking Borders Logo" >
@@ -53,28 +48,10 @@
     <img class=" displayOptionIcon" id="Main-Display-Animations" src='./img/ic_cached_white_48px.svg' alt="Breaking Borders Logo" >
     <div class="mdl-tooltip" data-mdl-for="Main-Display-Animations" >
         Show Animation and Display Options
-    </div>
-</div>
+    </div>&ndash;&gt;
+</div>-->
 
-<!--
-<i class="material-icons  mdl-layout-icon-mod" id="nav-drawer" aria-hidden="true">menu</i> -->
 <div class="cd-layout__drawer cd-not-visible">
-    <span class="mdl-layout-title-mod">Profile Navigation</span>
-    <nav class="mdl-navigation-mod" id="nav-drawer-items">
-        <!-- todo figure out why multiple alerts appear when close controls is triggered -->
-        <p><button class="mdl-button-mod mdl-navigation__link mdl-js-button mdl-js-ripple-effect" id="nav0">Background</button></p>
-        <p><button class="mdl-button-mod mdl-navigation__link mdl-js-button mdl-js-ripple-effect" id="nav1">Experience</button></p>
-        <p><button class="mdl-button-mod mdl-navigation__link mdl-js-button mdl-js-ripple-effect" id="nav2">About Me</button></p>
-        <p><button class="mdl-button-mod mdl-navigation__link mdl-js-button mdl-js-ripple-effect" id="nav3">Programming</button></p>
-        <p><button class="mdl-button-mod mdl-navigation__link mdl-js-button mdl-js-ripple-effect" id="nav4">Introduction</button></p>
-        <p><button class="mdl-button-mod mdl-navigation__link mdl-js-button mdl-js-ripple-effect" id="nav5">Education</button></p>
-        <p><button class="mdl-button-mod mdl-navigation__link mdl-js-button mdl-js-ripple-effect" id="nav6">Prior Career</button></p>
-        <p><button class="mdl-button-mod mdl-navigation__link mdl-js-button mdl-js-ripple-effect" id="nav7">Why Programming</button></p>
-        <p><button class="mdl-button-mod mdl-navigation__link mdl-js-button mdl-js-ripple-effect" id="nav8">Preparation</button></p>
-        <p><button class="mdl-button-mod mdl-navigation__link mdl-js-button mdl-js-ripple-effect" id="nav11">Data Entry</button></p>
-        <p><button class="mdl-button-mod mdl-navigation__link mdl-js-button mdl-js-ripple-effect" id="nav9">Close Menu</button></p>
-        <p><button class="mdl-button-mod mdl-navigation__link mdl-js-button mdl-js-ripple-effect hide-element" id="nav10">Main Page Return</button></p>
-    </nav>
 </div>
 
 <div class="cd-layout__drawer-display cd-not-visible">
@@ -84,8 +61,6 @@
         <button class="display-change-btn" id="sphere">SPHERE</button>
         <button class="display-change-btn" id="helix">HELIX</button>
         <button class="display-change-btn" id="grid">SCATTER</button>
-     <!--   <button class="display-change-btn StoreView">Store</button> --> <!-- Dev Only -->
-        <button class="display-change-btn testActionBtn">Test Action Button</button>
     </nav>
 </div>
 
@@ -101,9 +76,11 @@
 <a id="downloadLink" href="./src/page/templates/main.pdf" download="'SteveMieskoskiResume.pdf"><i class="material-icons">file_download</i></a>
 <div class="mdl-tooltip" data-mdl-for="downloadLink">Download Resume</div>
 
-<!-- would be best to implement contact within an element looking like a normal page item-->
-<div id="contactButton"><i class="material-icons">mail</i></div>
-<div class="mdl-tooltip" data-mdl-for="contactButton" style="top:10px; left: 100px">Contact</div>
+<div id="viewButton"><i class="material-icons">visibility</i></div>
+<div class="mdl-tooltip" data-mdl-for="viewButton" style="top:10px; left: 100px">View Resume</div>
+
+<!--<div id="contactButton"><i class="material-icons">mail</i></div>
+<div class="mdl-tooltip" data-mdl-for="contactButton" style="top:10px; left: 100px">Contact</div>-->
 
 </body>
 </html>
